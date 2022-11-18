@@ -60,6 +60,7 @@ public class UsuarioController {
         Usuario usuario = new Usuario();
 
         usuario.setNome(usuarioInput.getNome());
+        usuario.setTelefone(usuarioInput.getTelefone());
         usuario.setEmail(usuarioInput.getEmail());
         usuario.setSenha(usuarioInput.getSenha());
 

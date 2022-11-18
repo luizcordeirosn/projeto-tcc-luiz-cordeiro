@@ -19,9 +19,9 @@ import com.app.backend_app.Model.Usuario;
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository{
     
-    private static String INSERT = " insert into tb_usuario (id, nome, email, senha, registro, "
+    private static String INSERT = " insert into tb_usuario (id, nome, telefone, email, senha, registro, "
             + " planoativo) "
-            + " values (nextval('tb_usuario_id_seq'),?,?,?,?,?) ";
+            + " values (nextval('tb_usuario_id_seq'),?,?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_usuario where id = ?";
     private static String SELECT_ONE_EMAIL_SENHA = " select * from tb_usuario"
             + " where email like ?"
@@ -45,6 +45,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
+                usuario.setTelefone(rs.getString("telefone"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setRegistro(rs.getDate("registro"));
@@ -66,6 +67,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
+                usuario.setTelefone(rs.getString("telefone"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
                 usuario.setRegistro(rs.getDate("registro"));
@@ -89,10 +91,11 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, usuario.getNome());
-                ps.setString(2, usuario.getEmail());
-                ps.setString(3, usuario.getSenha());
-                ps.setDate(4, registroSQL);
-                ps.setBoolean(5, false);
+                ps.setString(2, usuario.getTelefone());
+                ps.setString(3, usuario.getEmail());
+                ps.setString(4, usuario.getSenha());
+                ps.setDate(5, registroSQL);
+                ps.setBoolean(6, false);
                 return ps;
             }
         }, holder);

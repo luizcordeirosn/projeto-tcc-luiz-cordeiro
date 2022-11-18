@@ -83,12 +83,12 @@ class _HomeStatefulState extends State<HomeStateful> {
                     foregroundColor: Colors.white,  
                     onPressed: () {
                       loginRepository.login(emailController.text, senhaController.text);
-                      Future.delayed(Duration(milliseconds: 500),(){
+                      Future.delayed(Duration(milliseconds: 1000),(){
                         List usuarioLogado = loginRepository.usuarioLogado;
                         if(usuarioLogado.length>0){
                           print(usuarioLogado);
                         }else{
-                          print("Usuario não logado");
+                          print("Usuario não encontrado");
                         }
                       });
                     },

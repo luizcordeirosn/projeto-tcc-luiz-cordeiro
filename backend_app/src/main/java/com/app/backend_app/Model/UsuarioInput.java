@@ -4,6 +4,7 @@ public class UsuarioInput {
     
     private Integer id;
     private String nome;
+    private String telefone;
     private String email;
     private String senha;
 
@@ -18,6 +19,12 @@ public class UsuarioInput {
     }
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
     public String getEmail() {
         return email;
