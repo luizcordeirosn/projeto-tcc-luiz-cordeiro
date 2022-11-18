@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/shared/repository/login_repository.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class HomeStateful extends StatefulWidget {
   const HomeStateful({super.key});
@@ -88,7 +89,11 @@ class _HomeStatefulState extends State<HomeStateful> {
                         if(usuarioLogado.length>0){
                           print(usuarioLogado);
                         }else{
-                          print("Usuario não encontrado");
+                          Alert(
+                            context: context, 
+                            title: "ERRO", 
+                            desc: "Usuário não encontrado. Digite novamente seu email ou senha. " 
+                            ).show();
                         }
                       });
                     },
@@ -155,3 +160,4 @@ class _HomeStatefulState extends State<HomeStateful> {
     );
   }
 }
+
