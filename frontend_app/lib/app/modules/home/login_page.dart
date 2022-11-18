@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/shared/repository/login_repository.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class HomeStateful extends StatefulWidget {
-  const HomeStateful({super.key});
+class LoginStateful extends StatefulWidget {
+  const LoginStateful({super.key});
 
   @override
-  State<HomeStateful> createState() => _HomeStatefulState();
+  State<LoginStateful> createState() => _LoginStatefulState();
 }
 
-class _HomeStatefulState extends State<HomeStateful> {
+class _LoginStatefulState extends State<LoginStateful> {
 
   TextEditingController emailController =  TextEditingController();
   TextEditingController senhaController =  TextEditingController();
