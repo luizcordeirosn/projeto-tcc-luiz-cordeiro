@@ -197,32 +197,65 @@ class _RegistroStatefulState extends State<RegistroStateful> {
   }
 
   void verificarDadosCadastro() {
-    if (nomeController.text.isNotEmpty) {
-      if (cpfController.text.isNotEmpty) {
-        if (emailController.text.isNotEmpty) {
-          if (senhaController.text.isNotEmpty) {
-            usuarioCadastro.setNome(nomeController.text);
-            usuarioCadastro.setCpf(cpfController.text);
-            usuarioCadastro.setTelefone(telefoneController.text);
-            usuarioCadastro.setEmail(emailController.text);
-            usuarioCadastro.setSenha(senhaController.text);
+    List dadosFaltantes = [];
+    String aux = "";
 
-            registroRepository.registro(usuarioCadastro);
+    if (nomeController.text.isNotEmpty &&
+        cpfController.text.isNotEmpty &&
+        emailController.text.isNotEmpty &&
+        senhaController.text.isNotEmpty) {
+      usuarioCadastro.setNome(nomeController.text);
+      usuarioCadastro.setCpf(cpfController.text);
+      usuarioCadastro.setTelefone(telefoneController.text);
+      usuarioCadastro.setEmail(emailController.text);
+      usuarioCadastro.setSenha(senhaController.text);
 
-            Future.delayed(Duration(milliseconds: 1000), () {
-              Alert(
-                      context: context,
-                      title: "PARABÉNS",
-                      desc:
-                          "O usuário ${usuarioCadastro.getNome()} foi cadastrado com sucesso. ")
-                  .show();
-            });
+      registroRepository.registro(usuarioCadastro);
 
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const LoginStateful()));
-          }
+      Future.delayed(Duration(milliseconds: 1000), () {
+        Alert(
+                context: context,
+                title: "PARABÉNS",
+                desc:
+                    "O usuário ${usuarioCadastro.getNome()} foi cadastrado com sucesso. ")
+            .show();
+      });
+
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const LoginStateful()));
+    } else {
+      dadosFaltantes.clear();
+
+      if (nomeController.text.isEmpty) {
+        dadosFaltantes.add("Nome");
+      }
+      if (cpfController.text.isEmpty) {
+        dadosFaltantes.add("Cpf");
+      }
+      if (emailController.text.isEmpty) {
+        dadosFaltantes.add("Email");
+      }
+      if (senhaController.text.isEmpty) {
+        dadosFaltantes.add("Senha");
+      }
+
+      aux = "";
+
+      for (var i = 0; i < dadosFaltantes.length; i++) {
+        if (i == dadosFaltantes.length - 2) {
+          aux = aux + dadosFaltantes[i] + " e ";
+        } else if (i == dadosFaltantes.length - 1) {
+          aux = aux + dadosFaltantes[i] + ".";
+        } else {
+          aux = aux + dadosFaltantes[i] + ", ";
         }
       }
+
+      Alert(
+              context: context,
+              title: "ERRO",
+              desc: "Preencha os seguintes campos: ${aux}")
+          .show();
     }
   }
 }
