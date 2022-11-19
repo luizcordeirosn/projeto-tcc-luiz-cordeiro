@@ -13,14 +13,16 @@ class LoginRepository {
     try {
 
       usuarioLogado.clear();
-      //Response response = await dio.post('http://www.google.com/',data:{"userId": userId},);
+      
       Response response = await dio.get('http://10.0.2.2:8082/usuario/verificar?email=${email}&senha=${senha}');
 
       usuarioLogado.add(response.data['id']);
       usuarioLogado.add(response.data['nome']);
+      usuarioLogado.add(response.data['cpf']);
       usuarioLogado.add(response.data['telefone']);
       usuarioLogado.add(response.data['email']);
       usuarioLogado.add(response.data['senha']);
+      usuarioLogado.add(response.data['planoAtivo']);
     } catch (e) {
       if (kDebugMode) {
         print(e);

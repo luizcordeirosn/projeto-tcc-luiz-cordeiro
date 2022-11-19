@@ -19,9 +19,9 @@ import com.app.backend_app.Model.Usuario;
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository{
     
-    private static String INSERT = " insert into tb_usuario (id, nome, telefone, email, senha, registro, "
-            + " planoativo) "
-            + " values (nextval('tb_usuario_id_seq'),?,?,?,?,?,?) ";
+    private static String INSERT = " insert into tb_usuario (id, nome, cpf, telefone, email, senha, "
+            + " registro, planoativo) "
+            + " values (nextval('tb_usuario_id_seq'),?,?,?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_usuario where id = ?";
     private static String SELECT_ONE_EMAIL_SENHA = " select * from tb_usuario"
             + " where email like ?"
@@ -45,6 +45,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
+                usuario.setCpf(rs.getString("cpf"));
                 usuario.setTelefone(rs.getString("telefone"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
@@ -67,6 +68,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
 
                 usuario.setId(rs.getInt("id"));
                 usuario.setNome(rs.getString("nome"));
+                usuario.setCpf(rs.getString("cpf"));
                 usuario.setTelefone(rs.getString("telefone"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
@@ -91,11 +93,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, usuario.getNome());
-                ps.setString(2, usuario.getTelefone());
-                ps.setString(3, usuario.getEmail());
-                ps.setString(4, usuario.getSenha());
-                ps.setDate(5, registroSQL);
-                ps.setBoolean(6, false);
+                ps.setString(2, usuario.getCpf());
+                ps.setString(3, usuario.getTelefone());
+                ps.setString(4, usuario.getEmail());
+                ps.setString(5, usuario.getSenha());
+                ps.setDate(6, registroSQL);
+                ps.setBoolean(7, false);
                 return ps;
             }
         }, holder);

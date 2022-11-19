@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_liga_master/app/modules/home/registro_page.dart';
 import 'package:frontend_liga_master/app/shared/repository/login_repository.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -123,9 +124,13 @@ class _LoginStatefulState extends State<LoginStateful> {
                         child: Icon(Icons.save_as),
                         backgroundColor: Colors.blueGrey,  
                         foregroundColor: Colors.white,  
-                        onPressed: () => {
-                          print("Registrar")
-                        },  
+                        onPressed: () {
+                          print("Registrar");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const RegistroStateful())
+                            );
+                        }, 
                       ),
                     ],
                   )
