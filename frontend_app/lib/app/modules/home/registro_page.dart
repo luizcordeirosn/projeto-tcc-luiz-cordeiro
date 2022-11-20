@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/shared/model/usuario.dart';
-import 'package:frontend_liga_master/app/shared/repository/registro_repository.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+
+import '../../shared/controller/registro_controller.dart';
 
 class RegistroStateful extends StatefulWidget {
   const RegistroStateful({super.key});
@@ -18,7 +19,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
 
-  RegistroRepository registroRepository = RegistroRepository();
+  RegistroController registroController = RegistroController();
   Usuario usuarioCadastro = Usuario();
 
   @override
@@ -211,7 +212,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
       usuarioCadastro.setEmail(emailController.text);
       usuarioCadastro.setSenha(senhaController.text);
 
-      registroRepository.registro(usuarioCadastro);
+      registroController.registro(usuarioCadastro);
 
       Future.delayed(Duration(milliseconds: 1000), () {
         Alert(
