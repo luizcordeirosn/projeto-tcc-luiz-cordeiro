@@ -197,7 +197,6 @@ class _LoginStatefulState extends State<LoginStateful> {
                   shape: StadiumBorder(),
                 ),
                 onPressed: () {
-                  print("Registrar");
                   Navigator.push(
                       context,
                       MaterialPageRoute(

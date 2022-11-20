@@ -67,48 +67,63 @@ class _RegistroStatefulState extends State<RegistroStateful> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: 200,
+                width: 230,
                 height: 40,
-                child: TextField(
+                child: TextFormField(
                   controller: nomeController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     hintText: "Nome *",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Colors.black54,
+                    ),
                     contentPadding: EdgeInsets.all(10),
                   ),
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 10)),
               SizedBox(
-                width: 200,
+                width: 230,
                 height: 40,
-                child: TextField(
+                child: TextFormField(
                   controller: cpfController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     hintText: "Cpf *",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.info,
+                      color: Colors.black54,
+                    ),
                     contentPadding: EdgeInsets.all(10),
                   ),
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 10)),
               SizedBox(
-                width: 200,
+                width: 230,
                 height: 40,
-                child: TextField(
+                child: TextFormField(
                   controller: telefoneController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     hintText: "Telefone",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.phone,
+                      color: Colors.black54,
+                    ),
                     contentPadding: EdgeInsets.all(10),
                   ),
                 ),
@@ -117,16 +132,21 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                 padding: EdgeInsets.only(top: 10),
               ),
               SizedBox(
-                width: 200,
+                width: 230,
                 height: 40,
-                child: TextField(
+                child: TextFormField(
                   controller: emailController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     hintText: "Email *",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: Colors.black54,
+                    ),
                     contentPadding: EdgeInsets.all(10),
                   ),
                 ),
@@ -135,16 +155,21 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                 padding: EdgeInsets.only(top: 10),
               ),
               SizedBox(
-                width: 200,
+                width: 230,
                 height: 40,
-                child: TextField(
+                child: TextFormField(
                   controller: senhaController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     border: OutlineInputBorder(),
                     hintText: "Senha *",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: Colors.black54,
+                    ),
                     contentPadding: EdgeInsets.all(10),
                   ),
                 ),
