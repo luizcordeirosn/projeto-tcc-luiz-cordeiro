@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/home/registro_page.dart';
-import 'package:frontend_liga_master/app/shared/repository/login_repository.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import '../../shared/controller/login_controller.dart';
 
 class LoginStateful extends StatefulWidget {
   const LoginStateful({super.key});
@@ -14,7 +14,7 @@ class _LoginStatefulState extends State<LoginStateful> {
   TextEditingController emailController = TextEditingController();
   TextEditingController senhaController = TextEditingController();
 
-  LoginRepository loginRepository = LoginRepository();
+  LoginController loginController = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -113,10 +113,10 @@ class _LoginStatefulState extends State<LoginStateful> {
                   shape: StadiumBorder(),
                 ),
                 onPressed: () {
-                  loginRepository.login(
+                  loginController.login(
                       emailController.text, senhaController.text);
                   Future.delayed(Duration(milliseconds: 1000), () {
-                    List usuarioLogado = loginRepository.usuarioLogado;
+                    List usuarioLogado = loginController.usuarioLogado;
                     if (usuarioLogado.length > 0) {
                       print(usuarioLogado);
                     } else {
