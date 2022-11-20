@@ -16,6 +16,8 @@ class _LoginStatefulState extends State<LoginStateful> {
 
   LoginController loginController = LoginController();
 
+  bool _mostrarSenha = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,30 +69,64 @@ class _LoginStatefulState extends State<LoginStateful> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                width: 200,
-                child: TextField(
+                width: 230,
+                child: TextFormField(
                   controller: emailController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(),
+                    /*icon: Icon(
+                        Icons.email,
+                        color: Colors.black,
+                      ),*/
                     hintText: "Email",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    border: OutlineInputBorder(),
+                    fillColor: Colors.white,
+                    filled: true,
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: Colors.black54,
+                    ),
                   ),
                 ),
               ),
               Padding(padding: EdgeInsets.only(top: 10)),
               SizedBox(
-                width: 200,
-                child: TextField(
+                width: 230,
+                child: TextFormField(
                   controller: senhaController,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black54),
                   decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(),
+                    /*icon: Icon(
+                        Icons.lock,
+                        color: Colors.black,
+                      ),*/
                     hintText: "Senha",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    border: OutlineInputBorder(),
+                    fillColor: Colors.white,
+                    filled: true,
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color: Colors.black54,
+                    ),
+                    suffixIcon: GestureDetector(
+                      child: Icon(
+                        _mostrarSenha == false
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: Colors.black54,
+                      ),
+                      onTap: () {
+                        setState(() {
+                          _mostrarSenha = !_mostrarSenha;
+                        });
+                      },
+                    ),
                   ),
+                  obscureText: _mostrarSenha == false ? true : false,
                 ),
               ),
               Padding(
