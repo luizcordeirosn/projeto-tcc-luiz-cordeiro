@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/home/registro_page.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../../shared/controller/login_controller.dart';
+import '../dashboard/user_dashboard_page.dart';
 
 class LoginStateful extends StatefulWidget {
   const LoginStateful({super.key});
@@ -15,6 +16,7 @@ class _LoginStatefulState extends State<LoginStateful> {
   TextEditingController senhaController = TextEditingController();
 
   LoginController loginController = LoginController();
+  List usuarioLogado = [];
 
   bool _mostrarSenha = false;
 
@@ -31,9 +33,9 @@ class _LoginStatefulState extends State<LoginStateful> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/stadium2.jpg"),
-                fit: BoxFit.cover,
-              ),
+                  image: AssetImage("images/stadium2.jpg"),
+                  fit: BoxFit.cover,
+                  opacity: 0.75),
             ),
           ),
           SingleChildScrollView(
@@ -67,9 +69,9 @@ class _LoginStatefulState extends State<LoginStateful> {
                     ),
                   ]),
                 ),
-                 Padding(
-                      padding: EdgeInsets.only(top: 75),
-                    ),
+                Padding(
+                  padding: EdgeInsets.only(top: 75),
+                ),
                 Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -81,13 +83,12 @@ class _LoginStatefulState extends State<LoginStateful> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.black54),
                         decoration: InputDecoration(
-                          /*icon: Icon(
-                        Icons.email,
-                        color: Colors.black,
-                      ),*/
                           hintText: "Email",
                           hintStyle: TextStyle(color: Colors.black54),
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           fillColor: Colors.white,
                           filled: true,
                           prefixIcon: Icon(
@@ -111,7 +112,10 @@ class _LoginStatefulState extends State<LoginStateful> {
                       ),*/
                           hintText: "Senha",
                           hintStyle: TextStyle(color: Colors.black54),
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           fillColor: Colors.white,
                           filled: true,
                           prefixIcon: Icon(
@@ -158,9 +162,14 @@ class _LoginStatefulState extends State<LoginStateful> {
                         loginController.login(
                             emailController.text, senhaController.text);
                         Future.delayed(Duration(milliseconds: 1000), () {
-                          List usuarioLogado = loginController.usuarioLogado;
+                          usuarioLogado = loginController.usuarioLogado;
                           if (usuarioLogado.length > 0) {
-                            print(usuarioLogado);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => UserDashboard(
+                                          usuarioLogado: usuarioLogado,
+                                        )));
                           } else {
                             Alert(
                                     context: context,

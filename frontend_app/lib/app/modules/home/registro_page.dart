@@ -38,6 +38,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
               image: DecorationImage(
                 image: AssetImage("images/stadium2.jpg"),
                 fit: BoxFit.cover,
+                opacity: 0.75
               ),
             ),
           ),
@@ -81,7 +82,10 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           hintText: "Nome *",
                           hintStyle: TextStyle(color: Colors.black54),
                           prefixIcon: Icon(
@@ -103,7 +107,10 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           hintText: "CPF *",
                           hintStyle: TextStyle(color: Colors.black54),
                           prefixIcon: Icon(
@@ -125,7 +132,10 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           hintText: "Telefone",
                           hintStyle: TextStyle(color: Colors.black54),
                           prefixIcon: Icon(
@@ -149,7 +159,10 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           hintText: "Email *",
                           hintStyle: TextStyle(color: Colors.black54),
                           prefixIcon: Icon(
@@ -173,7 +186,10 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                            borderSide: BorderSide.none,
+                          ),
                           hintText: "Senha *",
                           hintStyle: TextStyle(color: Colors.black54),
                           prefixIcon: Icon(
