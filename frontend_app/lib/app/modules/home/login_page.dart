@@ -31,180 +31,190 @@ class _LoginStatefulState extends State<LoginStateful> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/stadium.jpg"),
+                image: AssetImage("images/stadium2.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Center(
-            child: Column(children: [
-              Padding(padding: EdgeInsets.only(top: 55)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "BEM VINDO ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                Center(
+                  child: Column(children: [
+                    Padding(padding: EdgeInsets.only(top: 85)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "BEM VINDO ",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
+                        ),
+                        Icon(Icons.waving_hand)
+                      ],
                     ),
-                  ),
-                  Icon(Icons.waving_hand)
-                ],
-              ),
-              Text(
-                "Insira as suas informações que você digitou durante o cadastro.",
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                    Text(
+                      "Insira as suas informações que você digitou durante o cadastro.",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ]),
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ]),
-          ),
-          Center(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 230,
-                child: TextFormField(
-                  controller: emailController,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black54),
-                  decoration: InputDecoration(
-                    /*icon: Icon(
+                 Padding(
+                      padding: EdgeInsets.only(top: 75),
+                    ),
+                Center(
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 230,
+                      child: TextFormField(
+                        controller: emailController,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black54),
+                        decoration: InputDecoration(
+                          /*icon: Icon(
                         Icons.email,
                         color: Colors.black,
                       ),*/
-                    hintText: "Email",
-                    hintStyle: TextStyle(color: Colors.black54),
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white,
-                    filled: true,
-                    prefixIcon: Icon(
-                      Icons.email,
-                      color: Colors.black54,
+                          hintText: "Email",
+                          hintStyle: TextStyle(color: Colors.black54),
+                          border: OutlineInputBorder(),
+                          fillColor: Colors.white,
+                          filled: true,
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.only(top: 10)),
-              SizedBox(
-                width: 230,
-                child: TextFormField(
-                  controller: senhaController,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black54),
-                  decoration: InputDecoration(
-                    /*icon: Icon(
+                    Padding(padding: EdgeInsets.only(top: 10)),
+                    SizedBox(
+                      width: 230,
+                      child: TextFormField(
+                        controller: senhaController,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black54),
+                        decoration: InputDecoration(
+                          /*icon: Icon(
                         Icons.lock,
                         color: Colors.black,
                       ),*/
-                    hintText: "Senha",
-                    hintStyle: TextStyle(color: Colors.black54),
-                    border: OutlineInputBorder(),
-                    fillColor: Colors.white,
-                    filled: true,
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: Colors.black54,
-                    ),
-                    suffixIcon: GestureDetector(
-                      child: Icon(
-                        _mostrarSenha == false
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                        color: Colors.black54,
+                          hintText: "Senha",
+                          hintStyle: TextStyle(color: Colors.black54),
+                          border: OutlineInputBorder(),
+                          fillColor: Colors.white,
+                          filled: true,
+                          prefixIcon: Icon(
+                            Icons.lock,
+                            color: Colors.black54,
+                          ),
+                          suffixIcon: GestureDetector(
+                            child: Icon(
+                              _mostrarSenha == false
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.black54,
+                            ),
+                            onTap: () {
+                              setState(() {
+                                _mostrarSenha = !_mostrarSenha;
+                              });
+                            },
+                          ),
+                        ),
+                        obscureText: _mostrarSenha == false ? true : false,
                       ),
-                      onTap: () {
-                        setState(() {
-                          _mostrarSenha = !_mostrarSenha;
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 10),
+                    ),
+                    OutlinedButton(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
+                        child: Text(
+                          "ENTRAR",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.blueGrey,
+                        shape: StadiumBorder(),
+                      ),
+                      onPressed: () {
+                        loginController.login(
+                            emailController.text, senhaController.text);
+                        Future.delayed(Duration(milliseconds: 1000), () {
+                          List usuarioLogado = loginController.usuarioLogado;
+                          if (usuarioLogado.length > 0) {
+                            print(usuarioLogado);
+                          } else {
+                            Alert(
+                                    context: context,
+                                    title: "ERRO",
+                                    desc:
+                                        "Usuário não encontrado. Digite novamente seu email ou senha. ")
+                                .show();
+                          }
                         });
                       },
                     ),
-                  ),
-                  obscureText: _mostrarSenha == false ? true : false,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 10),
-              ),
-              OutlinedButton(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                  child: Text(
-                    "ENTRAR",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17,
+                    Padding(
+                      padding: EdgeInsets.only(top: 95),
                     ),
-                  ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.blueGrey,
-                  shape: StadiumBorder(),
-                ),
-                onPressed: () {
-                  loginController.login(
-                      emailController.text, senhaController.text);
-                  Future.delayed(Duration(milliseconds: 1000), () {
-                    List usuarioLogado = loginController.usuarioLogado;
-                    if (usuarioLogado.length > 0) {
-                      print(usuarioLogado);
-                    } else {
-                      Alert(
-                              context: context,
-                              title: "ERRO",
-                              desc:
-                                  "Usuário não encontrado. Digite novamente seu email ou senha. ")
-                          .show();
-                    }
-                  });
-                },
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 50),
-              ),
-              Text(
-                "Não tem uma conta? ",
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 3),
-              ),
-              OutlinedButton(
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                  child: Text(
-                    "REGISTRE-SE AQUI",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 17,
+                    Text(
+                      "Não tem uma conta? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
                     ),
-                  ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.blueGrey,
-                  shape: StadiumBorder(),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RegistroStateful()));
-                },
-              ),
-            ],
-          ))
+                    Padding(
+                      padding: EdgeInsets.only(top: 3),
+                    ),
+                    OutlinedButton(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
+                        child: Text(
+                          "REGISTRE-SE AQUI",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.blueGrey,
+                        shape: StadiumBorder(),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const RegistroStateful()));
+                      },
+                    ),
+                  ],
+                ))
+              ],
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomAppBar(
