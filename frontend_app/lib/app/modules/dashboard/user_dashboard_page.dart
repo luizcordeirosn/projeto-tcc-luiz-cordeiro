@@ -22,6 +22,7 @@ class _UserDashboardState extends State<UserDashboard> {
         title: Text("Liga Master"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
+        automaticallyImplyLeading: false,
       ),
       body: Stack(
         children: [
@@ -46,7 +47,10 @@ class _UserDashboardState extends State<UserDashboard> {
                   } else if (popupItemValue == "profileValue") {
                     print(widget.usuarioLogado);
                   } else if (popupItemValue == "exitValue") {
-                    print("Sair");
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginStateful()));
                   }
                 },
                 itemBuilder: (BuildContext bc) {
@@ -121,9 +125,9 @@ class _UserDashboardState extends State<UserDashboard> {
                     child: Column(
                       children: [
                         Text(
-                          "   Percebemos que você ainda não tem um plano ativo para seu usário. "
-                          + " Caso queira usufruir de todos as funcionalidades do aplicativo, por favor, "
-                          + " entre em contato via WhatsApp ou Email com os administradores.",
+                          "   Percebemos que você ainda não tem um plano ativo para seu usário. " +
+                              " Caso queira usufruir de todos as funcionalidades do aplicativo, por favor, " +
+                              " entre em contato via WhatsApp ou Email com os administradores.",
                           style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,

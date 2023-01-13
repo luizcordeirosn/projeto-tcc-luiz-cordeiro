@@ -27,6 +27,7 @@ class _LoginStatefulState extends State<LoginStateful> {
         title: Text("Liga Master"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
+        automaticallyImplyLeading: false,
       ),
       body: Stack(
         children: [

@@ -30,6 +30,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
         title: Text("Liga Master"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
+        automaticallyImplyLeading: false,
       ),
       body: Stack(
         children: [
