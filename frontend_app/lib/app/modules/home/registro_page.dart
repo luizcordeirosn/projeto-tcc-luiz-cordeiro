@@ -61,7 +61,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -234,7 +234,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                          fontSize: 16,
                         ),
                       ),
                       Padding(

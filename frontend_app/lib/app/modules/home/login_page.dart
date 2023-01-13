@@ -58,15 +58,18 @@ class _LoginStatefulState extends State<LoginStateful> {
                         Icon(Icons.waving_hand)
                       ],
                     ),
-                    Text(
+                    Container(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      child: Text(
                       "Insira as suas informações que você digitou durante o cadastro.",
                       style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                       textAlign: TextAlign.center,
                     ),
+                    )
                   ]),
                 ),
                 Padding(
@@ -189,7 +192,7 @@ class _LoginStatefulState extends State<LoginStateful> {
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15,
+                        fontSize: 16,
                       ),
                     ),
                     Padding(
