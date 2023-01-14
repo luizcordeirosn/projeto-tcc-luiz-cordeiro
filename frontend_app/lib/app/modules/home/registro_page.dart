@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/shared/model/usuario.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
 import '../../shared/controller/registro_controller.dart';
 
 class RegistroStateful extends StatefulWidget {

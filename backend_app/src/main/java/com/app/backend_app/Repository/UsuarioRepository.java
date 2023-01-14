@@ -13,7 +13,7 @@ public interface UsuarioRepository {
 
     Usuario salvarUsuario(Usuario usuario);
 
-    //Usuario atualizarUsuario(Usuario usuario);
+    Usuario atualizarUsuario(Usuario usuario);
 
     //Boolean deletarUsuario(Usuario usuario);
 }

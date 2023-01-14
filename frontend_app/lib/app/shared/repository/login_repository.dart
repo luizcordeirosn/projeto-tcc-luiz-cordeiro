@@ -3,18 +3,16 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 class LoginRepository {
-
   Dio dio = Dio();
 
   List usuarioLogado = [];
 
-  Future<void> login (String email, String senha) async {
-
+  Future<void> login(String email, String senha) async {
     try {
-
       usuarioLogado.clear();
-      
-      Response response = await dio.get('http://10.0.2.2:8082/usuario/verificar?email=${email}&senha=${senha}');
+
+      Response response = await dio.get(
+          'http://10.0.2.2:8082/usuario/verificar?email=${email}&senha=${senha}');
 
       usuarioLogado.add(response.data['id']);
       usuarioLogado.add(response.data['nome']);

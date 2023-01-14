@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
-import '../../shared/controller/login_controller.dart';
 
 class UserDashboard extends StatefulWidget {
   final List usuarioLogado;
@@ -23,12 +21,7 @@ class _UserDashboardState extends State<UserDashboard> {
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
-      ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(color: Colors.grey),
-          ),
+        actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -45,7 +38,12 @@ class _UserDashboardState extends State<UserDashboard> {
                             builder: (context) => UserDashboard(
                                 usuarioLogado: widget.usuarioLogado)));
                   } else if (popupItemValue == "profileValue") {
-                    print(widget.usuarioLogado);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Profile(
+                                  usuarioLogado: widget.usuarioLogado,
+                                )));
                   } else if (popupItemValue == "exitValue") {
                     Navigator.push(
                         context,
@@ -92,6 +90,13 @@ class _UserDashboardState extends State<UserDashboard> {
                 },
               )
             ],
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(color: Colors.grey),
           ),
           Center(
               child: Column(

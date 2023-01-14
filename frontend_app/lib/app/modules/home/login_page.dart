@@ -62,14 +62,14 @@ class _LoginStatefulState extends State<LoginStateful> {
                     Container(
                       padding: EdgeInsets.only(left: 8, right: 8),
                       child: Text(
-                      "Insira as suas informações que você digitou durante o cadastro.",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        "Insira as suas informações que você digitou durante o cadastro.",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
                     )
                   ]),
                 ),
@@ -110,10 +110,6 @@ class _LoginStatefulState extends State<LoginStateful> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.black54),
                         decoration: InputDecoration(
-                          /*icon: Icon(
-                        Icons.lock,
-                        color: Colors.black,
-                      ),*/
                           hintText: "Senha",
                           hintStyle: TextStyle(color: Colors.black54),
                           border: OutlineInputBorder(

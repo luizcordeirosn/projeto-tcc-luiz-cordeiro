@@ -27,12 +27,22 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
             + " where email like ?"
             + " and senha like ? "
             + " order by id";
+    private static String UPDATE = " update tb_usuario set nome = ?, cpf = ?, telefone = ?, "
+            + " email = ?, senha = ? where id = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
         
     public void setDataSource(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    public Usuario atualizarUsuario(Usuario usuario) {
+       
+        jdbcTemplate.update(UPDATE, new Object[] {usuario.getNome(), usuario.getCpf(), usuario.getTelefone(), 
+                usuario.getEmail(), usuario.getSenha(), usuario.getId()});
+
+        return usuario;
     }
 
     public Usuario obterPorIdUsuario(Integer id) {

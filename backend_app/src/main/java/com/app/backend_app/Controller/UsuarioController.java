@@ -70,7 +70,7 @@ public class UsuarioController {
                 usuario = usuarioRepo.salvarUsuario(usuario);
             } else {
                 usuario.setId(usuarioInput.getId());
-                // usuario = usuarioRepo.atualizarUsuario(usuario);
+                usuario = usuarioRepo.atualizarUsuario(usuario);
             }
         } catch (Exception e) {
             throw new DomainException("Erro base de dados: " + e.getMessage());
