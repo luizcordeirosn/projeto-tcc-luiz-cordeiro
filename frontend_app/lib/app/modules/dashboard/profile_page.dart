@@ -183,6 +183,14 @@ class _ProfileState extends State<Profile> {
                       ),
                       textAlign: TextAlign.start,
                     ),
+                    IconButton(
+                        onPressed: () {
+                          _editarCpf();
+                        },
+                        icon: Icon(
+                          Icons.edit,
+                          size: 25,
+                        ))
                   ],
                 ),
                 Padding(padding: EdgeInsets.only(top: 5)),
@@ -207,6 +215,14 @@ class _ProfileState extends State<Profile> {
                       ),
                       textAlign: TextAlign.start,
                     ),
+                    IconButton(
+                        onPressed: () {
+                          _editarTelefone();
+                        },
+                        icon: Icon(
+                          Icons.edit,
+                          size: 25,
+                        ))
                   ],
                 ),
                 Padding(padding: EdgeInsets.only(top: 5)),
@@ -231,6 +247,14 @@ class _ProfileState extends State<Profile> {
                       ),
                       textAlign: TextAlign.start,
                     ),
+                    IconButton(
+                        onPressed: () {
+                          _editarEmail();
+                        },
+                        icon: Icon(
+                          Icons.edit,
+                          size: 25,
+                        ))
                   ],
                 ),
                 Padding(padding: EdgeInsets.only(top: 5)),
@@ -378,6 +402,381 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               title: "ERRO",
                               desc: "Campo NOME em branco")
+                          .show();
+                    }
+                  },
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _editarCpf() async {
+    TextEditingController cpfController = TextEditingController();
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.blueGrey,
+          title: const Text(
+            'EDITAR CPF',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextFormField(
+                  controller: cpfController,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black54),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Cpf ",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Colors.black54,
+                    ),
+                    contentPadding: EdgeInsets.all(10),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Cancelar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                Padding(padding: EdgeInsets.only(right: 5)),
+                OutlinedButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Confirmar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    if (cpfController.text.isNotEmpty) {
+                      usuarioAtualizarCadastro
+                          .setNome(usuarioAtualizado.elementAt(1));
+                      usuarioAtualizarCadastro.setCpf(cpfController.text);
+                      usuarioAtualizarCadastro
+                          .setTelefone(usuarioAtualizado.elementAt(3));
+                      usuarioAtualizarCadastro
+                          .setEmail(usuarioAtualizado.elementAt(4));
+                      usuarioAtualizarCadastro
+                          .setSenha(usuarioAtualizado.elementAt(5));
+
+                      profileController.atualizarUsuario(
+                          usuarioAtualizarCadastro,
+                          usuarioAtualizado.elementAt(0));
+
+                      Future.delayed(Duration(milliseconds: 1000), () {
+                        usuarioAtualizado = profileController.usuarioAtualizado;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Profile(
+                                      usuarioLogado: usuarioAtualizado,
+                                    )));
+                      });
+                    } else {
+                      Alert(
+                              context: context,
+                              title: "ERRO",
+                              desc: "Campo CPF em branco")
+                          .show();
+                    }
+                  },
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _editarTelefone() async {
+    TextEditingController telefoneController = TextEditingController();
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.blueGrey,
+          title: const Text(
+            'EDITAR TELEFONE',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextFormField(
+                  controller: telefoneController,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black54),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Telefone ",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Colors.black54,
+                    ),
+                    contentPadding: EdgeInsets.all(10),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Cancelar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                Padding(padding: EdgeInsets.only(right: 5)),
+                OutlinedButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Confirmar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    if (telefoneController.text.isNotEmpty) {
+                      usuarioAtualizarCadastro
+                          .setNome(usuarioAtualizado.elementAt(1));
+                      usuarioAtualizarCadastro.setCpf(usuarioAtualizado.elementAt(2));
+                      usuarioAtualizarCadastro
+                          .setTelefone(telefoneController.text);
+                      usuarioAtualizarCadastro
+                          .setEmail(usuarioAtualizado.elementAt(4));
+                      usuarioAtualizarCadastro
+                          .setSenha(usuarioAtualizado.elementAt(5));
+
+                      profileController.atualizarUsuario(
+                          usuarioAtualizarCadastro,
+                          usuarioAtualizado.elementAt(0));
+
+                      Future.delayed(Duration(milliseconds: 1000), () {
+                        usuarioAtualizado = profileController.usuarioAtualizado;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Profile(
+                                      usuarioLogado: usuarioAtualizado,
+                                    )));
+                      });
+                    } else {
+                      Alert(
+                              context: context,
+                              title: "ERRO",
+                              desc: "Campo TELEFONE em branco")
+                          .show();
+                    }
+                  },
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _editarEmail() async {
+    TextEditingController emailController = TextEditingController();
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.blueGrey,
+          title: const Text(
+            'EDITAR EMAIL',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextFormField(
+                  controller: emailController,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black54),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Email ",
+                    hintStyle: TextStyle(color: Colors.black54),
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Colors.black54,
+                    ),
+                    contentPadding: EdgeInsets.all(10),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Cancelar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                Padding(padding: EdgeInsets.only(right: 5)),
+                OutlinedButton(
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      "Confirmar",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  style: OutlinedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: StadiumBorder(),
+                  ),
+                  onPressed: () {
+                    if (emailController.text.isNotEmpty) {
+                      usuarioAtualizarCadastro
+                          .setNome(usuarioAtualizado.elementAt(1));
+                      usuarioAtualizarCadastro.setCpf(usuarioAtualizado.elementAt(2));
+                      usuarioAtualizarCadastro
+                          .setTelefone(usuarioAtualizado.elementAt(3));
+                      usuarioAtualizarCadastro
+                          .setEmail(emailController.text);
+                      usuarioAtualizarCadastro
+                          .setSenha(usuarioAtualizado.elementAt(5));
+
+                      profileController.atualizarUsuario(
+                          usuarioAtualizarCadastro,
+                          usuarioAtualizado.elementAt(0));
+
+                      Future.delayed(Duration(milliseconds: 1000), () {
+                        usuarioAtualizado = profileController.usuarioAtualizado;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Profile(
+                                      usuarioLogado: usuarioAtualizado,
+                                    )));
+                      });
+                    } else {
+                      Alert(
+                              context: context,
+                              title: "ERRO",
+                              desc: "Campo TELEFONE em branco")
                           .show();
                     }
                   },

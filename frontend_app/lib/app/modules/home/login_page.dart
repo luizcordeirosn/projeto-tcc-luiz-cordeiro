@@ -161,7 +161,7 @@ class _LoginStatefulState extends State<LoginStateful> {
                       onPressed: () {
                         loginController.login(
                             emailController.text, senhaController.text);
-                        Future.delayed(Duration(milliseconds: 1000), () {
+                        Future.delayed(Duration(milliseconds: 2000), () {
                           usuarioLogado = loginController.usuarioLogado;
                           if (usuarioLogado.length > 0) {
                             Navigator.push(
