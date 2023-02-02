@@ -160,8 +160,8 @@ class _CustomAlertDialogPasswordState extends State<CustomAlertDialogPassword> {
                 shape: StadiumBorder(),
               ),
               onPressed: () {
-                if (senhaAntigaController.text.isNotEmpty ||
-                    novaSenhaController.text.isNotEmpty ||
+                if (senhaAntigaController.text.isNotEmpty &&
+                    novaSenhaController.text.isNotEmpty &&
                     novaSenhaNovamenteController.text.isNotEmpty) {
                   if (senhaAntigaController.text ==
                       usuarioAtualizado.elementAt(5)) {
@@ -189,7 +189,7 @@ class _CustomAlertDialogPasswordState extends State<CustomAlertDialogPassword> {
                       Alert(
                               context: context,
                               title: "ERRO",
-                              desc: "Os campos de nova senha não coincidem")
+                              desc: "Os campos de nova SENHA não coincidem")
                           .show();
                     }
                   } else {
@@ -203,7 +203,7 @@ class _CustomAlertDialogPasswordState extends State<CustomAlertDialogPassword> {
                   Alert(
                           context: context,
                           title: "ERRO",
-                          desc: "Campos em branco")
+                          desc: "Alguns campos não foram preenchidos corretamente")
                       .show();
                 }
               },

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_cpf.dart';
+import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_name.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_password.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_email.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_phone_number.dart';
 import 'package:frontend_liga_master/app/shared/controller/profile_controller.dart';
 import 'package:frontend_liga_master/app/shared/model/usuario.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Profile extends StatefulWidget {
   final List usuarioLogado;
@@ -21,7 +21,6 @@ class _ProfileState extends State<Profile> {
   String popupItemValue = "";
 
   ProfileController profileController = ProfileController();
-  Usuario usuarioAtualizarCadastro = Usuario();
 
   List usuarioAtualizado = [];
 
@@ -358,120 +357,7 @@ class _ProfileState extends State<Profile> {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: Colors.blueGrey,
-          title: const Text(
-            'EDITAR NOME',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                TextFormField(
-                  controller: nomeController,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black54),
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: "Nome ",
-                    hintStyle: TextStyle(color: Colors.black54),
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: Colors.black54,
-                    ),
-                    contentPadding: EdgeInsets.all(10),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OutlinedButton(
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      "Cancelar",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
-                    ),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    shape: StadiumBorder(),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                Padding(padding: EdgeInsets.only(right: 5)),
-                OutlinedButton(
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      "Confirmar",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
-                    ),
-                  ),
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: StadiumBorder(),
-                  ),
-                  onPressed: () {
-                    if (nomeController.text.isNotEmpty) {
-                      usuarioAtualizarCadastro.setNome(nomeController.text);
-                      usuarioAtualizarCadastro
-                          .setCpf(usuarioAtualizado.elementAt(2));
-                      usuarioAtualizarCadastro
-                          .setTelefone(usuarioAtualizado.elementAt(3));
-                      usuarioAtualizarCadastro
-                          .setEmail(usuarioAtualizado.elementAt(4));
-                      usuarioAtualizarCadastro
-                          .setSenha(usuarioAtualizado.elementAt(5));
-
-                      profileController.atualizarUsuario(
-                          usuarioAtualizarCadastro,
-                          usuarioAtualizado.elementAt(0));
-
-                      Future.delayed(Duration(milliseconds: 1000), () {
-                        usuarioAtualizado = profileController.usuarioAtualizado;
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Profile(
-                                      usuarioLogado: usuarioAtualizado,
-                                    )));
-                      });
-                    } else {
-                      Alert(
-                              context: context,
-                              title: "ERRO",
-                              desc: "Campo NOME em branco")
-                          .show();
-                    }
-                  },
-                ),
-              ],
-            )
-          ],
-        );
+        return CustomAlertDialogName(usuarioLogado: usuarioAtualizado);
       },
     );
   }

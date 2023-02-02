@@ -24,6 +24,7 @@ class _CustomAlertDialogEmailState
 
   @override
   Widget build(BuildContext context) {
+    usuarioAtualizado = widget.usuarioLogado;
     return AlertDialog(
       backgroundColor: Colors.blueGrey,
       title: const Text(

@@ -4,18 +4,16 @@ import 'package:frontend_liga_master/app/shared/controller/profile_controller.da
 import 'package:frontend_liga_master/app/shared/model/usuario.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class CustomAlertDialogPhoneNumber extends StatefulWidget {
+class CustomAlertDialogName extends StatefulWidget {
   final List usuarioLogado;
-  const CustomAlertDialogPhoneNumber({super.key, required this.usuarioLogado});
+  const CustomAlertDialogName({super.key, required this.usuarioLogado});
 
   @override
-  State<CustomAlertDialogPhoneNumber> createState() =>
-      _CustomAlertDialogPhoneNumberState();
+  State<CustomAlertDialogName> createState() => _CustomAlertDialogNameState();
 }
 
-class _CustomAlertDialogPhoneNumberState
-    extends State<CustomAlertDialogPhoneNumber> {
-  TextEditingController telefoneController = TextEditingController();
+class _CustomAlertDialogNameState extends State<CustomAlertDialogName> {
+  TextEditingController nomeController = TextEditingController();
 
   ProfileController profileController = ProfileController();
   Usuario usuario = Usuario();
@@ -28,7 +26,7 @@ class _CustomAlertDialogPhoneNumberState
     return AlertDialog(
       backgroundColor: Colors.blueGrey,
       title: const Text(
-        'EDITAR TELEFONE',
+        'EDITAR NOME',
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
@@ -38,7 +36,7 @@ class _CustomAlertDialogPhoneNumberState
         child: ListBody(
           children: <Widget>[
             TextFormField(
-              controller: telefoneController,
+              controller: nomeController,
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
               decoration: InputDecoration(
@@ -48,7 +46,7 @@ class _CustomAlertDialogPhoneNumberState
                   borderRadius: BorderRadius.circular(15.0),
                   borderSide: BorderSide.none,
                 ),
-                hintText: "Telefone ",
+                hintText: "Nome ",
                 hintStyle: TextStyle(color: Colors.black54),
                 prefixIcon: Icon(
                   Icons.person,
@@ -102,10 +100,10 @@ class _CustomAlertDialogPhoneNumberState
                 shape: StadiumBorder(),
               ),
               onPressed: () {
-                if (telefoneController.text.isNotEmpty) {
-                  usuario.setNome(usuarioAtualizado.elementAt(1));
+                if (nomeController.text.isNotEmpty) {
+                  usuario.setNome(nomeController.text);
                   usuario.setCpf(usuarioAtualizado.elementAt(2));
-                  usuario.setTelefone(telefoneController.text);
+                  usuario.setTelefone(usuarioAtualizado.elementAt(3));
                   usuario.setEmail(usuarioAtualizado.elementAt(4));
                   usuario.setSenha(usuarioAtualizado.elementAt(5));
 
@@ -125,7 +123,7 @@ class _CustomAlertDialogPhoneNumberState
                   Alert(
                           context: context,
                           title: "ERRO",
-                          desc: "Campo TELEFONE em branco")
+                          desc: "Campo NOME em branco")
                       .show();
                 }
               },
