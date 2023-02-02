@@ -36,7 +36,7 @@ class _LoginStatefulState extends State<LoginStateful> {
               image: DecorationImage(
                   image: AssetImage("images/stadium2.jpg"),
                   fit: BoxFit.cover,
-                  opacity: 0.75),
+                  opacity: 0.70),
             ),
           ),
           SingleChildScrollView(
@@ -161,7 +161,7 @@ class _LoginStatefulState extends State<LoginStateful> {
                       onPressed: () {
                         loginController.login(
                             emailController.text, senhaController.text);
-                        Future.delayed(Duration(milliseconds: 2000), () {
+                        Future.delayed(Duration(milliseconds: 1000), () {
                           usuarioLogado = loginController.usuarioLogado;
                           if (usuarioLogado.length > 0) {
                             Navigator.push(

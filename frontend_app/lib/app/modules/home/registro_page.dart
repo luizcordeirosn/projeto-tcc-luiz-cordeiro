@@ -38,7 +38,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
               image: DecorationImage(
                 image: AssetImage("images/stadium2.jpg"),
                 fit: BoxFit.cover,
-                opacity: 0.75
+                opacity: 0.70
               ),
             ),
           ),

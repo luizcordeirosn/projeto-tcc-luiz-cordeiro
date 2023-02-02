@@ -9,8 +9,8 @@ class RegistroRepository{
   Future<void> registro(Usuario usuarioCadastro) async{
     
     try{
-
-      Response response = await dio.post('http://10.0.2.2:8082/usuario/salvar', data: {
+      //http://10.0.2.2:8082
+      Response response = await dio.post('https://3af0-2804-14d-5492-82b5-c55e-5b76-dffe-2027.sa.ngrok.io/usuario/salvar', data: {
         "id":0,
         "nome": usuarioCadastro.getNome(),
         "cpf": usuarioCadastro.getCpf(),
