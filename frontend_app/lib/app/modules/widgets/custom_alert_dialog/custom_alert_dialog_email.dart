@@ -4,18 +4,18 @@ import 'package:frontend_liga_master/app/shared/controller/profile_controller.da
 import 'package:frontend_liga_master/app/shared/model/usuario.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class CustomAlertDialogPhoneNumber extends StatefulWidget {
+class CustomAlertDialogEmail extends StatefulWidget {
   final List usuarioLogado;
-  const CustomAlertDialogPhoneNumber({super.key, required this.usuarioLogado});
+  const CustomAlertDialogEmail({super.key, required this.usuarioLogado});
 
   @override
-  State<CustomAlertDialogPhoneNumber> createState() =>
-      _CustomAlertDialogPhoneNumberState();
+  State<CustomAlertDialogEmail> createState() =>
+      _CustomAlertDialogEmailState();
 }
 
-class _CustomAlertDialogPhoneNumberState
-    extends State<CustomAlertDialogPhoneNumber> {
-  TextEditingController telefoneController = TextEditingController();
+class _CustomAlertDialogEmailState
+    extends State<CustomAlertDialogEmail> {
+  TextEditingController emailController = TextEditingController();
 
   ProfileController profileController = ProfileController();
   Usuario usuario = Usuario();
@@ -27,7 +27,7 @@ class _CustomAlertDialogPhoneNumberState
     return AlertDialog(
       backgroundColor: Colors.blueGrey,
       title: const Text(
-        'EDITAR TELEFONE',
+        'EDITAR EMAIL',
         style: TextStyle(
           fontWeight: FontWeight.bold,
         ),
@@ -37,7 +37,7 @@ class _CustomAlertDialogPhoneNumberState
         child: ListBody(
           children: <Widget>[
             TextFormField(
-              controller: telefoneController,
+              controller: emailController,
               style:
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black54),
               decoration: InputDecoration(
@@ -47,7 +47,7 @@ class _CustomAlertDialogPhoneNumberState
                   borderRadius: BorderRadius.circular(15.0),
                   borderSide: BorderSide.none,
                 ),
-                hintText: "Telefone ",
+                hintText: "Email ",
                 hintStyle: TextStyle(color: Colors.black54),
                 prefixIcon: Icon(
                   Icons.person,
@@ -101,11 +101,11 @@ class _CustomAlertDialogPhoneNumberState
                 shape: StadiumBorder(),
               ),
               onPressed: () {
-                if (telefoneController.text.isNotEmpty) {
+                if (emailController.text.isNotEmpty) {
                   usuario.setNome(usuarioAtualizado.elementAt(1));
                   usuario.setCpf(usuarioAtualizado.elementAt(2));
-                  usuario.setTelefone(telefoneController.text);
-                  usuario.setEmail(usuarioAtualizado.elementAt(4));
+                  usuario.setTelefone(usuarioAtualizado.elementAt(3));
+                  usuario.setEmail(emailController.text);
                   usuario.setSenha(usuarioAtualizado.elementAt(5));
 
                   profileController.atualizarUsuario(
@@ -133,5 +133,6 @@ class _CustomAlertDialogPhoneNumberState
         )
       ],
     );
+    ;
   }
 }
