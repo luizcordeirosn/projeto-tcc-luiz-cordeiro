@@ -4,22 +4,23 @@ import 'package:frontend_liga_master/app/shared/controller/profile_controller.da
 import 'package:frontend_liga_master/app/shared/model/usuario.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class CustomAlertDialog extends StatefulWidget {
+class CustomAlertDialogPassword extends StatefulWidget {
   final List usuarioLogado;
-  const CustomAlertDialog({super.key, required this.usuarioLogado});
+  const CustomAlertDialogPassword({super.key, required this.usuarioLogado});
 
   @override
-  State<CustomAlertDialog> createState() => _CustomAlertDialogState();
+  State<CustomAlertDialogPassword> createState() =>
+      _CustomAlertDialogPasswordState();
 }
 
-class _CustomAlertDialogState extends State<CustomAlertDialog> {
+class _CustomAlertDialogPasswordState extends State<CustomAlertDialogPassword> {
   TextEditingController senhaAntigaController = TextEditingController();
   TextEditingController novaSenhaController = TextEditingController();
   TextEditingController novaSenhaNovamenteController = TextEditingController();
 
   ProfileController profileController = ProfileController();
   Usuario usuario = Usuario();
-  
+
   List usuarioAtualizado = [];
 
   bool _mostrarSenha = false;
@@ -58,9 +59,7 @@ class _CustomAlertDialogState extends State<CustomAlertDialog> {
                 ),
                 suffixIcon: GestureDetector(
                   child: Icon(
-                    !_mostrarSenha
-                        ? Icons.visibility_off
-                        : Icons.visibility,
+                    !_mostrarSenha ? Icons.visibility_off : Icons.visibility,
                     color: Colors.black54,
                   ),
                   onTap: () {
@@ -168,20 +167,14 @@ class _CustomAlertDialogState extends State<CustomAlertDialog> {
                       usuarioAtualizado.elementAt(5)) {
                     if (novaSenhaController.text ==
                         novaSenhaNovamenteController.text) {
-                      usuario
-                          .setNome(usuarioAtualizado.elementAt(1));
-                      usuario
-                          .setCpf(usuarioAtualizado.elementAt(2));
-                      usuario
-                          .setTelefone(usuarioAtualizado.elementAt(3));
-                      usuario
-                          .setEmail(usuarioAtualizado.elementAt(4));
-                      usuario
-                          .setSenha(novaSenhaController.text);
+                      usuario.setNome(usuarioAtualizado.elementAt(1));
+                      usuario.setCpf(usuarioAtualizado.elementAt(2));
+                      usuario.setTelefone(usuarioAtualizado.elementAt(3));
+                      usuario.setEmail(usuarioAtualizado.elementAt(4));
+                      usuario.setSenha(novaSenhaController.text);
 
                       profileController.atualizarUsuario(
-                          usuario,
-                          usuarioAtualizado.elementAt(0));
+                          usuario, usuarioAtualizado.elementAt(0));
 
                       Future.delayed(Duration(milliseconds: 2000), () {
                         usuarioAtualizado = profileController.usuarioAtualizado;
