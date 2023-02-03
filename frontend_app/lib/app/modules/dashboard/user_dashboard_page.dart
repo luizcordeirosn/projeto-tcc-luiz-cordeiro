@@ -98,114 +98,117 @@ class _UserDashboardState extends State<UserDashboard> {
           Container(
             decoration: BoxDecoration(color: Colors.grey),
           ),
-          Center(
-              child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(padding: EdgeInsets.only(top: 75)),
-                  Text(
-                    "Olá ${widget.usuarioLogado.elementAt(1)}  ",
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.center,
+          Container(
+            padding: EdgeInsets.only(top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Olá ${widget.usuarioLogado.elementAt(1)}  ",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
                   ),
-                  Icon(Icons.waving_hand)
-                ],
-              ),
-              Padding(padding: EdgeInsets.only(top: 75)),
-              Column(
+                  textAlign: TextAlign.center,
+                ),
+                Icon(Icons.waving_hand)
+              ],
+            ),
+          ),
+          Center(
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  Icon(
-                    Icons.dangerous_outlined,
-                    color: Colors.red,
-                    size: 84,
+                  Column(
+                    children: [
+                      Icon(
+                        Icons.dangerous_outlined,
+                        color: Colors.red,
+                        size: 84,
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 25, right: 25),
+                        child: Column(
+                          children: [
+                            Text(
+                              "   Percebemos que você ainda não tem um plano ativo para seu usuário. " +
+                                  " Caso queira usufruir de todos as funcionalidades do aplicativo, por favor, " +
+                                  " entre em contato via WhatsApp ou Email com os administradores.",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                              textAlign: TextAlign.justify,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 25, right: 25),
+                    padding: EdgeInsets.only(top: 10),
                     child: Column(
                       children: [
                         Text(
-                          "   Percebemos que você ainda não tem um plano ativo para seu usário. " +
-                              " Caso queira usufruir de todos as funcionalidades do aplicativo, por favor, " +
-                              " entre em contato via WhatsApp ou Email com os administradores.",
+                          "CONTATO: ",
                           style: TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,
-                            fontSize: 17,
+                            fontSize: 18,
                           ),
-                          textAlign: TextAlign.justify,
+                          textAlign: TextAlign.start,
                         ),
                       ],
                     ),
                   ),
-                ],
-              )
-            ],
-          )),
-          Container(
-            padding: EdgeInsets.only(top: 375, left: 25),
-            child: Column(
-              children: [
-                Text(
-                  "CONTATO: ",
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                  Container(
+                    padding: EdgeInsets.only(top: 10, left: 25),
+                    child: Row(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.call),
+                            Text(
+                              " +5587996544511",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  textAlign: TextAlign.start,
-                ),
-                Padding(padding: EdgeInsets.only(top: 5)),
-              ],
+                  Container(
+                    padding: EdgeInsets.only(top: 10, left: 25),
+                    child: Row(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.email),
+                            Text(
+                              " luizcsneto@outlook.com",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(top: 400, left: 25),
-            child: Row(
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.call),
-                    Text(
-                      " +5587996544511",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 430, left: 25),
-            child: Row(
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.email),
-                    Text(
-                      " luizcsneto@outlook.com",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
         ],
       ),
       bottomNavigationBar: BottomAppBar(

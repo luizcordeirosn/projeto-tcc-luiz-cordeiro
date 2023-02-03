@@ -117,232 +117,239 @@ class _ProfileState extends State<Profile> {
           Container(
             decoration: BoxDecoration(color: Colors.grey),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Center(
-                  child: Column(
-                    children: [
-                      Padding(padding: EdgeInsets.only(top: 25)),
-                      Icon(
-                        Icons.person_pin_rounded,
-                        color: Colors.blueGrey,
-                        size: 84,
-                      ),
-                    ],
+          Container(
+              padding: EdgeInsets.only(top: 45),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.person_pin_rounded,
+                    color: Colors.blueGrey,
+                    size: 84,
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(left: 25, top: 40, right: 25),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "NOME: ",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                                textAlign: TextAlign.start,
+                ],
+              )),
+          Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  //Padding(padding: EdgeInsets.only(bottom: 10)),
+                  Container(
+                    padding: EdgeInsets.only(left: 7, right: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "NOME: ",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
                               ),
-                              Text(
-                                "${_nome} ",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 19,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                _editarNome();
-                              },
-                              icon: Icon(
-                                Icons.edit,
-                                size: 25,
-                              ))
-                        ],
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 5)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "CPF: ",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                              Text(
-                                "${_cpf}",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 19,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                _editarCpf();
-                              },
-                              icon: Icon(
-                                Icons.edit,
-                                size: 25,
-                              ))
-                        ],
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 5)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "TELEFONE: ",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                              Text(
-                                "${_telefone}",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 19,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                _editarTelefone();
-                              },
-                              icon: Icon(
-                                Icons.edit,
-                                size: 25,
-                              ))
-                        ],
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 5)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "EMAIL: ",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 21,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                              Text(
-                                "${_email}",
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: 19,
-                                ),
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                _editarEmail();
-                              },
-                              icon: Icon(
-                                Icons.edit,
-                                size: 25,
-                              ))
-                        ],
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 15)),
-                      Row(
-                        children: [
-                          Text(
-                            "PLANO ATIVO: ",
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 21,
+                              textAlign: TextAlign.start,
                             ),
-                            textAlign: TextAlign.start,
-                          ),
-                          Text(
-                            "${_planoAtivo} ",
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.bold,
-                              fontStyle: FontStyle.italic,
-                              fontSize: 19,
+                            Text(
+                              "${_nome} ",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 19,
+                              ),
+                              textAlign: TextAlign.start,
                             ),
-                            textAlign: TextAlign.start,
+                          ],
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              _editarNome();
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              size: 25,
+                            ))
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 7, right: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "CPF: ",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                            Text(
+                              "${_cpf}",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 19,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              _editarCpf();
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              size: 25,
+                            ))
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 7, right: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "TELEFONE: ",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                            Text(
+                              "${_telefone}",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 19,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              _editarTelefone();
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              size: 25,
+                            ))
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 7, right: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "EMAIL: ",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                            Text(
+                              "${_email}",
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic,
+                                fontSize: 19,
+                              ),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              _editarEmail();
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              size: 25,
+                            ))
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 7, right: 7, top: 7),
+                    child: Row(
+                      children: [
+                        Text(
+                          "PLANO ATIVO: ",
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 21,
                           ),
-                        ],
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 30)),
-                      Text(
-                        "Deseja alterar sua senha? ",
+                          textAlign: TextAlign.start,
+                        ),
+                        Text(
+                          "${_planoAtivo} ",
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                            fontSize: 19,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 45)),
+                  Text(
+                    "Deseja alterar sua senha? ",
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 3),
+                  ),
+                  OutlinedButton(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
+                      child: Text(
+                        "CLIQUE AQUI ",
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                          fontSize: 17,
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 3),
-                      ),
-                      OutlinedButton(
-                        child: Container(
-                          padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                          child: Text(
-                            "CLIQUE AQUI ",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 17,
-                            ),
-                          ),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.blueGrey,
-                          shape: StadiumBorder(),
-                        ),
-                        onPressed: () {
-                          _editarSenha();
-                        },
-                      ),
-                    ],
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Colors.blueGrey,
+                      shape: StadiumBorder(),
+                    ),
+                    onPressed: () {
+                      _editarSenha();
+                    },
                   ),
-                )
-              ],
+                ],
+              ),
             ),
           )
         ],
@@ -363,7 +370,6 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> _editarCpf() async {
-
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -374,7 +380,6 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> _editarTelefone() async {
-
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -385,7 +390,6 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> _editarEmail() async {
-
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -396,7 +400,6 @@ class _ProfileState extends State<Profile> {
   }
 
   Future<void> _editarSenha() async {
-
     return showDialog(
       context: context,
       barrierDismissible: false, // user must tap button!

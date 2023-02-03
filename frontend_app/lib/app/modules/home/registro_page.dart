@@ -36,18 +36,17 @@ class _RegistroStatefulState extends State<RegistroStateful> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/stadium2.jpg"),
-                fit: BoxFit.cover,
-                opacity: 0.70
-              ),
+                  image: AssetImage("images/stadium2.jpg"),
+                  fit: BoxFit.cover,
+                  opacity: 0.60),
             ),
           ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Center(
-                  child: Column(children: [
-                    Padding(padding: EdgeInsets.only(top: 55)),
+          Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(children: [
                     Text(
                       "REGISTRE-SE",
                       style: TextStyle(
@@ -66,169 +65,171 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                       textAlign: TextAlign.center,
                     ),
                   ]),
-                ),
-                Padding(padding: EdgeInsets.only(top: 15)),
-                Center(
-                    child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 230,
-                      height: 40,
-                      child: TextFormField(
-                        controller: nomeController,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black54),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "Nome *",
-                          hintStyle: TextStyle(color: Colors.black54),
-                          prefixIcon: Icon(
-                            Icons.person,
-                            color: Colors.black54,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
-                    SizedBox(
-                      width: 230,
-                      height: 40,
-                      child: TextFormField(
-                        controller: cpfController,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black54),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "CPF *",
-                          hintStyle: TextStyle(color: Colors.black54),
-                          prefixIcon: Icon(
-                            Icons.info,
-                            color: Colors.black54,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                    Padding(padding: EdgeInsets.only(top: 10)),
-                    SizedBox(
-                      width: 230,
-                      height: 40,
-                      child: TextFormField(
-                        controller: telefoneController,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black54),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "Telefone",
-                          hintStyle: TextStyle(color: Colors.black54),
-                          prefixIcon: Icon(
-                            Icons.phone,
-                            color: Colors.black54,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                    ),
-                    SizedBox(
-                      width: 230,
-                      height: 40,
-                      child: TextFormField(
-                        controller: emailController,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black54),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "Email *",
-                          hintStyle: TextStyle(color: Colors.black54),
-                          prefixIcon: Icon(
-                            Icons.email,
-                            color: Colors.black54,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 10),
-                    ),
-                    SizedBox(
-                      width: 230,
-                      height: 40,
-                      child: TextFormField(
-                        controller: senhaController,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black54),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.0),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: "Senha *",
-                          hintStyle: TextStyle(color: Colors.black54),
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: Colors.black54,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                    ),
-                    OutlinedButton(
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                        child: Text(
-                          "REGISTRAR",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                          ),
-                        ),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.blueGrey,
-                        shape: StadiumBorder(),
-                      ),
-                      onPressed: () {
-                        verificarDadosCadastro();
-                      },
-                    ),
-                  ],
-                )),
-                Center(
-                  child: Column(
+                  Padding(padding: EdgeInsets.only(top: 15)),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(padding: EdgeInsets.only(top: 90)),
+                      SizedBox(
+                        width: 230,
+                        height: 40,
+                        child: TextFormField(
+                          controller: nomeController,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "Nome *",
+                            hintStyle: TextStyle(color: Colors.black54),
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: Colors.black54,
+                            ),
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      SizedBox(
+                        width: 230,
+                        height: 40,
+                        child: TextFormField(
+                          controller: cpfController,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "CPF *",
+                            hintStyle: TextStyle(color: Colors.black54),
+                            prefixIcon: Icon(
+                              Icons.info,
+                              color: Colors.black54,
+                            ),
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      SizedBox(
+                        width: 230,
+                        height: 40,
+                        child: TextFormField(
+                          controller: telefoneController,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "Telefone",
+                            hintStyle: TextStyle(color: Colors.black54),
+                            prefixIcon: Icon(
+                              Icons.phone,
+                              color: Colors.black54,
+                            ),
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                      ),
+                      SizedBox(
+                        width: 230,
+                        height: 40,
+                        child: TextFormField(
+                          controller: emailController,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "Email *",
+                            hintStyle: TextStyle(color: Colors.black54),
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: Colors.black54,
+                            ),
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10),
+                      ),
+                      SizedBox(
+                        width: 230,
+                        height: 40,
+                        child: TextFormField(
+                          controller: senhaController,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black54),
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: BorderSide.none,
+                            ),
+                            hintText: "Senha *",
+                            hintStyle: TextStyle(color: Colors.black54),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.black54,
+                            ),
+                            contentPadding: EdgeInsets.all(10),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 20),
+                      ),
+                      OutlinedButton(
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
+                          child: Text(
+                            "REGISTRAR",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 17,
+                            ),
+                          ),
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.lime[700],
+                          shape: StadiumBorder(),
+                        ),
+                        onPressed: () {
+                          verificarDadosCadastro();
+                        },
+                      ),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 80)),
+                  Column(
+                    children: [
                       Text(
                         "Já tem uma conta? ",
                         style: TextStyle(
@@ -253,7 +254,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                           ),
                         ),
                         style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.blueGrey,
+                          backgroundColor: Colors.lime[700],
                           shape: StadiumBorder(),
                         ),
                         onPressed: () {
@@ -265,8 +266,8 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                       ),
                     ],
                   ),
-                )
-              ],
+                ],
+              ),
             ),
           )
         ],
