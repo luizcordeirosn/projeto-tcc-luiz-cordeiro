@@ -115,7 +115,7 @@ class _ProfileState extends State<Profile> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(color: Colors.grey),
+            decoration: BoxDecoration(color: Colors.black26),
           ),
           Container(
               padding: EdgeInsets.only(top: 45),
@@ -133,7 +133,6 @@ class _ProfileState extends State<Profile> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  //Padding(padding: EdgeInsets.only(bottom: 10)),
                   Container(
                     padding: EdgeInsets.only(left: 7, right: 7),
                     child: Row(

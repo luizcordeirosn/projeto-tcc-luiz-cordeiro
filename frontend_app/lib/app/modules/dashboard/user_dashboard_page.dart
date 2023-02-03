@@ -96,7 +96,7 @@ class _UserDashboardState extends State<UserDashboard> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(color: Colors.grey),
+            decoration: BoxDecoration(color: Colors.black26),
           ),
           Container(
             padding: EdgeInsets.only(top: 10),
