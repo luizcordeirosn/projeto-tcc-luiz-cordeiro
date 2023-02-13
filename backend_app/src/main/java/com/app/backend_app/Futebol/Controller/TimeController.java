@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.app.backend_app.Futebol.Model.Competicao;
 import com.app.backend_app.Futebol.Model.Time;
 import com.app.backend_app.Futebol.Model.TimeInput;
+import com.app.backend_app.Futebol.Repository.CompeticaoRepository;
 import com.app.backend_app.Futebol.Repository.TimeRepository;
 import com.app.backend_app.util.exceptions.DomainException;
 
@@ -24,6 +26,9 @@ public class TimeController {
 
     @Autowired
     private TimeRepository timeRepo;
+
+    @Autowired
+    private CompeticaoRepository competicaoRepo;
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Time> time(@PathVariable Integer id) {
@@ -54,5 +59,23 @@ public class TimeController {
         }
 
         return ResponseEntity.ok(time);
+    }
+
+    @PostMapping(value = "/salvar/timecompeticao/{timeid}/{competicaoid}")
+    public ResponseEntity<Time> salvarTime(@PathVariable Integer timeid, @PathVariable Integer competicaoid)
+            throws SQLException {
+
+        try {
+
+            Time time = timeRepo.obterPorIdTime(timeid);
+            Competicao competicao = competicaoRepo.obterPorIdCompeticao(competicaoid);
+
+            timeRepo.salvarTimePorCompeticao(time, competicao);
+
+            return ResponseEntity.ok(time);
+
+        } catch (Exception e) {
+            throw new DomainException("Erro base de dados: " + e.getMessage());
+        }
     }
 }
