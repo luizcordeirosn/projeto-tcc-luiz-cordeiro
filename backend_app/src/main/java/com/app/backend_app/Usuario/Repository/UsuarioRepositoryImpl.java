@@ -1,4 +1,4 @@
-package com.app.backend_app.Repository;
+package com.app.backend_app.Usuario.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import com.app.backend_app.Model.Usuario;
+import com.app.backend_app.Usuario.Model.Usuario;
 
 @Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository{

@@ -1,8 +1,6 @@
-package com.app.backend_app.Model;
+package com.app.backend_app.Usuario.Model;
 
-import java.sql.Date;
-
-public class Usuario {
+public class UsuarioInput {
     
     private Integer id;
     private String nome;
@@ -10,9 +8,7 @@ public class Usuario {
     private String telefone;
     private String email;
     private String senha;
-    private Date registro;
-    private Boolean planoAtivo;
-    
+
     public Integer getId() {
         return id;
     }
@@ -49,17 +45,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public Date getRegistro() {
-        return registro;
-    }
-    public void setRegistro(Date registro) {
-        this.registro = registro;
-    }
-    public Boolean getPlanoAtivo() {
-        return planoAtivo;
-    }
-    public void setPlanoAtivo(Boolean planoAtivo) {
-        this.planoAtivo = planoAtivo;
-    }
-
+    
 }

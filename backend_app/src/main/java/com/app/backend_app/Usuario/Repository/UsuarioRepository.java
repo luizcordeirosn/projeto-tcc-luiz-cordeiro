@@ -1,11 +1,9 @@
-package com.app.backend_app.Repository;
+package com.app.backend_app.Usuario.Repository;
 
-import java.util.List;
-import com.app.backend_app.Model.Usuario;
+import com.app.backend_app.Usuario.Model.Usuario;
 
 public interface UsuarioRepository {
     
-    //List<Usuario> obterTodosUsuarios(Integer entidade);
     
     Usuario obterPorIdUsuario(Integer id);
 
@@ -15,6 +13,5 @@ public interface UsuarioRepository {
 
     Usuario atualizarUsuario(Usuario usuario);
 
-    //Boolean deletarUsuario(Usuario usuario);
 }
 
