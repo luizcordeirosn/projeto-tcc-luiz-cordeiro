@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.app.backend_app.Futebol.Model.Competicao;
-import com.app.backend_app.Futebol.Model.CompeticaoInput;
-import com.app.backend_app.Futebol.Repository.CompeticaoRepository;
+import com.app.backend_app.Futebol.Model.Time;
+import com.app.backend_app.Futebol.Model.TimeInput;
+import com.app.backend_app.Futebol.Repository.TimeRepository;
 import com.app.backend_app.util.exceptions.DomainException;
 
 @RestController
-@RequestMapping(value = "/competicao")
+@RequestMapping(value = "/time")
 @Transactional
 @Controller
-public class CompeticaoController {
+public class TimeController {
 
     @Autowired
-    private CompeticaoRepository competicaRepo;
+    private TimeRepository timeRepo;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Competicao> competicao(@PathVariable Integer id) {
+    public ResponseEntity<Time> time(@PathVariable Integer id) {
 
         try {
-            Competicao competicao = competicaRepo.obterPorIdCompeticao(id);
-            return ResponseEntity.ok(competicao);
+            Time time = timeRepo.obterPorIdTime(id);
+            return ResponseEntity.ok(time);
         } catch (Exception e) {
             System.out.println("Erro - " + e.getMessage());
             return ResponseEntity.ok(null);
@@ -39,20 +39,20 @@ public class CompeticaoController {
     }
 
     @PostMapping(value = "/salvar")
-    public ResponseEntity<Competicao> salvarCompeticao(@RequestBody CompeticaoInput competicaoInput) throws SQLException {
+    public ResponseEntity<Time> salvarTime(@RequestBody TimeInput timeInput) throws SQLException {
 
-        Competicao competicao = new Competicao();
+        Time time = new Time();
 
-        competicao.setTitulo(competicaoInput.getTitulo());
+        time.setTitulo(timeInput.getTitulo());
 
         try {
-            if (competicaoInput.getId() == 0) {
-                competicao = competicaRepo.salvarCompeticao(competicao);
+            if (timeInput.getId() == 0) {
+                time = timeRepo.salvarTime(time);
             }
         } catch (Exception e) {
             throw new DomainException("Erro base de dados: " + e.getMessage());
         }
 
-        return ResponseEntity.ok(competicao);
+        return ResponseEntity.ok(time);
     }
 }

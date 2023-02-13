@@ -13,14 +13,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import com.app.backend_app.Futebol.Model.Competicao;
+import com.app.backend_app.Futebol.Model.Time;
 
 @Repository
-public class CompeticaoRepositoryImpl implements CompeticaoRepository{
+public class TimeRepositoryImpl implements TimeRepository{
     
-    private static String INSERT = " insert into tb_competicao (id, titulo) "
-            + " values (nextval('tb_competicao_id_seq'),?) ";
-    private static String SELECT_ONE = " select * from tb_competicao where id = ?";
+    private static String INSERT = " insert into tb_time (id, titulo) "
+            + " values (nextval('tb_time_id_seq'),?) ";
+    private static String SELECT_ONE = " select * from tb_time where id = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -29,24 +29,24 @@ public class CompeticaoRepositoryImpl implements CompeticaoRepository{
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public Competicao obterPorIdCompeticao(Integer id) {
+    public Time obterPorIdTime(Integer id) {
 
-        return jdbcTemplate.queryForObject(SELECT_ONE, new Object[] {id}, new RowMapper<Competicao>() {
+        return jdbcTemplate.queryForObject(SELECT_ONE, new Object[] {id}, new RowMapper<Time>() {
             @Override
-            public Competicao mapRow(ResultSet rs, int rownumber) throws SQLException {
+            public Time mapRow(ResultSet rs, int rownumber) throws SQLException {
                 
-                Competicao competicao = new Competicao();
+                Time time = new Time();
 
-                competicao.setId(rs.getInt("id"));
-                competicao.setTitulo(rs.getString("titulo"));
+                time.setId(rs.getInt("id"));
+                time.setTitulo(rs.getString("titulo"));
 
-                return competicao;
+                return time;
             }
         });
 
     }
 
-    public Competicao salvarCompeticao(Competicao competicao) {
+    public Time salvarTime(Time time) {
         
         KeyHolder holder = new GeneratedKeyHolder();
         
@@ -54,16 +54,15 @@ public class CompeticaoRepositoryImpl implements CompeticaoRepository{
             @Override
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
-                ps.setString(1, competicao.getTitulo());
+                ps.setString(1, time.getTitulo());
                 return ps;
             }
         }, holder);
 
         Integer id = (Integer) holder.getKeys().get("id");
-        competicao.setId(id);
+        time.setId(id);
             
-        return competicao;
+        return time;
 
     }
 }
-
