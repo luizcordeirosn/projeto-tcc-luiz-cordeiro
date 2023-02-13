@@ -22,13 +22,13 @@ public class UsuarioRepositoryImpl implements UsuarioRepository{
     private static String INSERT = " insert into tb_usuario (id, nome, cpf, telefone, email, senha, "
             + " registro, planoativo) "
             + " values (nextval('tb_usuario_id_seq'),?,?,?,?,?,?,?) ";
+    private static String UPDATE = " update tb_usuario set nome = ?, cpf = ?, telefone = ?, "
+            + " email = ?, senha = ? where id = ?";
     private static String SELECT_ONE = " select * from tb_usuario where id = ?";
     private static String SELECT_ONE_EMAIL_SENHA = " select * from tb_usuario"
             + " where email like ?"
             + " and senha like ? "
             + " order by id";
-    private static String UPDATE = " update tb_usuario set nome = ?, cpf = ?, telefone = ?, "
-            + " email = ?, senha = ? where id = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

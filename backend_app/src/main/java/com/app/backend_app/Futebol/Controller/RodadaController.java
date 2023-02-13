@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.backend_app.Futebol.Model.Rodada;
 import com.app.backend_app.Futebol.Model.RodadaInput;
 import com.app.backend_app.Futebol.Model.Competicao;
-import com.app.backend_app.Futebol.Model.CompeticaoInput;
 import com.app.backend_app.Futebol.Repository.RodadaRepository;
 import com.app.backend_app.util.exceptions.DomainException;
 
