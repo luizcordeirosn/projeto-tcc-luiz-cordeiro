@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,6 +27,10 @@ public class TimeRepositoryImpl implements TimeRepository{
     private static String INSERT_TIME_COMPETICAO = " insert into tb_time_competicao (timeid, competicaoid) "
             + " values (?,?) ";
     private static String SELECT_ONE = " select * from tb_time where id = ?";
+    private static String SELECT_ALL_COMPETICAO = " select tt.* from tb_time tt"
+            + " inner join tb_time_competicao ttc on ttc.timeid = tt.id"
+            + " inner join tb_competicao tc on tc.id = ttc.competicaoid"
+            + " where tc.id = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -47,6 +53,23 @@ public class TimeRepositoryImpl implements TimeRepository{
                 return time;
             }
         });
+
+    }
+
+    public List<Time> obterTodosTimesPorCompeticao(Integer competicao) {
+        
+        return jdbcTemplate.query(SELECT_ALL_COMPETICAO, new RowMapper<Time>() {
+            @Override
+            public Time mapRow(ResultSet rs, int rownumber) throws SQLException {
+
+                Time time = new Time();
+
+                time.setId(rs.getInt("id"));
+                time.setTitulo(rs.getString("titulo"));
+
+                return time;
+            }
+        }, competicao);
 
     }
 

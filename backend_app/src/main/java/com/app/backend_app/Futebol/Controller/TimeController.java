@@ -1,6 +1,9 @@
 package com.app.backend_app.Futebol.Controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,6 +44,18 @@ public class TimeController {
             return ResponseEntity.ok(null);
         }
 
+    }
+
+    @GetMapping(value = "/obtertodos/{competicao}")
+    public ResponseEntity<List<Time>> rodadasPorCompeticao(@PathVariable Integer competicao){
+
+        List<Time> lista = new ArrayList<Time>();
+        try {
+            lista = timeRepo.obterTodosTimesPorCompeticao(competicao);
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            throw new DomainException("Erro base de dados: " + e.getMessage());
+        }
     }
 
     @PostMapping(value = "/salvar")
