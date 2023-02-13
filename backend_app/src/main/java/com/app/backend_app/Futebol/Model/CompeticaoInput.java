@@ -1,4 +1,4 @@
-package com.app.backend_app.Competicao.Model;
+package com.app.backend_app.Futebol.Model;
 
 public class CompeticaoInput {
     

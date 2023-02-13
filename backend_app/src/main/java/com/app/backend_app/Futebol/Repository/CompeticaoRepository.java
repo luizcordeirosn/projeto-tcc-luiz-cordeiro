@@ -1,6 +1,6 @@
-package com.app.backend_app.Competicao.Repository;
+package com.app.backend_app.Futebol.Repository;
 
-import com.app.backend_app.Competicao.Model.Competicao;
+import com.app.backend_app.Futebol.Model.Competicao;
 
 public interface CompeticaoRepository {
 

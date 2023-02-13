@@ -1,4 +1,4 @@
-package com.app.backend_app.Competicao.Repository;
+package com.app.backend_app.Futebol.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.app.backend_app.Competicao.Model.Competicao;
+import com.app.backend_app.Futebol.Model.Competicao;
 
 @Repository
 public class CompeticaoRepositoryImpl implements CompeticaoRepository{
@@ -39,7 +39,7 @@ public class CompeticaoRepositoryImpl implements CompeticaoRepository{
                 Competicao competicao = new Competicao();
 
                 competicao.setId(rs.getInt("id"));
-                competicao.setTitulo(rs.getString("titutlo"));
+                competicao.setTitulo(rs.getString("titulo"));
 
                 return competicao;
             }

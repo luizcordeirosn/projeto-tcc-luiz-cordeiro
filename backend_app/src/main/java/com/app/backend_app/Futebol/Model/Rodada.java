@@ -1,10 +1,11 @@
 package com.app.backend_app.Futebol.Model;
 
-public class Competicao {
+public class Rodada {
     
     private Integer id;
     private String titulo;
-
+    private Competicao competicao;
+    
     public Integer getId() {
         return id;
     }
@@ -16,5 +17,11 @@ public class Competicao {
     }
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+    public Competicao getCompeticao() {
+        return competicao;
+    }
+    public void setCompeticao(Competicao competicao) {
+        this.competicao = competicao;
     }
 }
