@@ -28,7 +28,6 @@ public class ConfrontoRepositoryImpl implements ConfrontoRepository{
     private static String SELECT_ALL_COMPETICAO = " select * from tb_confronto where rodada = ?"
             + " order by datahora, id";
 
-
     @Autowired
     private TimeRepository timeRepo;
             
