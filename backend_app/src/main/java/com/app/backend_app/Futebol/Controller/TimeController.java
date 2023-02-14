@@ -30,9 +30,6 @@ public class TimeController {
     @Autowired
     private TimeRepository timeRepo;
 
-    @Autowired
-    private CompeticaoRepository competicaoRepo;
-
     @GetMapping(value = "/{id}")
     public ResponseEntity<Time> time(@PathVariable Integer id) {
 
@@ -47,7 +44,7 @@ public class TimeController {
     }
 
     @GetMapping(value = "/obtertodos/{competicao}")
-    public ResponseEntity<List<Time>> rodadasPorCompeticao(@PathVariable Integer competicao){
+    public ResponseEntity<List<Time>> timesPorCompeticao(@PathVariable Integer competicao){
 
         List<Time> lista = new ArrayList<Time>();
         try {
@@ -76,21 +73,4 @@ public class TimeController {
         return ResponseEntity.ok(time);
     }
 
-    @PostMapping(value = "/salvar/timecompeticao/{timeid}/{competicaoid}")
-    public ResponseEntity<Time> salvarTime(@PathVariable Integer timeid, @PathVariable Integer competicaoid)
-            throws SQLException {
-
-        try {
-
-            Time time = timeRepo.obterPorIdTime(timeid);
-            Competicao competicao = competicaoRepo.obterPorIdCompeticao(competicaoid);
-
-            timeRepo.salvarTimePorCompeticao(time, competicao);
-
-            return ResponseEntity.ok(time);
-
-        } catch (Exception e) {
-            throw new DomainException("Erro base de dados: " + e.getMessage());
-        }
-    }
 }

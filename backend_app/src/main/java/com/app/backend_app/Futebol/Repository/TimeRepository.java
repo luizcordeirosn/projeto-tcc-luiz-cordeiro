@@ -8,8 +8,6 @@ public interface TimeRepository {
 
     Time salvarTime(Time time);
 
-    public Time salvarTimePorCompeticao(Time time, Competicao competicao);
-
     Time obterPorIdTime(Integer id);
 
     List<Time> obterTodosTimesPorCompeticao(Integer competicao);
