@@ -10,7 +10,7 @@ class RegistroRepository{
     
     try{
       //http://10.0.2.2:8082
-      Response response = await dio.post('https://8656-2804-14d-5492-82b5-d59c-c47c-d068-16ef.sa.ngrok.io/usuario/salvar', data: {
+      Response response = await dio.post('http://10.0.2.2:8082/usuario/salvar', data: {
         "id":0,
         "nome": usuarioCadastro.getNome(),
         "cpf": usuarioCadastro.getCpf(),

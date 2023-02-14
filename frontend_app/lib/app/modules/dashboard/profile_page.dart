@@ -8,7 +8,6 @@ import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_email.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_phone_number.dart';
 import 'package:frontend_liga_master/app/shared/controller/profile_controller.dart';
-import 'package:frontend_liga_master/app/shared/model/usuario.dart';
 
 class Profile extends StatefulWidget {
   final List usuarioLogado;

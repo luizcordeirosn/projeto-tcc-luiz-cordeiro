@@ -4,6 +4,7 @@ public class Time {
     
     private Integer id;
     private String titulo;
+    private String sigla;
     
     public Integer getId() {
         return id;
@@ -16,5 +17,11 @@ public class Time {
     }
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+    public String getSigla() {
+        return sigla;
+    }
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }

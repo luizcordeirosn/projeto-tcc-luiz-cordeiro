@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +23,7 @@ public class CompeticaoRepositoryImpl implements CompeticaoRepository{
     private static String INSERT = " insert into tb_competicao (id, titulo) "
             + " values (nextval('tb_competicao_id_seq'),?) ";
     private static String SELECT_ONE = " select * from tb_competicao where id = ?";
+    private static String SELECT_ALL = " select * from tb_competicao";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -35,6 +38,23 @@ public class CompeticaoRepositoryImpl implements CompeticaoRepository{
             @Override
             public Competicao mapRow(ResultSet rs, int rownumber) throws SQLException {
                 
+                Competicao competicao = new Competicao();
+
+                competicao.setId(rs.getInt("id"));
+                competicao.setTitulo(rs.getString("titulo"));
+
+                return competicao;
+            }
+        });
+
+    }
+
+    public List<Competicao> obterTodosCompeticoes() {
+        
+        return jdbcTemplate.query(SELECT_ALL, new RowMapper<Competicao>() {
+            @Override
+            public Competicao mapRow(ResultSet rs, int rownumber) throws SQLException {
+
                 Competicao competicao = new Competicao();
 
                 competicao.setId(rs.getInt("id"));

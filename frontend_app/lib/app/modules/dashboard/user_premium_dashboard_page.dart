@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/alternative_home_button_widget.dart';
 
 class UserPremiumDashboard extends StatefulWidget {
@@ -131,9 +130,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                 AlternativeHomeButtonWidget(
                     buttonName: "Classificação",
                     image: 'images/icons-score-board.png',
-                    onPressed: () {
-                      print("Classificação");
-                    }),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> const ClassificationPage()))),
                 AlternativeHomeButtonWidget(
                     buttonName: "Confrontos da Rodada",
                     image: 'images/icons-stadium.png',

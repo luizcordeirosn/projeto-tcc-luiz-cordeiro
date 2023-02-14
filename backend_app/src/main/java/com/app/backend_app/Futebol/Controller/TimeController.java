@@ -3,7 +3,6 @@ package com.app.backend_app.Futebol.Controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,10 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.app.backend_app.Futebol.Model.Competicao;
 import com.app.backend_app.Futebol.Model.Time;
 import com.app.backend_app.Futebol.Model.TimeInput;
-import com.app.backend_app.Futebol.Repository.CompeticaoRepository;
 import com.app.backend_app.Futebol.Repository.TimeRepository;
 import com.app.backend_app.util.exceptions.DomainException;
 
@@ -61,6 +58,7 @@ public class TimeController {
         Time time = new Time();
 
         time.setTitulo(timeInput.getTitulo());
+        time.setSigla(timeInput.getSigla());
 
         try {
             if (timeInput.getId() == 0) {
