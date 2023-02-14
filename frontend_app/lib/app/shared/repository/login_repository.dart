@@ -12,7 +12,7 @@ class LoginRepository {
       usuarioLogado.clear();
 
       Response response = await dio.get(
-          'https://8656-2804-14d-5492-82b5-d59c-c47c-d068-16ef.sa.ngrok.io/usuario/verificar?email=${email}&senha=${senha}');
+          'https://d58e-2804-14d-5492-82b5-a9d1-70f3-7aaa-65bb.sa.ngrok.io/usuario/verificar?email=${email}&senha=${senha}');
 
       usuarioLogado.add(response.data['id']);
       usuarioLogado.add(response.data['nome']);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_dashboard_page.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_cpf.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_name.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_alert_dialog/custom_alert_dialog_password.dart';
@@ -51,17 +52,25 @@ class _ProfileState extends State<Profile> {
                 onSelected: (value) {
                   popupItemValue = value.toString();
                   if (popupItemValue == "dashboardValue") {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => UserDashboard(
-                                usuarioLogado: widget.usuarioLogado)));
+                    if (usuarioAtualizado.elementAt(6)) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UserPremiumDashboard(
+                                  usuarioLogado: usuarioAtualizado)));
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UserDashboard(
+                                  usuarioLogado: usuarioAtualizado)));
+                    }
                   } else if (popupItemValue == "profileValue") {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => Profile(
-                                  usuarioLogado: widget.usuarioLogado,
+                                  usuarioLogado: usuarioAtualizado,
                                 )));
                   } else if (popupItemValue == "exitValue") {
                     Navigator.push(
@@ -117,22 +126,21 @@ class _ProfileState extends State<Profile> {
           Container(
             decoration: BoxDecoration(color: Colors.black26),
           ),
-          Container(
-              padding: EdgeInsets.only(top: 45),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.person_pin_rounded,
-                    color: Colors.blueGrey,
-                    size: 84,
-                  ),
-                ],
-              )),
           Center(
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.person_pin_rounded,
+                            color: Colors.blueGrey,
+                            size: 84,
+                          ),
+                        ],
+                      )),
                   Container(
                     padding: EdgeInsets.only(left: 7, right: 7),
                     child: Row(

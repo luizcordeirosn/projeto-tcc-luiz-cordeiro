@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/registro_page.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../../shared/controller/login_controller.dart';
@@ -154,12 +155,21 @@ class _LoginStatefulState extends State<LoginStateful> {
                       Future.delayed(Duration(milliseconds: 1000), () {
                         usuarioLogado = loginController.usuarioLogado;
                         if (usuarioLogado.length > 0) {
-                          Navigator.push(
+                          if(usuarioLogado.elementAt(6)){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UserPremiumDashboard(
+                                        usuarioLogado: usuarioLogado,
+                                      )));
+                          }else{
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => UserDashboard(
                                         usuarioLogado: usuarioLogado,
                                       )));
+                          }
                         } else {
                           Alert(
                                   context: context,
