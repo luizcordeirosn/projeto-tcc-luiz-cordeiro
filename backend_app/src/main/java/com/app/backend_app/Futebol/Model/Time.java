@@ -5,6 +5,7 @@ public class Time {
     private Integer id;
     private String titulo;
     private String sigla;
+    private String escudo;
     
     public Integer getId() {
         return id;
@@ -23,5 +24,11 @@ public class Time {
     }
     public void setSigla(String sigla) {
         this.sigla = sigla;
+    }
+    public String getEscudo() {
+        return escudo;
+    }
+    public void setEscudo(String escudo) {
+        this.escudo = escudo;
     }
 }

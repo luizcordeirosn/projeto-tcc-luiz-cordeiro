@@ -71,6 +71,26 @@ flutter:
    - images/icons-score-board.png
    - images/icons-stadium.png
    - images/icons-football-player.png
+   - images/escudo-palmeiras.png
+   - images/escudo-internacional.png
+   - images/escudo-fluminense.png
+   - images/escudo-corinthians.png
+   - images/escudo-flamengo.png
+   - images/escudo-athletico-pr.png
+   - images/escudo-atletico-mg.png
+   - images/escudo-fortaleza.png
+   - images/escudo-sao-paulo.png
+   - images/escudo-america-mg.png
+   - images/escudo-botafogo.png
+   - images/escudo-santos.png
+   - images/escudo-goias.png
+   - images/escudo-bragantino.png
+   - images/escudo-coritiba.png
+   - images/escudo-cuiaba.png
+   - images/escudo-ceara.png
+   - images/escudo-atletico-go.png
+   - images/escudo-avai.png
+   - images/escudo-juventude.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

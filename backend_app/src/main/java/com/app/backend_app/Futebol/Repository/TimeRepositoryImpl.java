@@ -19,8 +19,8 @@ import com.app.backend_app.Futebol.Model.Time;
 @Repository
 public class TimeRepositoryImpl implements TimeRepository{
     
-    private static String INSERT = " insert into tb_time (id, titulo, sigla) "
-            + " values (nextval('tb_time_id_seq'),?,?) ";
+    private static String INSERT = " insert into tb_time (id, titulo, sigla, escudo) "
+            + " values (nextval('tb_time_id_seq'),?,?,?) ";
     private static String SELECT_ONE = " select * from tb_time where id = ?";
     private static String SELECT_ALL_COMPETICAO = " select tt.* from tb_time tt"
             + " inner join tb_classificacao tc on tc.time = tt.id"
@@ -44,6 +44,7 @@ public class TimeRepositoryImpl implements TimeRepository{
                 time.setId(rs.getInt("id"));
                 time.setTitulo(rs.getString("titulo"));
                 time.setSigla(rs.getString("sigla"));
+                time.setEscudo(rs.getString("escudo"));
 
                 return time;
             }
@@ -62,6 +63,7 @@ public class TimeRepositoryImpl implements TimeRepository{
                 time.setId(rs.getInt("id"));
                 time.setTitulo(rs.getString("titulo"));
                 time.setSigla(rs.getString("sigla"));
+                time.setEscudo(rs.getString("escudo"));
 
                 return time;
             }
@@ -78,7 +80,8 @@ public class TimeRepositoryImpl implements TimeRepository{
             public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
                 PreparedStatement ps = connection.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, time.getTitulo());
-                ps.setNString(2, time.getSigla());
+                ps.setString(2, time.getSigla());
+                ps.setString(3, time.getEscudo());
                 return ps;
             }
         }, holder);

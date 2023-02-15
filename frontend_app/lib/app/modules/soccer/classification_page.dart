@@ -67,6 +67,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
                 onChanged: (value) {
                   classificacaoController.getClassificacao(value!);
                   Future.delayed(Duration(milliseconds: 500), () {
+                    print(classificacaoController.classificacao);
                     _getData();
                   });
                 },
@@ -118,7 +119,6 @@ class _ClassificationPageState extends State<ClassificationPage> {
                         itemBuilder: (_, index) {
                           var result =
                               classificacaoController.classificacao[index];
-
                           return classificacaoTime(result);
                         },
                       ),
@@ -137,6 +137,16 @@ class _ClassificationPageState extends State<ClassificationPage> {
     return Row(
       //mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox.square(
+              dimension: 75,
+              child: Image.asset('${result['time']['escudo']}'),
+            ),
+          ],
+        ),
+        Padding(padding: EdgeInsets.only(right: 20)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -169,33 +179,6 @@ class _ClassificationPageState extends State<ClassificationPage> {
           children: [
             Text(
               'V: ${result['numVitorias']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'E: ${result['numEmpates']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'D: ${result['numDerrotas']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        Padding(padding: EdgeInsets.only(right: 20)),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'GP: ${result['golsPro']}',
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,

@@ -59,6 +59,7 @@ public class TimeController {
 
         time.setTitulo(timeInput.getTitulo());
         time.setSigla(timeInput.getSigla());
+        time.setEscudo(timeInput.getEscudo());
 
         try {
             if (timeInput.getId() == 0) {
