@@ -9,5 +9,5 @@ public interface ConfrontoRepository {
 
     Confronto obterPorIdConfronto(Integer id);
     
-    List<Confronto> obterTodosConfrontosPorRodada(Integer rodada);
+    List<Confronto> obterTodosConfrontosPorRodadaCompeticao(Integer rodada, Integer competicao);
 }

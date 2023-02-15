@@ -42,12 +42,12 @@ public class ConfrontoController {
 
     }
 
-    @GetMapping(value = "/obtertodos/{rodada}")
-    public ResponseEntity<List<Confronto>> confrontosPorRodada(@PathVariable Integer rodada){
+    @GetMapping(value = "/obtertodos/{rodada}/{competicao}")
+    public ResponseEntity<List<Confronto>> confrontosPorRodadaCompeticao(@PathVariable Integer rodada, @PathVariable Integer competicao){
 
         List<Confronto> lista = new ArrayList<Confronto>();
         try {
-            lista = confrontoRepo.obterTodosConfrontosPorRodada(rodada);
+            lista = confrontoRepo.obterTodosConfrontosPorRodadaCompeticao(rodada, competicao);
             return ResponseEntity.ok(lista);
         } catch (Exception e) {
             throw new DomainException("Erro base de dados: " + e.getMessage());

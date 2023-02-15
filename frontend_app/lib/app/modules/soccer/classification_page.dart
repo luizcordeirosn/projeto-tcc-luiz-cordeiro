@@ -67,7 +67,6 @@ class _ClassificationPageState extends State<ClassificationPage> {
                 onChanged: (value) {
                   classificacaoController.getClassificacao(value!);
                   Future.delayed(Duration(milliseconds: 500), () {
-                    print(classificacaoController.classificacao);
                     _getData();
                   });
                 },
@@ -97,12 +96,13 @@ class _ClassificationPageState extends State<ClassificationPage> {
                             ),
                             const SizedBox(height: 10.0),
                             Text(
-                              'Nenhum Campeonato encontrado',
+                              'Nenhuma Tabela encontrada para este Campeonato',
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 17,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),
@@ -135,7 +135,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
 
   Widget classificacaoTime(dynamic result) {
     return Row(
-      //mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +146,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
             ),
           ],
         ),
-        Padding(padding: EdgeInsets.only(right: 20)),
+        Padding(padding: EdgeInsets.only(left: 20)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

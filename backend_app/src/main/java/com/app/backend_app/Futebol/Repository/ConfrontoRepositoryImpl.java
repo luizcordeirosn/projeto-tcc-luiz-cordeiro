@@ -25,7 +25,9 @@ public class ConfrontoRepositoryImpl implements ConfrontoRepository{
             + " datahora, resultado) "
             + " values (nextval('tb_confronto_id_seq'),?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_confronto where id = ?";
-    private static String SELECT_ALL_COMPETICAO = " select * from tb_confronto where rodada = ?"
+    private static String SELECT_ALL_COMPETICAO = " select tc.* from tb_confronto tc"
+            + " inner join tb_rodada tr on tr.id = tc.rodada"
+            + " where tc.rodada = ? and tr.competicao = ?"
             + " order by datahora, id";
 
     @Autowired
@@ -72,7 +74,7 @@ public class ConfrontoRepositoryImpl implements ConfrontoRepository{
 
     }
 
-    public List<Confronto> obterTodosConfrontosPorRodada(Integer rodada) {
+    public List<Confronto> obterTodosConfrontosPorRodadaCompeticao(Integer rodada, Integer competicao) {
         
         return jdbcTemplate.query(SELECT_ALL_COMPETICAO, new RowMapper<Confronto>() {
             @Override
@@ -99,7 +101,7 @@ public class ConfrontoRepositoryImpl implements ConfrontoRepository{
 
                 return confronto;
             }
-        }, rodada);
+        }, rodada, competicao);
 
     }
 
