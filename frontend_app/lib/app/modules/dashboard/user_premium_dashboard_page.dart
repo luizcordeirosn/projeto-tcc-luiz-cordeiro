@@ -134,14 +134,14 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ClassificationPage()))),
+                            builder: (context) => ClassificationPage(usuarioLogado: widget.usuarioLogado,)))),
                 AlternativeHomeButtonWidget(
                     buttonName: "Confrontos da Rodada",
                     image: 'images/icons-stadium.png',
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const MatchPage()))),
+                            builder: (context) => MatchPage(usuarioLogado: widget.usuarioLogado,)))),
                 AlternativeHomeButtonWidget(
                     buttonName: "Info Jogadores",
                     image: 'images/icons-football-player.png',

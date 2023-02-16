@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
+import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_dropdown_button_white.dart';
 import 'package:frontend_liga_master/app/shared/controller/match_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/round_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/tornament_controller.dart';
 
 class MatchPage extends StatefulWidget {
-  const MatchPage({super.key});
+  final List usuarioLogado;
+  const MatchPage({super.key, required this.usuarioLogado});
 
   @override
   State<MatchPage> createState() => _MatchPageState();
@@ -67,12 +71,85 @@ class _MatchPageState extends State<MatchPage> {
 
   @override
   Widget build(BuildContext context) {
+    String popupItemValue = "";
+
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Liga Master"),
+          title: Text("Liga Master"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                PopupMenuButton(
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                  onSelected: (value) {
+                    popupItemValue = value.toString();
+                    if (popupItemValue == "dashboardValue") {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => UserPremiumDashboard(
+                                  usuarioLogado: widget.usuarioLogado)));
+                    } else if (popupItemValue == "profileValue") {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Profile(
+                                    usuarioLogado: widget.usuarioLogado,
+                                  )));
+                    } else if (popupItemValue == "exitValue") {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginStateful()));
+                    }
+                  },
+                  itemBuilder: (BuildContext bc) {
+                    return const [
+                      PopupMenuItem(
+                        child: Text(
+                          "Dashboard",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                        value: "dashboardValue",
+                      ),
+                      PopupMenuItem(
+                        child: Text(
+                          "Perfil",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                        value: "profileValue",
+                      ),
+                      PopupMenuItem(
+                        child: Text(
+                          "Sair",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                        value: "exitValue",
+                      )
+                    ];
+                  },
+                )
+              ],
+            ),
+          ],
         ),
         body: Stack(children: [
           Container(
@@ -101,7 +178,7 @@ class _MatchPageState extends State<MatchPage> {
                     }
                   },
                 ),
-                const SizedBox(height: 16),
+                Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasRound
                     ? CustomDropButton(
                         hintText: 'Rodada',
@@ -212,10 +289,9 @@ class _MatchPageState extends State<MatchPage> {
                 : Text(
                     'x',
                     style: TextStyle(
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 19
-                    ),
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19),
                   ),
             Padding(padding: EdgeInsets.only(right: 20)),
             SizedBox.square(
