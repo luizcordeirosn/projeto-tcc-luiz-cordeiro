@@ -75,7 +75,7 @@ class _CornerPageState extends State<CornerPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Liga Master"),
+          title: Text("Batedores de Escanteio"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,

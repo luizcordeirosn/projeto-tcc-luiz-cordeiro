@@ -75,7 +75,7 @@ class _FoulPageState extends State<FoulPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Liga Master"),
+          title: Text("Batedores de Falta"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,

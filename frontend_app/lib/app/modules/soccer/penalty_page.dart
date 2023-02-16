@@ -76,7 +76,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Liga Master"),
+          title: Text("Penaltis por Time"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,

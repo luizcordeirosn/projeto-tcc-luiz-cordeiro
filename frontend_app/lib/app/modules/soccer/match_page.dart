@@ -75,7 +75,7 @@ class _MatchPageState extends State<MatchPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Liga Master"),
+          title: Text("Confrontos do Campeonato"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,

@@ -75,7 +75,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Liga Master"),
+          title: Text("Jogadores por Time"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,

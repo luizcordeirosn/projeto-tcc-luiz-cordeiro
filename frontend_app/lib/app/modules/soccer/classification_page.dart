@@ -49,7 +49,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Liga Master"),
+        title: Text("Classificação do Campeonato"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
