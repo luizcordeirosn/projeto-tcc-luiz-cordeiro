@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/corner_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/foul_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/alternative_home_button_widget.dart';
 
@@ -143,7 +144,7 @@ class _DeadBallDashboardPageState extends State<DeadBallDashboardPage> {
                         onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DeadBallDashboardPage(
+                                builder: (context) => CornerPage(
                                       usuarioLogado: widget.usuarioLogado,
                                     )))),
                     AlternativeHomeButtonWidget(
