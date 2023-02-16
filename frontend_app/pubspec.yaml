@@ -147,6 +147,30 @@ flutter:
    - images/abner.png
    - images/pedro-henrique.png
    - images/bento.png
+   - images/emmanuel-martinez.png
+   - images/martin-benitez.png
+   - images/aloisio.png
+   - images/raul-caceres.png
+   - images/patric.png
+   - images/everaldo.png
+   - images/wellington-paulista.png
+   - images/henrique-almeida.png
+   - images/felipe-azevedo.png
+   - images/david-terans.png
+   - images/khellven.png
+   - images/tomas-cuello.png
+   - images/vitor-bueno.png
+   - images/agustin-canobbio.png
+   - images/thiago-heleno.png
+   - images/pablo.png
+   - images/wellington-rato.png
+   - images/airton.png
+   - images/dudu-acg.png
+   - images/shaylon.png
+   - images/lucas-gazal.png
+   - images/jefferson-silva.png
+   - images/diego-churin.png
+   - images/marlon-freitas.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
