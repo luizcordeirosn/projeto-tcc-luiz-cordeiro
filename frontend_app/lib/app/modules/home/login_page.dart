@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
-import 'package:frontend_liga_master/app/modules/home/registro_page.dart';
+import 'package:frontend_liga_master/app/modules/home/registration_page.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../../shared/controller/login_controller.dart';
 import '../dashboard/user_dashboard_page.dart';

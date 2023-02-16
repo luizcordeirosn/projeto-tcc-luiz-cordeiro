@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/dead_ball_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
@@ -158,6 +159,13 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => PenaltyPage(usuarioLogado: widget.usuarioLogado,)))),
+                AlternativeHomeButtonWidget(
+                    buttonName: "Bola Parada",
+                    image: 'images/icons-kick-ball.png',
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DeadBallDashboardPage(usuarioLogado: widget.usuarioLogado,)))),
               ],
             ),
           )
