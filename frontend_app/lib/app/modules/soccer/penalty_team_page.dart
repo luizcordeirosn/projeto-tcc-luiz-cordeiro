@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_dropdown_button_white.dart';
-import 'package:frontend_liga_master/app/shared/controller/dead_ball_controller.dart';
-import 'package:frontend_liga_master/app/shared/controller/soccer_team_controller.dart';
+import 'package:frontend_liga_master/app/shared/controller/penalty_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/tornament_controller.dart';
 
 class PenaltyPage extends StatefulWidget {
@@ -18,15 +15,16 @@ class PenaltyPage extends StatefulWidget {
 }
 
 class _PenaltyPageState extends State<PenaltyPage> {
+  final GlobalKey<RefreshIndicatorState> _refreshKey =
+      GlobalKey<RefreshIndicatorState>();
   TornamentController competicaoController = TornamentController();
-  SoccerTeamController timeFutebolController = SoccerTeamController();
-  DeadBallController bolaParadaController = DeadBallController();
+  PenaltyController penaltiController = PenaltyController();
 
   int? _selectedTornament;
-  int? _selectedSoccerTeam;
+  int? _selectedPenalty;
 
   bool isLoading = false;
-  bool hasSoccerTeam = false;
+  bool hasPenalty = false;
 
   late int idCompeticao;
 
@@ -34,6 +32,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
     setState(() => isLoading = true);
     try {
       await competicaoController.getCompeticoes();
+      await penaltiController.isCometido();
     } catch (error) {
       debugPrint(error.toString());
 
@@ -43,16 +42,16 @@ class _PenaltyPageState extends State<PenaltyPage> {
     setState(() => isLoading = false);
   }
 
-  Future<void> _getTimeFutebol(int id) async {
+  Future<void> _getPenalti(int id) async {
     setState(() => isLoading = true);
     try {
-      dynamic result = await timeFutebolController.getTimes(id);
+      dynamic result = await penaltiController.getPenaltis(id);
       setState(() {
-        if (result != null && timeFutebolController.times.isNotEmpty) {
-          hasSoccerTeam = true;
+        if (result != null && penaltiController.penaltis.isNotEmpty) {
+          hasPenalty = true;
         } else {
-          bolaParadaController.getBatedoresEscanteio(0, 0);
-          hasSoccerTeam = false;
+          penaltiController.getPenaltisCometidosAFavor(0, 0);
+          hasPenalty = false;
         }
         idCompeticao = id;
       });
@@ -76,8 +75,8 @@ class _PenaltyPageState extends State<PenaltyPage> {
     String popupItemValue = "";
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Batedores de Escanteio"),
+      appBar: AppBar(
+          title: Text("Penaltis por Time"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -170,7 +169,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                           ))
                       .toList(),
                   onChanged: (value) {
-                    _getTimeFutebol(value!);
+                    _getPenalti(value!);
                   },
                   validator: (value) {
                     if (value == null) {
@@ -181,18 +180,18 @@ class _PenaltyPageState extends State<PenaltyPage> {
                   },
                 ),
                 const Padding(padding: EdgeInsets.only(bottom: 7)),
-                hasSoccerTeam
+                hasPenalty
                     ? CustomDropButton(
-                        hintText: 'Times',
-                        value: _selectedSoccerTeam,
-                        items: timeFutebolController.times
+                        hintText: 'Rodada',
+                        value: _selectedPenalty,
+                        items: penaltiController.cometido
                             .map((element) => DropdownMenuItem<int>(
-                                  value: element['id'],
-                                  child: Text(element['titulo']),
+                                  value: element['valor'],
+                                  child: Text(element['descricao']),
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          bolaParadaController.getBatedoresPenalti(
+                          penaltiController.getPenaltisCometidosAFavor(
                               value!, idCompeticao);
                           Future.delayed(Duration(milliseconds: 500), () {
                             _getCompeticao();
@@ -212,7 +211,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                     if (isLoading) {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
-                    } else if (bolaParadaController.batedoresPenalti.isEmpty) {
+                    } else if (penaltiController.penaltisCometidosAFavor.isEmpty) {
                       return Expanded(
                         child: Center(
                           child: Column(
@@ -225,7 +224,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                               ),
                               const SizedBox(height: 10.0),
                               Text(
-                                'Nenhum Batedor de Pênalti encontrado para este Campeonato ou Time',
+                                'Nenhum lance de Pênalti encontrado para este Campeonato',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
@@ -244,11 +243,10 @@ class _PenaltyPageState extends State<PenaltyPage> {
                           shrinkWrap: true,
                           separatorBuilder: (context, index) =>
                               const Divider(thickness: 1, height: 20),
-                          itemCount: bolaParadaController.batedoresPenalti.length,
+                          itemCount: penaltiController.penaltisCometidosAFavor.length,
                           itemBuilder: (_, index) {
-                            var result =
-                                bolaParadaController.batedoresPenalti[index];
-                            return batedoresPenaltiTime(result);
+                            var result = penaltiController.penaltisCometidosAFavor[index];
+                            return penaltisCometidosAFavorPorCompeticao(result);
                           },
                         ),
                       );
@@ -258,47 +256,49 @@ class _PenaltyPageState extends State<PenaltyPage> {
               ],
             ),
           )
-        ]));
+        ])
+    );
   }
 
-  Widget batedoresPenaltiTime(dynamic result) {
+  Widget penaltisCometidosAFavorPorCompeticao(dynamic result) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox.square(
               dimension: 75,
-              child: Image.asset('${result['jogador']['imagem']}'),
+              child: Image.asset('${result['time']['escudo']}'),
             ),
           ],
         ),
-        //Padding(padding: EdgeInsets.only(left: 20)),
+        Padding(padding: EdgeInsets.only(left: 20)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Nome: ${result['jogador']['nome']}',
+              'Time: ${result['time']['sigla']}',
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              'Posicao: ${result['jogador']['posicao']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'Gols: ${result['jogador']['gols']} e Ass: ${result['jogador']['assistencias']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            result['cometido']
+                ? Text(
+                    'Penaltis cometidos: ${result['numPenaltis']}',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : Text(
+                    'Penaltis a favor: ${result['numPenaltis']}',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
           ],
         ),
       ],

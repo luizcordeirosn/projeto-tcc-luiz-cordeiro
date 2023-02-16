@@ -223,7 +223,7 @@ class _CornerPageState extends State<CornerPage> {
                               ),
                               const SizedBox(height: 10.0),
                               Text(
-                                'Nenhum Batedor de Falta encontrado para este Campeonato ou Time',
+                                'Nenhum Batedor de Escanteio encontrado para este Campeonato ou Time',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,

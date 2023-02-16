@@ -4,6 +4,7 @@ import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboar
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/corner_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/foul_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/penalty_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/alternative_home_button_widget.dart';
 
 class DeadBallDashboardPage extends StatefulWidget {
@@ -148,12 +149,12 @@ class _DeadBallDashboardPageState extends State<DeadBallDashboardPage> {
                                       usuarioLogado: widget.usuarioLogado,
                                     )))),
                     AlternativeHomeButtonWidget(
-                        buttonName: "Batedores de Escanteio",
+                        buttonName: "Batedores de Pênalti",
                         image: 'images/icons-penalty.png',
                         onPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => DeadBallDashboardPage(
+                                builder: (context) => PenaltyPage(
                                       usuarioLogado: widget.usuarioLogado,
                                     )))),
                   ]))
