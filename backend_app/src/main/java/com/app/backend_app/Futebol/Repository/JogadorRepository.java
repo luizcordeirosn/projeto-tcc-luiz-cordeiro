@@ -9,5 +9,5 @@ public interface JogadorRepository {
 
     Jogador obterPorIdJogador(Integer id);
     
-    List<Jogador> obterTodosJogadoresPorTime(Integer time);
+    List<Jogador> obterTodosJogadoresPorTimeCompeticao(Integer time, Integer competicao);
 }

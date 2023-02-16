@@ -41,12 +41,13 @@ public class JogadorController {
 
     }
 
-    @GetMapping(value = "/obtertodos/{time}")
-    public ResponseEntity<List<Jogador>> jogadoresPorTime(@PathVariable Integer time){
+    @GetMapping(value = "/obtertodos/{time}/{competicao}")
+    public ResponseEntity<List<Jogador>> jogadoresPorTimeCompeticao(@PathVariable Integer time,
+            @PathVariable Integer competicao) {
 
         List<Jogador> lista = new ArrayList<Jogador>();
         try {
-            lista = jogadorRepo.obterTodosJogadoresPorTime(time);
+            lista = jogadorRepo.obterTodosJogadoresPorTimeCompeticao(time, competicao);
             return ResponseEntity.ok(lista);
         } catch (Exception e) {
             throw new DomainException("Erro base de dados: " + e.getMessage());
@@ -82,5 +83,3 @@ public class JogadorController {
         return ResponseEntity.ok(jogador);
     }
 }
-
-
