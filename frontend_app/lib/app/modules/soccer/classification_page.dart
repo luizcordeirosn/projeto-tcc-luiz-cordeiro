@@ -24,7 +24,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
 
   bool isLoading = false;
 
-  Future<void> _getData() async {
+  Future<void> _getCompeticao() async {
     setState(() => isLoading = true);
     try {
       await competicaoController.getCompeticoes();
@@ -39,7 +39,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
 
   @override
   void initState() {
-    _getData();
+    _getCompeticao();
     super.initState();
   }
 
@@ -144,7 +144,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
                 onChanged: (value) {
                   classificacaoController.getClassificacao(value!);
                   Future.delayed(Duration(milliseconds: 500), () {
-                    _getData();
+                    _getCompeticao();
                   });
                 },
                 validator: (value) {

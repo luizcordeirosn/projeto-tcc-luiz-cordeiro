@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_dropdown_button_white.dart';
-import 'package:frontend_liga_master/app/shared/controller/match_controller.dart';
-import 'package:frontend_liga_master/app/shared/controller/round_controller.dart';
+import 'package:frontend_liga_master/app/shared/controller/soccer_player_controller.dart';
+import 'package:frontend_liga_master/app/shared/controller/soccer_team_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/tornament_controller.dart';
 
-class MatchPage extends StatefulWidget {
+class SoccerPlayerPage extends StatefulWidget {
   final List usuarioLogado;
-  const MatchPage({super.key, required this.usuarioLogado});
+  const SoccerPlayerPage({super.key, required this.usuarioLogado});
 
   @override
-  State<MatchPage> createState() => _MatchPageState();
+  State<SoccerPlayerPage> createState() => _SoccerPlayerPageState();
 }
 
-class _MatchPageState extends State<MatchPage> {
+class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
   TornamentController competicaoController = TornamentController();
-  RoundController rodadaController = RoundController();
-  MatchController confrontoController = MatchController();
+  SoccerTeamController timeFutebolController = SoccerTeamController();
+  SoccerPlayerController jogadorFutebolController = SoccerPlayerController();
 
   int? _selectedTornament;
-  int? _selectedRound;
+  int? _selectedSoccerTeam;
 
   bool isLoading = false;
-  bool hasRound = false;
+  bool hasSoccerTeam = false;
 
   late int idCompeticao;
 
@@ -41,16 +43,16 @@ class _MatchPageState extends State<MatchPage> {
     setState(() => isLoading = false);
   }
 
-  Future<void> _getRodada(int id) async {
+  Future<void> _getTimeFutebol(int id) async {
     setState(() => isLoading = true);
     try {
-      dynamic result = await rodadaController.getRodadas(id);
+      dynamic result = await timeFutebolController.getTimes(id);
       setState(() {
-        if (result != null && rodadaController.rodadas.isNotEmpty) {
-          hasRound = true;
+        if (result != null && timeFutebolController.times.isNotEmpty) {
+          hasSoccerTeam = true;
         } else {
-          confrontoController.getConfrontos(0, 0);
-          hasRound = false;
+          jogadorFutebolController.getJogadores(0, 0);
+          hasSoccerTeam = false;
         }
         idCompeticao = id;
       });
@@ -168,7 +170,7 @@ class _MatchPageState extends State<MatchPage> {
                           ))
                       .toList(),
                   onChanged: (value) {
-                    _getRodada(value!);
+                    _getTimeFutebol(value!);
                   },
                   validator: (value) {
                     if (value == null) {
@@ -179,18 +181,18 @@ class _MatchPageState extends State<MatchPage> {
                   },
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 7)),
-                hasRound
+                hasSoccerTeam
                     ? CustomDropButton(
-                        hintText: 'Rodada',
-                        value: _selectedRound,
-                        items: rodadaController.rodadas
+                        hintText: 'Times',
+                        value: _selectedSoccerTeam,
+                        items: timeFutebolController.times
                             .map((element) => DropdownMenuItem<int>(
                                   value: element['id'],
                                   child: Text(element['titulo']),
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          confrontoController.getConfrontos(
+                          jogadorFutebolController.getJogadores(
                               value!, idCompeticao);
                           Future.delayed(Duration(milliseconds: 500), () {
                             _getCompeticao();
@@ -210,7 +212,7 @@ class _MatchPageState extends State<MatchPage> {
                     if (isLoading) {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
-                    } else if (confrontoController.confrontos.isEmpty) {
+                    } else if (jogadorFutebolController.jogadores.isEmpty) {
                       return Expanded(
                         child: Center(
                           child: Column(
@@ -223,7 +225,7 @@ class _MatchPageState extends State<MatchPage> {
                               ),
                               const SizedBox(height: 10.0),
                               Text(
-                                'Nenhum Confronto encontrado para este Campeonato ou Rodada',
+                                'Nenhum Jogador encontrada para este Campeonato ou Time',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
@@ -242,10 +244,11 @@ class _MatchPageState extends State<MatchPage> {
                           shrinkWrap: true,
                           separatorBuilder: (context, index) =>
                               const Divider(thickness: 1, height: 20),
-                          itemCount: confrontoController.confrontos.length,
+                          itemCount: jogadorFutebolController.jogadores.length,
                           itemBuilder: (_, index) {
-                            var result = confrontoController.confrontos[index];
-                            return confrontosRodada(result);
+                            var result =
+                                jogadorFutebolController.jogadores[index];
+                            return jogadoresTime(result);
                           },
                         ),
                       );
@@ -258,45 +261,50 @@ class _MatchPageState extends State<MatchPage> {
         ]));
   }
 
-  Widget confrontosRodada(dynamic result) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+  Widget jogadoresTime(dynamic result) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          'Data e Horário: ${result['dataHora']}',
-          style: TextStyle(
-            color: Colors.black87,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Padding(padding: EdgeInsets.only(bottom: 5)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox.square(
               dimension: 75,
-              child: Image.asset('${result['timeMandante']['escudo']}'),
+              child: Image.asset('${result['imagem']}'),
             ),
-            Padding(padding: EdgeInsets.only(left: 20)),
-            result['resultado'] != null
-                ? Text(
-                    '${result['resultado']}',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 19),
-                  )
-                : Text(
-                    'x',
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 19),
-                  ),
-            Padding(padding: EdgeInsets.only(right: 20)),
-            SizedBox.square(
-              dimension: 75,
-              child: Image.asset('${result['timeVisitante']['escudo']}'),
+          ],
+        ),
+        //Padding(padding: EdgeInsets.only(left: 20)),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Nome: ${result['nome']}',
+              style: TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Nascimento: ${result['dataNascimento']}, ${result['nacionalidade']}',
+              style: TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Posicao: ${result['posicao']}',
+              style: TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Gols: ${result['gols']} e Ass: ${result['assistencias']}',
+              style: TextStyle(
+                color: Colors.black87,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
