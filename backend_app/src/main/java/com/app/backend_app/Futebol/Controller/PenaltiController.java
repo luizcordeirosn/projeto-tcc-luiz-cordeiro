@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.app.backend_app.Futebol.Model.Penalti;
+import com.app.backend_app.Futebol.Model.Cometido;
 import com.app.backend_app.Futebol.Model.PenaltiInput;
 import com.app.backend_app.Futebol.Model.Time;
 import com.app.backend_app.Futebol.Repository.PenaltiRepository;
@@ -53,6 +54,46 @@ public class PenaltiController {
         }
     }
 
+    @GetMapping(value = "/obtertodos/{cometido}/{competicao}")
+    public ResponseEntity<List<Penalti>> penaltisCometidosAFavorPorCompeticao(@PathVariable Integer cometido,
+            @PathVariable Integer competicao) {
+
+        List<Penalti> lista = new ArrayList<Penalti>();
+        try {
+            if (cometido == 1) {
+                lista = penaltiRepo.obterTodosPenaltisCometidosAFavorPorCompeticao(true, competicao);
+            } else if (cometido == 0) {
+                lista = penaltiRepo.obterTodosPenaltisCometidosAFavorPorCompeticao(false, competicao);
+            }
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            throw new DomainException("Erro base de dados: " + e.getMessage());
+        }
+    }
+
+    @GetMapping(value = "/cometido")
+    public ResponseEntity<List<Cometido>> cometido() {
+
+        List<Cometido> lista = new ArrayList<Cometido>();
+
+        Cometido penaltiCometido = new Cometido();
+        Cometido penaltiAFavor = new Cometido();
+
+        penaltiCometido.setValor(1);
+        penaltiCometido.setDescricao("Cometido");
+        penaltiAFavor.setValor(0);
+        penaltiAFavor.setDescricao("A Favor");
+        try {
+            
+            lista.add(penaltiCometido);
+            lista.add(penaltiAFavor);
+
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            throw new DomainException("Erro base de dados: " + e.getMessage());
+        }
+    }
+
     @PostMapping(value = "/salvar")
     public ResponseEntity<Penalti> salvarPenalti(@RequestBody PenaltiInput penaltiInput) throws SQLException {
 
@@ -63,7 +104,7 @@ public class PenaltiController {
         penalti.setTime(time);
 
         penalti.setNumPenaltis(penaltiInput.getNumPenaltis());
-        penalti.setCometido(penaltiInput.isCometido());
+        penalti.setCometido(penaltiInput.getCometido());
 
         try {
             if (penaltiInput.getId() == 0) {

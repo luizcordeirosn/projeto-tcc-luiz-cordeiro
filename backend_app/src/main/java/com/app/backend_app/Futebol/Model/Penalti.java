@@ -5,8 +5,8 @@ public class Penalti {
     private Integer id;
     private Time time;
     private Integer numPenaltis;
-    private boolean cometido;
-    
+    private Boolean cometido;
+
     public Integer getId() {
         return id;
     }
@@ -25,10 +25,10 @@ public class Penalti {
     public void setNumPenaltis(Integer numPenaltis) {
         this.numPenaltis = numPenaltis;
     }
-    public boolean isCometido() {
+    public Boolean getCometido() {
         return cometido;
     }
-    public void setCometido(boolean cometido) {
+    public void setCometido(Boolean cometido) {
         this.cometido = cometido;
     }
 }

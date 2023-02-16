@@ -2,7 +2,7 @@ import 'dart:core';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:frontend_liga_master/app/shared/config/config.dart';
-import '../model/usuario.dart';
+import '../model/user.dart';
 
 class ProfileRepository {
   Dio dio = Dio();

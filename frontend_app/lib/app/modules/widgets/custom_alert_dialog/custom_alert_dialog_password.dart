@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/shared/controller/profile_controller.dart';
-import 'package:frontend_liga_master/app/shared/model/usuario.dart';
+import 'package:frontend_liga_master/app/shared/model/user.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class CustomAlertDialogPassword extends StatefulWidget {

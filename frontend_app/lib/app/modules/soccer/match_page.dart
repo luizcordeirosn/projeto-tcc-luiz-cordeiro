@@ -178,7 +178,7 @@ class _MatchPageState extends State<MatchPage> {
                     }
                   },
                 ),
-                Padding(padding: EdgeInsets.only(bottom: 7)),
+                const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasRound
                     ? CustomDropButton(
                         hintText: 'Rodada',

@@ -1,4 +1,4 @@
-import '../model/usuario.dart';
+import '../model/user.dart';
 import '../repository/profile_repository.dart';
 
 class ProfileController {

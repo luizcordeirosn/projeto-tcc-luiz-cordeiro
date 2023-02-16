@@ -1,4 +1,4 @@
-import '../model/usuario.dart';
+import '../model/user.dart';
 import '../repository/registro_repository.dart';
 
 class RegistroController{

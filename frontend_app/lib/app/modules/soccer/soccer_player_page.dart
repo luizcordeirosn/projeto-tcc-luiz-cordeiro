@@ -180,7 +180,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                     }
                   },
                 ),
-                Padding(padding: EdgeInsets.only(bottom: 7)),
+                const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasSoccerTeam
                     ? CustomDropButton(
                         hintText: 'Times',
