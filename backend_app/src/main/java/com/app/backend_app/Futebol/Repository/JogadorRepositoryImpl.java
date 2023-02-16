@@ -21,8 +21,8 @@ import com.app.backend_app.Futebol.Model.Time;
 public class JogadorRepositoryImpl implements JogadorRepository{
     
     private static String INSERT = " insert into tb_jogador (id, nome, datanascimento, nacionalidade, " 
-            + " altura, posicao, gols, assistencias, time) "
-            + " values (nextval('tb_jogador_id_seq'),?,?,?,?,?,?,?,?) ";
+            + " altura, posicao, gols, assistencias, imagem, time) "
+            + " values (nextval('tb_jogador_id_seq'),?,?,?,?,?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_jogador where id = ?";
     private static String SELECT_ALL_COMPETICAO = " select * from tb_jogador where time = ?"
             + " order by nome, id";
@@ -53,6 +53,7 @@ public class JogadorRepositoryImpl implements JogadorRepository{
                 jogador.setPosicao(rs.getString("posicao"));
                 jogador.setGols(rs.getInt("gols"));
                 jogador.setAssistencias(rs.getInt("assistencias"));
+                jogador.setImagem(rs.getString("imagem"));
 
                 Integer timeId = rs.getInt("time");
                 Time time = timeRepo.obterPorIdTime(timeId);
@@ -80,6 +81,7 @@ public class JogadorRepositoryImpl implements JogadorRepository{
                 jogador.setPosicao(rs.getString("posicao"));
                 jogador.setGols(rs.getInt("gols"));
                 jogador.setAssistencias(rs.getInt("assistencias"));
+                jogador.setImagem(rs.getString("imagem"));
 
                 Integer timeId = rs.getInt("time");
                 Time time = timeRepo.obterPorIdTime(timeId);
@@ -106,7 +108,8 @@ public class JogadorRepositoryImpl implements JogadorRepository{
                 ps.setString(5, jogador.getPosicao());
                 ps.setInt(6, jogador.getGols());
                 ps.setInt(7, jogador.getAssistencias());
-                ps.setInt(8, jogador.getTime().getId());
+                ps.setString(8, jogador.getImagem());
+                ps.setInt(9, jogador.getTime().getId());
                 return ps;
             }
         }, holder);

@@ -65,6 +65,7 @@ public class JogadorController {
         jogador.setPosicao(jogadorInput.getPosicao());
         jogador.setGols(jogadorInput.getGols());
         jogador.setAssistencias(jogadorInput.getAssistencias());
+        jogador.setImagem(jogadorInput.getImagem());
 
         Time time = new Time();
         time.setId(jogadorInput.getTime());

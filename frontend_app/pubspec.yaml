@@ -68,9 +68,11 @@ flutter:
   assets:
    - images/stadium.jpg
    - images/stadium2.jpg
+   # Ícones
    - images/icons-score-board.png
    - images/icons-stadium.png
    - images/icons-football-player.png
+   # Imagem de escudo de times
    - images/escudo-palmeiras.png
    - images/escudo-internacional.png
    - images/escudo-fluminense.png
@@ -91,6 +93,48 @@ flutter:
    - images/escudo-atletico-go.png
    - images/escudo-avai.png
    - images/escudo-juventude.png
+   # Imagem de jogadores
+   - images/carlos-de-pena.png
+   - images/wanderson.png
+   - images/fabricio-bustos.png
+   - images/alan-patrick.png
+   - images/alemao.png
+   - images/mauricio.png
+   - images/johnny.png
+   - images/rene.png
+   - images/vitao.png
+   - images/gabriel-mercado.png
+   - images/keiller.png
+   - images/dudu.png
+   - images/rony.png
+   - images/gustavo-scarpa.png
+   - images/raphael-veiga.png
+   - images/ze-rafael.png
+   - images/joaquin-piquerez.png
+   - images/marcos-rocha.png
+   - images/murilo.png
+   - images/gustavo-gomez.png
+   - images/weverton.png
+   - images/roger-guedes.png
+   - images/yuri-alberto.png
+   - images/gustavo-mosquito.png
+   - images/renato-augusto.png
+   - images/du-queiroz.png
+   - images/gil.png
+   - images/raul-gustavo.png
+   - images/fagner.png
+   - images/fabio-santos.png
+   - images/lucas-piton.png
+   - images/cassio.png
+   - images/pedro.png
+   - images/marinho.png
+   - images/giorgian-de-arrascaeta.png
+   - images/matheuzinho.png
+   - images/santos.png
+   - images/vitor-roque.png
+   - images/abner.png
+   - images/pedro-henrique.png
+   - images/bento.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

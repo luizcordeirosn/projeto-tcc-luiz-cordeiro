@@ -1,13 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:frontend_liga_master/app/shared/config/config.dart';
 
 class TornamentRepository {
   Dio dio = Dio();
 
+  Config config = Config();
+
   Future competicoes() async {
     try {
       Response response = await dio
-          .get('http://10.0.2.2:8082/competicao/obtertodos');
+          .get('${config.path}/competicao/obtertodos');
 
       return response.data;
     } catch (e) {

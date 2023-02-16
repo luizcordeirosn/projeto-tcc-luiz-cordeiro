@@ -1,10 +1,13 @@
 import 'dart:core';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:frontend_liga_master/app/shared/config/config.dart';
 import '../model/usuario.dart';
 
 class ProfileRepository {
   Dio dio = Dio();
+
+  Config config = Config();
 
   List usuarioAtualizado = [];
 
@@ -12,7 +15,7 @@ class ProfileRepository {
     try {
       usuarioAtualizado.clear();
 
-      Response response = await dio.get('http://10.0.2.2:8082/usuario/$id');
+      Response response = await dio.get('${config.path}/usuario/$id');
 
       usuarioAtualizado.add(response.data['id']);
       usuarioAtualizado.add(response.data['nome']);
@@ -33,7 +36,7 @@ class ProfileRepository {
       usuarioAtualizado.clear();
 
       Response response =
-          await dio.post('http://10.0.2.2:8082/usuario/salvar', data: {
+          await dio.post('${config.path}/usuario/salvar', data: {
         "id": id,
         "nome": usuarioCadastro.getNome(),
         "cpf": usuarioCadastro.getCpf(),

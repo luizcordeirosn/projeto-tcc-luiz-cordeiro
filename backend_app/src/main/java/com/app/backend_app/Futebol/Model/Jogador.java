@@ -10,6 +10,7 @@ public class Jogador {
     private String posicao;
     private Integer gols;
     private Integer assistencias;
+    private String imagem;
     private Time time;
     
     public Integer getId() {
@@ -59,6 +60,12 @@ public class Jogador {
     }
     public void setAssistencias(Integer assistencias) {
         this.assistencias = assistencias;
+    }
+    public String getImagem() {
+        return imagem;
+    }
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
     public Time getTime() {
         return time;
