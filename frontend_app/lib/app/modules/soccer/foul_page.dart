@@ -3,22 +3,22 @@ import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_dropdown_button_white.dart';
-import 'package:frontend_liga_master/app/shared/controller/soccer_player_controller.dart';
+import 'package:frontend_liga_master/app/shared/controller/dead_ball_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/soccer_team_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/tornament_controller.dart';
 
-class SoccerPlayerPage extends StatefulWidget {
+class FoulPage extends StatefulWidget {
   final List usuarioLogado;
-  const SoccerPlayerPage({super.key, required this.usuarioLogado});
+  const FoulPage({super.key, required this.usuarioLogado});
 
   @override
-  State<SoccerPlayerPage> createState() => _SoccerPlayerPageState();
+  State<FoulPage> createState() => _FoulPageState();
 }
 
-class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
+class _FoulPageState extends State<FoulPage> {
   TornamentController competicaoController = TornamentController();
   SoccerTeamController timeFutebolController = SoccerTeamController();
-  SoccerPlayerController jogadorFutebolController = SoccerPlayerController();
+  DeadBallController bolaParadaController = DeadBallController();
 
   int? _selectedTornament;
   int? _selectedSoccerTeam;
@@ -49,7 +49,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
         if (result != null && timeFutebolController.times.isNotEmpty) {
           hasSoccerTeam = true;
         } else {
-          jogadorFutebolController.getJogadores(0, 0);
+          bolaParadaController.getBatedoresFalta(0, 0);
           hasSoccerTeam = false;
         }
         idCompeticao = id;
@@ -190,7 +190,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          jogadorFutebolController.getJogadores(
+                          bolaParadaController.getBatedoresFalta(
                               value!, idCompeticao);
                           Future.delayed(Duration(milliseconds: 500), () {
                             _getCompeticao();
@@ -210,7 +210,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                     if (isLoading) {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
-                    } else if (jogadorFutebolController.jogadores.isEmpty) {
+                    } else if (bolaParadaController.batedoresFalta.isEmpty) {
                       return Expanded(
                         child: Center(
                           child: Column(
@@ -223,7 +223,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                               ),
                               const SizedBox(height: 10.0),
                               Text(
-                                'Nenhum Jogador encontrado para este Campeonato ou Time',
+                                'Nenhum Batedor de Falta encontrado para este Campeonato ou Time',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
@@ -242,11 +242,11 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                           shrinkWrap: true,
                           separatorBuilder: (context, index) =>
                               const Divider(thickness: 1, height: 20),
-                          itemCount: jogadorFutebolController.jogadores.length,
+                          itemCount: bolaParadaController.batedoresFalta.length,
                           itemBuilder: (_, index) {
                             var result =
-                                jogadorFutebolController.jogadores[index];
-                            return jogadoresTime(result);
+                                bolaParadaController.batedoresFalta[index];
+                            return batedoresFaltaTime(result);
                           },
                         ),
                       );
@@ -259,7 +259,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
         ]));
   }
 
-  Widget jogadoresTime(dynamic result) {
+  Widget batedoresFaltaTime(dynamic result) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -268,7 +268,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
           children: [
             SizedBox.square(
               dimension: 75,
-              child: Image.asset('${result['imagem']}'),
+              child: Image.asset('${result['jogador']['imagem']}'),
             ),
           ],
         ),
@@ -277,28 +277,21 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Nome: ${result['nome']}',
+              'Nome: ${result['jogador']['nome']}',
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              'Nascimento: ${result['dataNascimento']}, ${result['nacionalidade']}',
+              'Posicao: ${result['jogador']['posicao']}',
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              'Posicao: ${result['posicao']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'Gols: ${result['gols']} e Ass: ${result['assistencias']}',
+              'Gols: ${result['jogador']['gols']} e Ass: ${result['jogador']['assistencias']}',
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,

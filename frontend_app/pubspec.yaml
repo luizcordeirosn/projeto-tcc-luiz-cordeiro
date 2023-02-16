@@ -74,6 +74,7 @@ flutter:
    - images/icons-football-player.png
    - images/icons-penalty.png
    - images/icons-kick-ball.png
+   - images/icons-corner.png
    # Imagem de escudo de times
    - images/escudo-palmeiras.png
    - images/escudo-internacional.png

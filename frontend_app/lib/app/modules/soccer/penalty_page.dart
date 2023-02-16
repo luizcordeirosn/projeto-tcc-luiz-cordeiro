@@ -224,7 +224,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                               ),
                               const SizedBox(height: 10.0),
                               Text(
-                                'Nenhum Confronto encontrado para este Campeonato ou Rodada',
+                                'Nenhum lance de Pênalti encontrado para este Campeonato',
                                 style: TextStyle(
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
