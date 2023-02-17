@@ -1,6 +1,6 @@
 package com.app.backend_app.Futebol.Model;
 
-public class Cometido {
+public class VariavelApp {
     
     private Integer valor;
     private String descricao;

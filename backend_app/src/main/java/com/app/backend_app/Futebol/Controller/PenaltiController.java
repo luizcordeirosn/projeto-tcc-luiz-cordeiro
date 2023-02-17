@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.app.backend_app.Futebol.Model.Penalti;
-import com.app.backend_app.Futebol.Model.Cometido;
+import com.app.backend_app.Futebol.Model.VariavelApp;
 import com.app.backend_app.Futebol.Model.PenaltiInput;
 import com.app.backend_app.Futebol.Model.Time;
 import com.app.backend_app.Futebol.Repository.PenaltiRepository;
@@ -72,12 +72,12 @@ public class PenaltiController {
     }
 
     @GetMapping(value = "/cometido")
-    public ResponseEntity<List<Cometido>> cometido() {
+    public ResponseEntity<List<VariavelApp>> cometido() {
 
-        List<Cometido> lista = new ArrayList<Cometido>();
+        List<VariavelApp> lista = new ArrayList<VariavelApp>();
 
-        Cometido penaltiCometido = new Cometido();
-        Cometido penaltiAFavor = new Cometido();
+        VariavelApp penaltiCometido = new VariavelApp();
+        VariavelApp penaltiAFavor = new VariavelApp();
 
         penaltiCometido.setValor(1);
         penaltiCometido.setDescricao("Cometido");

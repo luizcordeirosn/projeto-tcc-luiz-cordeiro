@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.backend_app.Futebol.Model.BolaParada;
 import com.app.backend_app.Futebol.Model.BolaParadaInput;
 import com.app.backend_app.Futebol.Model.Jogador;
-import com.app.backend_app.Futebol.Model.TipoBolaParada;
+import com.app.backend_app.Futebol.Model.VariavelApp;
 import com.app.backend_app.Futebol.Repository.BolaParadaRepository;
 import com.app.backend_app.util.exceptions.DomainException;
 
@@ -43,13 +43,13 @@ public class BolaParadaController {
     }
 
     @GetMapping(value = "/obtertodos/tipobolaparada")
-    public ResponseEntity<List<TipoBolaParada>> tiposBolaParada() {
+    public ResponseEntity<List<VariavelApp>> tiposBolaParada() {
 
-        List<TipoBolaParada> lista = new ArrayList<TipoBolaParada>();
+        List<VariavelApp> lista = new ArrayList<VariavelApp>();
 
-        TipoBolaParada falta = new TipoBolaParada();
-        TipoBolaParada escanteio = new TipoBolaParada();
-        TipoBolaParada penalti = new TipoBolaParada();
+        VariavelApp falta = new VariavelApp();
+        VariavelApp escanteio = new VariavelApp();
+        VariavelApp penalti = new VariavelApp();
 
         falta.setValor(1);
         falta.setDescricao("Falta");

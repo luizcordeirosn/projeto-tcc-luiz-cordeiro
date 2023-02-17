@@ -53,8 +53,8 @@ public class ConfrontoRepositoryImpl implements ConfrontoRepository{
 
                 confronto.setId(rs.getInt("id"));
 
-                Integer competicaoId = rs.getInt("rodada");
-                Rodada rodada = rodadaRepo.obterPorIdRodada(competicaoId);
+                Integer rodadaId = rs.getInt("rodada");
+                Rodada rodada = rodadaRepo.obterPorIdRodada(rodadaId);
                 confronto.setRodada(rodada);
                 
                 Integer timeMandanteId = rs.getInt("timemandante");
@@ -84,8 +84,8 @@ public class ConfrontoRepositoryImpl implements ConfrontoRepository{
 
                 confronto.setId(rs.getInt("id"));
 
-                Integer competicaoId = rs.getInt("rodada");
-                Rodada rodada = rodadaRepo.obterPorIdRodada(competicaoId);
+                Integer rodadaId = rs.getInt("rodada");
+                Rodada rodada = rodadaRepo.obterPorIdRodada(rodadaId);
                 confronto.setRodada(rodada);
                 
                 Integer timeMandanteId = rs.getInt("timemandante");
