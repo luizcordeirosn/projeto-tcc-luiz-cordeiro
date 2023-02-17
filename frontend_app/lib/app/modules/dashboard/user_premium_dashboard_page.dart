@@ -132,7 +132,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                   childAspectRatio: 0.97),
               children: [
                 AlternativeHomeButtonWidget(
-                    buttonName: "Classificação",
+                    buttonName: "Classificação do Campeonato",
                     image: 'images/icons-score-board.png',
                     onPressed: () => Navigator.push(
                         context,
@@ -153,7 +153,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                         MaterialPageRoute(
                             builder: (context) => SoccerPlayerPage(usuarioLogado: widget.usuarioLogado,)))),
                 AlternativeHomeButtonWidget(
-                    buttonName: "Penaltis por Time",
+                    buttonName: "Estatísticas de Pênalti",
                     image: 'images/icons-penalty.png',
                     onPressed: () => Navigator.push(
                         context,

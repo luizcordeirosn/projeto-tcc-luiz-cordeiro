@@ -3,6 +3,7 @@ import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_dropdown_button_white.dart';
+import 'package:frontend_liga_master/app/modules/widgets/custom_expanded_widget.dart';
 import 'package:frontend_liga_master/app/shared/controller/penalty_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/tornament_controller.dart';
 
@@ -76,7 +77,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
 
     return Scaffold(
       appBar: AppBar(
-          title: Text("Penaltis por Time"),
+          title: Text("Estatísticas de Pênalti"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -212,30 +213,8 @@ class _PenaltyPageState extends State<PenaltyPage> {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
                     } else if (penaltiController.penaltisCometidosAFavor.isEmpty) {
-                      return Expanded(
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.close,
-                                color: Colors.red,
-                                size: 64,
-                              ),
-                              const SizedBox(height: 10.0),
-                              Text(
-                                'Nenhum lance de Pênalti encontrado para este Campeonato',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                      return const CustomExpandedWidget(texto: "Nenhuma estatística de Pênalti encontrado "
+                          "para este Campeonato e/ou Time");
                     } else {
                       return Expanded(
                         child: ListView.separated(
