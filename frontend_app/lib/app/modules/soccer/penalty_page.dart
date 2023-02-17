@@ -77,7 +77,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Batedores de Escanteio"),
+          title: Text("Batedores de Pênalti"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -194,7 +194,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                         onChanged: (value) {
                           bolaParadaController.getBatedoresPenalti(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 500), () {
+                          Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },

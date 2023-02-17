@@ -192,7 +192,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                         onChanged: (value) {
                           jogadorFutebolController.getJogadores(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 500), () {
+                          Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },

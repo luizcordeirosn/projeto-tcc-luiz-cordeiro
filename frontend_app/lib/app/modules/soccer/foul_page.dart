@@ -192,7 +192,7 @@ class _FoulPageState extends State<FoulPage> {
                         onChanged: (value) {
                           bolaParadaController.getBatedoresFalta(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 500), () {
+                          Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },

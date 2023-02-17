@@ -143,7 +143,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
                     .toList(),
                 onChanged: (value) {
                   classificacaoController.getClassificacao(value!);
-                  Future.delayed(Duration(milliseconds: 500), () {
+                  Future.delayed(Duration(milliseconds: 750), () {
                     _getCompeticao();
                   });
                 },

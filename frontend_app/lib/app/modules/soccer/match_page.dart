@@ -192,7 +192,7 @@ class _MatchPageState extends State<MatchPage> {
                         onChanged: (value) {
                           confrontoController.getConfrontos(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 500), () {
+                          Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },

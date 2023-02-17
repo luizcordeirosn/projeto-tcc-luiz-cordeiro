@@ -173,6 +173,21 @@ flutter:
    - images/jefferson-silva.png
    - images/diego-churin.png
    - images/marlon-freitas.png
+   - images/walter.png
+   - images/matheus-cavichioli.png
+   - images/felipe-alves.png
+   - images/juninho-capixaba.png
+   - images/marlon-lopes.png
+   - images/igor-carius.png
+   - images/luan-candido.png
+   - images/reinaldo.png
+   - images/joaquim.png
+   - images/fabian-balbuena.png
+   - images/nahuel-ferraresi.png
+   - images/lima.png
+   - images/stiven-mendoza.png
+   - images/jonathan-calleri.png
+   - images/deyverson.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -192,7 +192,7 @@ class _CornerPageState extends State<CornerPage> {
                         onChanged: (value) {
                           bolaParadaController.getBatedoresEscanteio(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 500), () {
+                          Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },

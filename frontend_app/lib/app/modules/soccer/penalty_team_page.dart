@@ -182,7 +182,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                 const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasPenalty
                     ? CustomDropButton(
-                        hintText: 'Rodada',
+                        hintText: 'Penalti',
                         value: _selectedPenalty,
                         items: penaltiController.cometido
                             .map((element) => DropdownMenuItem<int>(
@@ -193,7 +193,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                         onChanged: (value) {
                           penaltiController.getPenaltisCometidosAFavor(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 500), () {
+                          Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
