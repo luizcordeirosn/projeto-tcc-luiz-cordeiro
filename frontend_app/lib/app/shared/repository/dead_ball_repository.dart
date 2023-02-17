@@ -8,6 +8,19 @@ class DeadBallRepository{
 
   Config config = Config();
 
+  Future tiposBolaParada() async {
+    try {
+      Response response = await dio
+          .get('${config.path}/bolaparada/obtertodos/tipobolaparada');
+
+      return response.data;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
   Future bolaParadaFaltasPorTimeCompeticao(int time, int competicao) async {
     try {
       Response response = await dio

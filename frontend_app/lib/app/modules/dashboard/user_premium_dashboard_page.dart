@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_liga_master/app/modules/dashboard/dead_ball_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/dead_ball_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/match_page.dart';
-import 'package:frontend_liga_master/app/modules/soccer/penalty_team_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/penalty_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/soccer_player_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/alternative_home_button_widget.dart';
 
@@ -165,7 +165,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => DeadBallDashboardPage(usuarioLogado: widget.usuarioLogado,)))),
+                            builder: (context) => DeadBallPage(usuarioLogado: widget.usuarioLogado,)))),
               ],
             ),
           )

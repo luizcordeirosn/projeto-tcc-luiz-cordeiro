@@ -6,6 +6,17 @@ class DeadBallController {
   List batedoresFalta = [];
   List batedoresEscanteio = [];
   List batedoresPenalti = [];
+  List tiposBolaParada = [];
+
+  Future getTiposBolaParada() async {
+    tiposBolaParada.clear();
+    List result = await deadBallRepository.tiposBolaParada();
+
+    for (var i = 0; i < result.length; i++) {
+      tiposBolaParada.add(result[i]);
+    }
+    return tiposBolaParada;
+  }
 
   Future getBatedoresFalta(int time, int competicao) async {
     batedoresFalta.clear();

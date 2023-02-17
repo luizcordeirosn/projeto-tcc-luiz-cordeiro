@@ -3,35 +3,43 @@ import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/custom_dropdown_button_white.dart';
+import 'package:frontend_liga_master/app/modules/widgets/custom_expanded_widget.dart';
 import 'package:frontend_liga_master/app/shared/controller/dead_ball_controller.dart';
+import 'package:frontend_liga_master/app/shared/controller/soccer_player_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/soccer_team_controller.dart';
 import 'package:frontend_liga_master/app/shared/controller/tornament_controller.dart';
 
-class FoulPage extends StatefulWidget {
+class DeadBallPage extends StatefulWidget {
   final List usuarioLogado;
-  const FoulPage({super.key, required this.usuarioLogado});
+  const DeadBallPage({super.key, required this.usuarioLogado});
 
   @override
-  State<FoulPage> createState() => _FoulPageState();
+  State<DeadBallPage> createState() => _DeadBallPageState();
 }
 
-class _FoulPageState extends State<FoulPage> {
+class _DeadBallPageState extends State<DeadBallPage> {
   TornamentController competicaoController = TornamentController();
   SoccerTeamController timeFutebolController = SoccerTeamController();
+  SoccerPlayerController jogadorFutebolController = SoccerPlayerController();
   DeadBallController bolaParadaController = DeadBallController();
 
   int? _selectedTornament;
   int? _selectedSoccerTeam;
+  int? _selectedDeadBall;
 
   bool isLoading = false;
   bool hasSoccerTeam = false;
+  bool hasSoccerPlayer = false;
 
   late int idCompeticao;
+  late int idTime;
+  int idTipoBolaParada = 0;
 
   Future<void> _getCompeticao() async {
     setState(() => isLoading = true);
     try {
       await competicaoController.getCompeticoes();
+      await bolaParadaController.getTiposBolaParada();
     } catch (error) {
       debugPrint(error.toString());
 
@@ -49,10 +57,34 @@ class _FoulPageState extends State<FoulPage> {
         if (result != null && timeFutebolController.times.isNotEmpty) {
           hasSoccerTeam = true;
         } else {
-          bolaParadaController.getBatedoresFalta(0, 0);
+          jogadorFutebolController.getJogadores(0, 0);
           hasSoccerTeam = false;
+          hasSoccerPlayer = false;
         }
         idCompeticao = id;
+      });
+    } catch (error) {
+      debugPrint(error.toString());
+
+      // CustomAlerts.showDefaultDialog(context, 'Atenção!',
+      //     'Não foi possível consultar os veículos, tente novamente mais tarde.');
+    }
+    setState(() => isLoading = false);
+  }
+
+  Future<void> _getTipoBolaParadaPorTime(int time, int competicao) async {
+    setState(() => isLoading = true);
+    try {
+      dynamic result =
+          await jogadorFutebolController.getJogadores(time, competicao);
+      setState(() {
+        if (result != null && jogadorFutebolController.jogadores.isNotEmpty) {
+          hasSoccerPlayer = true;
+        } else {
+          hasSoccerPlayer = false;
+        }
+        idTipoBolaParada = 0;
+        idTime = time;
       });
     } catch (error) {
       debugPrint(error.toString());
@@ -75,7 +107,7 @@ class _FoulPageState extends State<FoulPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Batedores de Falta"),
+          title: Text("Bola Parada"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -168,6 +200,7 @@ class _FoulPageState extends State<FoulPage> {
                           ))
                       .toList(),
                   onChanged: (value) {
+                    idTipoBolaParada = 0;
                     _getTimeFutebol(value!);
                   },
                   validator: (value) {
@@ -190,8 +223,58 @@ class _FoulPageState extends State<FoulPage> {
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          bolaParadaController.getBatedoresFalta(
-                              value!, idCompeticao);
+                          if (idTipoBolaParada != 0) {
+                            if (idTipoBolaParada == 1) {
+                              bolaParadaController.getBatedoresFalta(
+                                  value!, idCompeticao);
+                            } else if (idTipoBolaParada == 2) {
+                              bolaParadaController.getBatedoresEscanteio(
+                                  value!, idCompeticao);
+                            } else if (idTipoBolaParada == 3) {
+                              bolaParadaController.getBatedoresPenalti(
+                                  value!, idCompeticao);
+                            }
+                            Future.delayed(Duration(milliseconds: 750), () {
+                              _getCompeticao();
+                            });
+
+                            idTime = value!;
+                          } else {
+                            _getTipoBolaParadaPorTime(value!, idCompeticao);
+                          }
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Campo obrigatório';
+                          } else {
+                            return null;
+                          }
+                        },
+                      )
+                    : Container(),
+                const Padding(padding: EdgeInsets.only(bottom: 7)),
+                hasSoccerPlayer
+                    ? CustomDropButton(
+                        hintText: 'Bola Parada',
+                        value: _selectedDeadBall,
+                        items: bolaParadaController.tiposBolaParada
+                            .map((element) => DropdownMenuItem<int>(
+                                  value: element['valor'],
+                                  child: Text(element['descricao']),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          if (value == 1) {
+                            bolaParadaController.getBatedoresFalta(
+                                idTime, idCompeticao);
+                          } else if (value == 2) {
+                            bolaParadaController.getBatedoresEscanteio(
+                                idTime, idCompeticao);
+                          } else if (value == 3) {
+                            bolaParadaController.getBatedoresPenalti(
+                                idTime, idCompeticao);
+                          }
+                          idTipoBolaParada = value!;
                           Future.delayed(Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
@@ -210,46 +293,69 @@ class _FoulPageState extends State<FoulPage> {
                     if (isLoading) {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
-                    } else if (bolaParadaController.batedoresFalta.isEmpty) {
-                      return Expanded(
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.close,
-                                color: Colors.red,
-                                size: 64,
-                              ),
-                              const SizedBox(height: 10.0),
-                              Text(
-                                'Nenhum Batedor de Falta encontrado para este Campeonato ou Time',
-                                style: TextStyle(
-                                  color: Colors.black54,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                    } else if (jogadorFutebolController.jogadores.isEmpty) {
+                      return const CustomExpandedWidget(
+                          texto:
+                              "Não foi possível encontrar nenhum Time, Jogador e/ou Batedor de bola parada "
+                                  "para os dados solicitados");
                     } else {
-                      return Expanded(
-                        child: ListView.separated(
-                          padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
-                          shrinkWrap: true,
-                          separatorBuilder: (context, index) =>
-                              const Divider(thickness: 1, height: 20),
-                          itemCount: bolaParadaController.batedoresFalta.length,
-                          itemBuilder: (_, index) {
-                            var result =
-                                bolaParadaController.batedoresFalta[index];
-                            return batedoresFaltaTime(result);
-                          },
-                        ),
-                      );
+                      if (idTipoBolaParada == 1 &&
+                          bolaParadaController.batedoresFalta.isNotEmpty) {
+                        return Expanded(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
+                            shrinkWrap: true,
+                            separatorBuilder: (context, index) =>
+                                const Divider(thickness: 1, height: 20),
+                            itemCount:
+                                bolaParadaController.batedoresFalta.length,
+                            itemBuilder: (_, index) {
+                              var result =
+                                  bolaParadaController.batedoresFalta[index];
+                              return batedoresBolaParadaTime(result);
+                            },
+                          ),
+                        );
+                      } else if (idTipoBolaParada == 2 &&
+                          bolaParadaController.batedoresEscanteio.isNotEmpty) {
+                        return Expanded(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
+                            shrinkWrap: true,
+                            separatorBuilder: (context, index) =>
+                                const Divider(thickness: 1, height: 20),
+                            itemCount:
+                                bolaParadaController.batedoresEscanteio.length,
+                            itemBuilder: (_, index) {
+                              var result = bolaParadaController
+                                  .batedoresEscanteio[index];
+                              return batedoresBolaParadaTime(result);
+                            },
+                          ),
+                        );
+                      } else if (idTipoBolaParada == 3 &&
+                          bolaParadaController.batedoresPenalti.isNotEmpty) {
+                        return Expanded(
+                          child: ListView.separated(
+                            padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
+                            shrinkWrap: true,
+                            separatorBuilder: (context, index) =>
+                                const Divider(thickness: 1, height: 20),
+                            itemCount:
+                                bolaParadaController.batedoresPenalti.length,
+                            itemBuilder: (_, index) {
+                              var result =
+                                  bolaParadaController.batedoresPenalti[index];
+                              return batedoresBolaParadaTime(result);
+                            },
+                          ),
+                        );
+                      } else {
+                        return const CustomExpandedWidget(
+                            texto:
+                                "Não foi possível encontrar nenhum Time, Jogador e/ou Batedor de bola "
+                                    "parada para os dados solicitados");
+                      }
                     }
                   },
                 ),
@@ -259,7 +365,7 @@ class _FoulPageState extends State<FoulPage> {
         ]));
   }
 
-  Widget batedoresFaltaTime(dynamic result) {
+  Widget batedoresBolaParadaTime(dynamic result) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
