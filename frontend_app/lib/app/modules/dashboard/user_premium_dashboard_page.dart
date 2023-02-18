@@ -4,6 +4,7 @@ import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/dead_ball_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/match_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/option_soccer_player_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/penalty_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/soccer_player_page.dart';
 import 'package:frontend_liga_master/app/modules/widgets/alternative_home_button_widget.dart';
@@ -152,6 +153,13 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => SoccerPlayerPage(usuarioLogado: widget.usuarioLogado,)))),
+                AlternativeHomeButtonWidget(
+                    buttonName: "Melhores Opções",
+                    image: 'images/icons-soccer-equipment.png',
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OptionSoccerPlayerPage(usuarioLogado: widget.usuarioLogado,)))),
                 AlternativeHomeButtonWidget(
                     buttonName: "Estatísticas de Pênalti",
                     image: 'images/icons-penalty.png',

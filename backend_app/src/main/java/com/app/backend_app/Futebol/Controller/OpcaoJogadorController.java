@@ -18,6 +18,7 @@ import com.app.backend_app.Futebol.Model.OpcaoJogador;
 import com.app.backend_app.Futebol.Model.OpcaoJogadorInput;
 import com.app.backend_app.Futebol.Model.Jogador;
 import com.app.backend_app.Futebol.Model.Rodada;
+import com.app.backend_app.Futebol.Model.VariavelApp;
 import com.app.backend_app.Futebol.Repository.OpcaoJogadorRepository;
 import com.app.backend_app.util.exceptions.DomainException;
 
@@ -41,6 +42,45 @@ public class OpcaoJogadorController {
             return ResponseEntity.ok(null);
         }
 
+    }
+
+    @GetMapping(value = "/obtertodos/tipoposicao")
+    public ResponseEntity<List<VariavelApp>> tiposPosicao() {
+
+        List<VariavelApp> lista = new ArrayList<VariavelApp>();
+
+        VariavelApp goleiro = new VariavelApp();
+        VariavelApp lateral = new VariavelApp();
+        VariavelApp zagueiro = new VariavelApp();
+        VariavelApp meioCampo = new VariavelApp();
+        VariavelApp atacante = new VariavelApp();
+
+        goleiro.setValor(1);
+        goleiro.setDescricao("Goleiro");
+
+        lateral.setValor(2);
+        lateral.setDescricao("Lateral");
+
+        zagueiro.setValor(3);
+        zagueiro.setDescricao("Zagueiro");
+
+        meioCampo.setValor(4);
+        meioCampo.setDescricao("Meio Campo");
+
+        atacante.setValor(5);
+        atacante.setDescricao("Atacante");
+
+        try {
+            lista.add(goleiro);
+            lista.add(lateral);
+            lista.add(zagueiro);
+            lista.add(meioCampo);
+            lista.add(atacante);
+
+            return ResponseEntity.ok(lista);
+        } catch (Exception e) {
+            throw new DomainException("Erro base de dados: " + e.getMessage());
+        }
     }
 
     @GetMapping(value = "/obtertodos/{rodada}/{competicao}")
