@@ -162,8 +162,9 @@ class _ClassificationPageState extends State<ClassificationPage> {
                     return const Expanded(
                         child: Center(child: CircularProgressIndicator()));
                   } else if (classificacaoController.classificacao.isEmpty) {
-                    return const CustomExpandedWidget(texto: "Nenhuma Tabela encontrada para este "
-                        "Campeonato");
+                    return const CustomExpandedWidget(
+                        texto:
+                            "Não foi possível encontrar Dados para a sua Fitragem");
                   } else {
                     return Expanded(
                       child: ListView.separated(

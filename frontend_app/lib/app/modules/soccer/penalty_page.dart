@@ -25,9 +25,12 @@ class _PenaltyPageState extends State<PenaltyPage> {
   int? _selectedPenalty;
 
   bool isLoading = false;
+  bool hasTornament = false;
   bool hasPenalty = false;
 
   late int idCompeticao;
+
+  String nomeCompeticao = "";
 
   Future<void> _getCompeticao() async {
     setState(() => isLoading = true);
@@ -50,6 +53,12 @@ class _PenaltyPageState extends State<PenaltyPage> {
       setState(() {
         if (result != null && penaltiController.penaltis.isNotEmpty) {
           hasPenalty = true;
+          hasTornament = true;
+          for (int i = 0; i < competicaoController.competicoes.length; i++) {
+            if (competicaoController.competicoes[i]['id'] == id) {
+              nomeCompeticao = competicaoController.competicoes[i]['titulo'];
+            }
+          }
         } else {
           penaltiController.getPenaltisCometidosAFavor(0, 0);
           hasPenalty = false;
@@ -76,7 +85,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
     String popupItemValue = "";
 
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
           title: Text("Estatísticas de Pênalti"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
@@ -160,26 +169,70 @@ class _PenaltyPageState extends State<PenaltyPage> {
           SafeArea(
             child: Column(
               children: [
-                CustomDropButton(
-                  hintText: 'Competicao',
-                  value: _selectedTornament,
-                  items: competicaoController.competicoes
-                      .map((element) => DropdownMenuItem<int>(
-                            value: element['id'],
-                            child: Text(element['titulo']),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    _getPenalti(value!);
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return 'Campo obrigatório';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
+                !hasTornament
+                    ? CustomDropButton(
+                        hintText: 'Competicao',
+                        value: _selectedTornament,
+                        items: competicaoController.competicoes
+                            .map((element) => DropdownMenuItem<int>(
+                                  value: element['id'],
+                                  child: Text(element['titulo']),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          _getPenalti(value!);
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Campo obrigatório';
+                          } else {
+                            return null;
+                          }
+                        },
+                      )
+                    : Container(
+                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              nomeCompeticao,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            OutlinedButton(
+                              child: Container(
+                                //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                child: Text(
+                                  "LIMPAR FILTRO",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    //fontSize: 17,
+                                  ),
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.red[700],
+                                shape: StadiumBorder(),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PenaltyPage(
+                                              usuarioLogado:
+                                                  widget.usuarioLogado,
+                                            )));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                 const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasPenalty
                     ? CustomDropButton(
@@ -212,9 +265,11 @@ class _PenaltyPageState extends State<PenaltyPage> {
                     if (isLoading) {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
-                    } else if (penaltiController.penaltisCometidosAFavor.isEmpty) {
-                      return const CustomExpandedWidget(texto: "Nenhuma estatística de Pênalti encontrado "
-                          "para este Campeonato e/ou Time");
+                    } else if (penaltiController
+                        .penaltisCometidosAFavor.isEmpty) {
+                      return const CustomExpandedWidget(
+                          texto:
+                              "Não foi possível encontrar Dados para a sua Fitragem");
                     } else {
                       return Expanded(
                         child: ListView.separated(
@@ -222,9 +277,11 @@ class _PenaltyPageState extends State<PenaltyPage> {
                           shrinkWrap: true,
                           separatorBuilder: (context, index) =>
                               const Divider(thickness: 1, height: 20),
-                          itemCount: penaltiController.penaltisCometidosAFavor.length,
+                          itemCount:
+                              penaltiController.penaltisCometidosAFavor.length,
                           itemBuilder: (_, index) {
-                            var result = penaltiController.penaltisCometidosAFavor[index];
+                            var result = penaltiController
+                                .penaltisCometidosAFavor[index];
                             return penaltisCometidosAFavorPorCompeticao(result);
                           },
                         ),
@@ -235,8 +292,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
               ],
             ),
           )
-        ])
-    );
+        ]));
   }
 
   Widget penaltisCometidosAFavorPorCompeticao(dynamic result) {

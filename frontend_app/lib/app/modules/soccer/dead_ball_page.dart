@@ -28,12 +28,15 @@ class _DeadBallPageState extends State<DeadBallPage> {
   int? _selectedDeadBall;
 
   bool isLoading = false;
+  bool hasTornament = false;
   bool hasSoccerTeam = false;
   bool hasSoccerPlayer = false;
 
   late int idCompeticao;
   late int idTime;
   int idTipoBolaParada = 0;
+
+  String nomeCompeticao = "";
 
   Future<void> _getCompeticao() async {
     setState(() => isLoading = true);
@@ -56,6 +59,12 @@ class _DeadBallPageState extends State<DeadBallPage> {
       setState(() {
         if (result != null && timeFutebolController.times.isNotEmpty) {
           hasSoccerTeam = true;
+          hasTornament = true;
+          for (int i = 0; i < competicaoController.competicoes.length; i++) {
+            if (competicaoController.competicoes[i]['id'] == id) {
+              nomeCompeticao = competicaoController.competicoes[i]['titulo'];
+            }
+          }
         } else {
           jogadorFutebolController.getJogadores(0, 0);
           hasSoccerTeam = false;
@@ -190,27 +199,71 @@ class _DeadBallPageState extends State<DeadBallPage> {
           SafeArea(
             child: Column(
               children: [
-                CustomDropButton(
-                  hintText: 'Competicao',
-                  value: _selectedTornament,
-                  items: competicaoController.competicoes
-                      .map((element) => DropdownMenuItem<int>(
-                            value: element['id'],
-                            child: Text(element['titulo']),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    idTipoBolaParada = 0;
-                    _getTimeFutebol(value!);
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return 'Campo obrigatório';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
+                !hasTornament
+                    ? CustomDropButton(
+                        hintText: 'Competicao',
+                        value: _selectedTornament,
+                        items: competicaoController.competicoes
+                            .map((element) => DropdownMenuItem<int>(
+                                  value: element['id'],
+                                  child: Text(element['titulo']),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          idTipoBolaParada = 0;
+                          _getTimeFutebol(value!);
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Campo obrigatório';
+                          } else {
+                            return null;
+                          }
+                        },
+                      )
+                    : Container(
+                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              nomeCompeticao,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            OutlinedButton(
+                              child: Container(
+                                //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                child: Text(
+                                  "LIMPAR FILTRO",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    //fontSize: 17,
+                                  ),
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.red[700],
+                                shape: StadiumBorder(),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DeadBallPage(
+                                              usuarioLogado:
+                                                  widget.usuarioLogado,
+                                            )));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                 const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasSoccerTeam
                     ? CustomDropButton(
@@ -296,8 +349,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                     } else if (jogadorFutebolController.jogadores.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar nenhum Time, Jogador e/ou Batedor de bola parada "
-                                  "para os dados solicitados");
+                              "Não foi possível encontrar Dados para a sua Fitragem");
                     } else {
                       if (idTipoBolaParada == 1 &&
                           bolaParadaController.batedoresFalta.isNotEmpty) {
@@ -353,8 +405,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                       } else {
                         return const CustomExpandedWidget(
                             texto:
-                                "Não foi possível encontrar nenhum Time, Jogador e/ou Batedor de bola "
-                                    "parada para os dados solicitados");
+                                "Não foi possível encontrar Dados para a sua Fitragem");
                       }
                     }
                   },

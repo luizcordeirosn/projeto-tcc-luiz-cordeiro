@@ -25,9 +25,12 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
   int? _selectedSoccerTeam;
 
   bool isLoading = false;
+  bool hasTornament = false;
   bool hasSoccerTeam = false;
 
   late int idCompeticao;
+
+  String nomeCompeticao = "";
 
   Future<void> _getCompeticao() async {
     setState(() => isLoading = true);
@@ -49,6 +52,12 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
       setState(() {
         if (result != null && timeFutebolController.times.isNotEmpty) {
           hasSoccerTeam = true;
+          hasTornament = true;
+          for (int i = 0; i < competicaoController.competicoes.length; i++) {
+            if (competicaoController.competicoes[i]['id'] == id) {
+              nomeCompeticao = competicaoController.competicoes[i]['titulo'];
+            }
+          }
         } else {
           jogadorFutebolController.getJogadores(0, 0);
           hasSoccerTeam = false;
@@ -159,26 +168,70 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
           SafeArea(
             child: Column(
               children: [
-                CustomDropButton(
-                  hintText: 'Competicao',
-                  value: _selectedTornament,
-                  items: competicaoController.competicoes
-                      .map((element) => DropdownMenuItem<int>(
-                            value: element['id'],
-                            child: Text(element['titulo']),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    _getTimeFutebol(value!);
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return 'Campo obrigatório';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
+                !hasTornament
+                    ? CustomDropButton(
+                        hintText: 'Competicao',
+                        value: _selectedTornament,
+                        items: competicaoController.competicoes
+                            .map((element) => DropdownMenuItem<int>(
+                                  value: element['id'],
+                                  child: Text(element['titulo']),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          _getTimeFutebol(value!);
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Campo obrigatório';
+                          } else {
+                            return null;
+                          }
+                        },
+                      )
+                    : Container(
+                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              nomeCompeticao,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            OutlinedButton(
+                              child: Container(
+                                //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                child: Text(
+                                  "LIMPAR FILTRO",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    //fontSize: 17,
+                                  ),
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.red[700],
+                                shape: StadiumBorder(),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SoccerPlayerPage(
+                                              usuarioLogado:
+                                                  widget.usuarioLogado,
+                                            )));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                 const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasSoccerTeam
                     ? CustomDropButton(
@@ -212,8 +265,9 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                       return const Expanded(
                           child: Center(child: CircularProgressIndicator()));
                     } else if (jogadorFutebolController.jogadores.isEmpty) {
-                      return const CustomExpandedWidget(texto: "Nenhum Jogador encontrado para este "
-                          "Campeonato ou Time");
+                      return const CustomExpandedWidget(
+                          texto:
+                              "Não foi possível encontrar Dados para a sua Fitragem");
                     } else {
                       return Expanded(
                         child: ListView.separated(

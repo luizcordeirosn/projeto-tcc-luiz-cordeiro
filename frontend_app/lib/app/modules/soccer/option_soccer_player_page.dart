@@ -380,7 +380,8 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                         );
                       } else {
                         return const CustomExpandedWidget(
-                            texto: "Não foi possível encontrar Dados para a sua Fitragem");
+                            texto:
+                                "Não foi possível encontrar Dados para a sua Fitragem");
                       }
                     }
                   },
