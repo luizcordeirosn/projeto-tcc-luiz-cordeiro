@@ -27,12 +27,15 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
   int? _selectedOptionPlayer;
 
   bool isLoading = false;
+  bool hasTornament = false;
   bool hasRound = false;
   bool hasOptionPlayer = false;
 
-  late int idCompeticao;
+  int idCompeticao = 0;
   late int idRodada;
   int idTipoPosicao = 0;
+
+  String nomeCompeticao = "";
 
   Future<void> _getCompeticao() async {
     setState(() => isLoading = true);
@@ -55,11 +58,14 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
       setState(() {
         if (result != null && rodadaController.rodadas.isNotEmpty) {
           hasRound = true;
+          hasTornament = true;
+          for (int i = 0; i < competicaoController.competicoes.length; i++) {
+            if (competicaoController.competicoes[i]['id'] == id) {
+              nomeCompeticao = competicaoController.competicoes[i]['titulo'];
+            }
+          }
         } else {
-          opcaoJogadorController.getOpcoesJogador(0, 0);
-          opcaoJogadorController.getOpcoesJogadorPosicao(0, 0, "");
           hasRound = false;
-          hasOptionPlayer = false;
         }
         idCompeticao = id;
       });
@@ -190,27 +196,72 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
           SafeArea(
             child: Column(
               children: [
-                CustomDropButton(
-                  hintText: 'Competicao',
-                  value: _selectedTornament,
-                  items: competicaoController.competicoes
-                      .map((element) => DropdownMenuItem<int>(
-                            value: element['id'],
-                            child: Text(element['titulo']),
-                          ))
-                      .toList(),
-                  onChanged: (value) {
-                    idTipoPosicao = 0;
-                    _getRodada(value!);
-                  },
-                  validator: (value) {
-                    if (value == null) {
-                      return 'Campo obrigatório';
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
+                !hasTornament
+                    ? CustomDropButton(
+                        hintText: 'Competicao',
+                        value: _selectedTornament,
+                        items: competicaoController.competicoes
+                            .map((element) => DropdownMenuItem<int>(
+                                  value: element['id'],
+                                  child: Text(element['titulo']),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          idTipoPosicao = 0;
+                          _getRodada(value!);
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return 'Campo obrigatório';
+                          } else {
+                            return null;
+                          }
+                        },
+                      )
+                    : Container(
+                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              nomeCompeticao,
+                              style: TextStyle(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            OutlinedButton(
+                              child: Container(
+                                //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                                child: Text(
+                                  "LIMPAR FILTRO",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    //fontSize: 17,
+                                  ),
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: Colors.red[700],
+                                shape: StadiumBorder(),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            OptionSoccerPlayerPage(
+                                              usuarioLogado:
+                                                  widget.usuarioLogado,
+                                            )));
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                 const Padding(padding: EdgeInsets.only(bottom: 7)),
                 hasRound
                     ? CustomDropButton(
@@ -308,8 +359,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                     } else if (opcaoJogadorController.opcoesJogador.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar nenhum Time, Jogador e/ou Batedor de bola parada "
-                              "para os dados solicitados");
+                              "Não foi possível encontrar Dados para a sua Fitragem");
                     } else {
                       if (opcaoJogadorController
                           .opcoesJogadorPosicao.isNotEmpty) {
@@ -330,9 +380,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                         );
                       } else {
                         return const CustomExpandedWidget(
-                            texto:
-                                "Não foi possível encontrar nenhum Time, Jogador e/ou Batedor de bola "
-                                "parada para os dados solicitados");
+                            texto: "Não foi possível encontrar Dados para a sua Fitragem");
                       }
                     }
                   },
@@ -407,13 +455,6 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            //Padding(padding: EdgeInsets.only(top: 75)),
-          ],
-        )
       ],
     );
   }
