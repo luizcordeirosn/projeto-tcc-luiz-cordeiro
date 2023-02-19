@@ -341,7 +341,6 @@ class _DeadBallPageState extends State<DeadBallPage> {
                         },
                       )
                     : Container(),
-                const Divider(color: Colors.black,),
                 Builder(
                   builder: (context) {
                     if (isLoading) {

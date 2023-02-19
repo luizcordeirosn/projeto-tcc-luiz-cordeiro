@@ -135,7 +135,7 @@ class _ProfileState extends State<Profile> {
                         children: [
                           Icon(
                             Icons.person_pin_rounded,
-                            color: Colors.blueGrey,
+                            color: Colors.blueGrey[700],
                             size: 84,
                           ),
                         ],

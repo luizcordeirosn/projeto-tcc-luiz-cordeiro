@@ -362,13 +362,13 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
+            result['posicao']!='Goleiro' ? Text(
               'Gols: ${result['gols']} e Ass: ${result['assistencias']}',
               style: TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
-            ),
+            ): Container()
           ],
         ),
       ],

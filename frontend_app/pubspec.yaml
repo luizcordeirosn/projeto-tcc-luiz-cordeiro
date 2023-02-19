@@ -76,6 +76,8 @@ flutter:
    - images/icons-kick-ball.png
    - images/icons-corner.png
    - images/icons-soccer-equipment.png
+   - images/icons-tournament.png
+   - images/icons-board-strategy.png
    # Imagem de escudo de times
    - images/escudo-palmeiras.png
    - images/escudo-internacional.png
@@ -189,6 +191,19 @@ flutter:
    - images/stiven-mendoza.png
    - images/jonathan-calleri.png
    - images/deyverson.png
+   - images/fernando-miguel.png
+   - images/everson.png
+   - images/hugo-souza.png
+   - images/gabriel-cfc.png
+   - images/guga.png
+   - images/ayrton-lucas.png
+   - images/junior-alonso.png
+   - images/victor-custa.png
+   - images/marcelo-benevenuto.png
+   - images/romulo-otero.png
+   - images/tiquinho-soares.png
+   - images/alef-manga.png
+   - images/pedro-raul.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

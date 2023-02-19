@@ -3,6 +3,7 @@ import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/dead_ball_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/goal_report_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/match_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/option_soccer_player_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/penalty_page.dart';
@@ -134,7 +135,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
               children: [
                 AlternativeHomeButtonWidget(
                     buttonName: "Classificação do Campeonato",
-                    image: 'images/icons-score-board.png',
+                    image: 'images/icons-tournament.png',
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -143,11 +144,20 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                                 )))),
                 AlternativeHomeButtonWidget(
                     buttonName: "Confrontos da Rodada",
-                    image: 'images/icons-stadium.png',
+                    image: 'images/icons-score-board.png',
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => MatchPage(
+                                  usuarioLogado: widget.usuarioLogado,
+                                )))),
+                AlternativeHomeButtonWidget(
+                    buttonName: "Relatorio de Gols",
+                    image: 'images/icons-board-strategy.png',
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GoalReportPage(
                                   usuarioLogado: widget.usuarioLogado,
                                 )))),
                 AlternativeHomeButtonWidget(
