@@ -347,7 +347,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.blueGrey,
+                      backgroundColor: Colors.blueGrey[700],
                       shape: StadiumBorder(),
                     ),
                     onPressed: () {

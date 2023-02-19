@@ -286,6 +286,38 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                     }
                   },
                 ),
+                const Divider(
+                  color: Colors.black,
+                ),
+                Column(
+                  children: [
+                    OutlinedButton(
+                      child: Container(
+                        //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+                        child: Text(
+                          "VOLTAR PARA TELA INICIAL",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            //fontSize: 17,
+                          ),
+                        ),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.blueGrey[700],
+                        shape: StadiumBorder(),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UserPremiumDashboard(
+                                      usuarioLogado: widget.usuarioLogado,
+                                    )));
+                      },
+                    ),
+                  ],
+                )
               ],
             ),
           )
