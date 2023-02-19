@@ -170,8 +170,10 @@ class _ClassificationPageState extends State<ClassificationPage> {
                       child: ListView.separated(
                         padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
                         shrinkWrap: true,
-                        separatorBuilder: (context, index) =>
-                            const Divider(thickness: 1, height: 20),
+                        separatorBuilder: (context, index) => const Divider(
+                          thickness: 1,
+                          height: 20,
+                        ),
                         itemCount: classificacaoController.classificacao.length,
                         itemBuilder: (_, index) {
                           var result =
@@ -183,7 +185,11 @@ class _ClassificationPageState extends State<ClassificationPage> {
                   }
                 },
               ),
-              const Divider(color: Colors.black,),
+              const Divider(
+                thickness: 1,
+                height: 20,
+                color: Colors.black54,
+              ),
               Column(
                 children: [
                   OutlinedButton(

@@ -280,7 +280,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                           itemBuilder: (_, index) {
                             var result =
                                 relatorioGolController.relatoriosGol[index];
-                            return confrontosRodada(result);
+                            return relatoriosGolRodada(result);
                           },
                         ),
                       );
@@ -327,7 +327,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
         ]));
   }
 
-  Widget confrontosRodada(dynamic result) {
+  Widget relatoriosGolRodada(dynamic result) {
     return Column(
       children: [
         Container(
@@ -410,7 +410,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                           ),
                         ),
                         Text(
-                          'Gols Marcados: ',
+                          'GOLS MARCADOS: ',
                           style: TextStyle(
                             color: Colors.green[900],
                             fontWeight: FontWeight.bold,
@@ -471,9 +471,9 @@ class _GoalReportPageState extends State<GoalReportPage> {
                           ),
                         ),
                         Text(
-                          'Gols Sofridos: ',
+                          'GOLS SOFRIDOS: ',
                           style: TextStyle(
-                            color: Colors.red[700],
+                            color: Colors.red[900],
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -545,9 +545,9 @@ class _GoalReportPageState extends State<GoalReportPage> {
                           ),
                         ),
                         Text(
-                          'Gols Sofridos: ',
+                          'GOLS SOFRIDOS: ',
                           style: TextStyle(
-                            color: Colors.red[700],
+                            color: Colors.red[900],
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -606,7 +606,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Gols Marcados: ',
+                          'GOLS MARCADOS: ',
                           style: TextStyle(
                             color: Colors.green[900],
                             fontWeight: FontWeight.bold,

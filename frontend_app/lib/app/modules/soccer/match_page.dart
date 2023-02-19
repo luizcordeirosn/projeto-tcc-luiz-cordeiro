@@ -273,8 +273,10 @@ class _MatchPageState extends State<MatchPage> {
                         child: ListView.separated(
                           padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
                           shrinkWrap: true,
-                          separatorBuilder: (context, index) =>
-                              const Divider(thickness: 1, height: 20),
+                          separatorBuilder: (context, index) => const Divider(
+                            thickness: 1,
+                            height: 20,
+                          ),
                           itemCount: confrontoController.confrontos.length,
                           itemBuilder: (_, index) {
                             var result = confrontoController.confrontos[index];
@@ -286,7 +288,9 @@ class _MatchPageState extends State<MatchPage> {
                   },
                 ),
                 const Divider(
-                  color: Colors.black,
+                  thickness: 1,
+                  height: 20,
+                  color: Colors.black54,
                 ),
                 Column(
                   children: [

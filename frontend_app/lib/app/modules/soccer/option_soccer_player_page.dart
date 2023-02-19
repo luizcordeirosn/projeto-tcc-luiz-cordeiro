@@ -367,8 +367,10 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                           child: ListView.separated(
                             padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
                             shrinkWrap: true,
-                            separatorBuilder: (context, index) =>
-                                const Divider(thickness: 1, height: 20),
+                            separatorBuilder: (context, index) => const Divider(
+                              thickness: 1,
+                              height: 20,
+                            ),
                             itemCount: opcaoJogadorController
                                 .opcoesJogadorPosicao.length,
                             itemBuilder: (_, index) {
@@ -387,7 +389,9 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                   },
                 ),
                 const Divider(
-                  color: Colors.black,
+                  thickness: 1,
+                  height: 20,
+                  color: Colors.black54,
                 ),
                 Column(
                   children: [

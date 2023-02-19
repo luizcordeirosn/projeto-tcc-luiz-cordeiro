@@ -391,8 +391,10 @@ class _DeadBallPageState extends State<DeadBallPage> {
                           child: ListView.separated(
                             padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
                             shrinkWrap: true,
-                            separatorBuilder: (context, index) =>
-                                const Divider(thickness: 1, height: 20),
+                            separatorBuilder: (context, index) => const Divider(
+                              thickness: 1,
+                              height: 20,
+                            ),
                             itemCount:
                                 bolaParadaController.batedoresPenalti.length,
                             itemBuilder: (_, index) {
@@ -410,7 +412,11 @@ class _DeadBallPageState extends State<DeadBallPage> {
                     }
                   },
                 ),
-                const Divider(color: Colors.black,),
+                const Divider(
+                  thickness: 1,
+                  height: 20,
+                  color: Colors.black54,
+                ),
                 Column(
                   children: [
                     OutlinedButton(

@@ -273,8 +273,10 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                         child: ListView.separated(
                           padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
                           shrinkWrap: true,
-                          separatorBuilder: (context, index) =>
-                              const Divider(thickness: 1, height: 20),
+                          separatorBuilder: (context, index) => const Divider(
+                            thickness: 1,
+                            height: 20,
+                          ),
                           itemCount: jogadorFutebolController.jogadores.length,
                           itemBuilder: (_, index) {
                             var result =
@@ -287,7 +289,9 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                   },
                 ),
                 const Divider(
-                  color: Colors.black,
+                  thickness: 1,
+                  height: 20,
+                  color: Colors.black54,
                 ),
                 Column(
                   children: [
@@ -362,13 +366,15 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            result['posicao']!='Goleiro' ? Text(
-              'Gols: ${result['gols']} e Ass: ${result['assistencias']}',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-              ),
-            ): Container()
+            result['posicao'] != 'Goleiro'
+                ? Text(
+                    'Gols: ${result['gols']} e Ass: ${result['assistencias']}',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : Container()
           ],
         ),
       ],
