@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend_liga_master/app/modules/dashboard/functions_app_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
@@ -204,6 +205,15 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => FormationPage(
+                                  usuarioLogado: widget.usuarioLogado,
+                                )))),
+                AlternativeHomeButtonWidget(
+                    buttonName: "Sobre o App",
+                    image: 'images/icons-question.png',
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FunctionsAppPage(
                                   usuarioLogado: widget.usuarioLogado,
                                 )))),
               ],

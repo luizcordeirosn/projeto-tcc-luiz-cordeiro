@@ -36,7 +36,7 @@ class _ProfileState extends State<Profile> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Liga Master"),
+        title: const Text("Perfil"),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
@@ -46,7 +46,7 @@ class _ProfileState extends State<Profile> {
             children: [
               PopupMenuButton(
                 color: Colors.blue,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 onSelected: (value) {
                   popupItemValue = value.toString();
@@ -123,7 +123,7 @@ class _ProfileState extends State<Profile> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           Center(
             child: SingleChildScrollView(
@@ -141,13 +141,13 @@ class _ProfileState extends State<Profile> {
                         ],
                       )),
                   Container(
-                    padding: EdgeInsets.only(left: 7, right: 7),
+                    padding: const EdgeInsets.only(left: 7, right: 7),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "NOME: ",
                               style: TextStyle(
                                 color: Colors.black54,
@@ -158,7 +158,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             Text(
                               "${_nome} ",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
@@ -172,7 +172,7 @@ class _ProfileState extends State<Profile> {
                             onPressed: () {
                               _editarNome();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.edit,
                               size: 25,
                             ))
@@ -180,13 +180,13 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 7, right: 7),
+                    padding: const EdgeInsets.only(left: 7, right: 7),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "CPF: ",
                               style: TextStyle(
                                 color: Colors.black54,
@@ -197,7 +197,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             Text(
                               "${_cpf}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
@@ -211,7 +211,7 @@ class _ProfileState extends State<Profile> {
                             onPressed: () {
                               _editarCpf();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.edit,
                               size: 25,
                             ))
@@ -219,13 +219,13 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 7, right: 7),
+                    padding: const EdgeInsets.only(left: 7, right: 7),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "TELEFONE: ",
                               style: TextStyle(
                                 color: Colors.black54,
@@ -236,7 +236,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             Text(
                               "${_telefone}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
@@ -250,7 +250,7 @@ class _ProfileState extends State<Profile> {
                             onPressed: () {
                               _editarTelefone();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.edit,
                               size: 25,
                             ))
@@ -258,13 +258,13 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 7, right: 7),
+                    padding: const EdgeInsets.only(left: 7, right: 7),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            Text(
+                            const Text(
                               "EMAIL: ",
                               style: TextStyle(
                                 color: Colors.black54,
@@ -275,7 +275,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             Text(
                               "${_email}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
                                 fontStyle: FontStyle.italic,
@@ -289,7 +289,7 @@ class _ProfileState extends State<Profile> {
                             onPressed: () {
                               _editarEmail();
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.edit,
                               size: 25,
                             ))
@@ -297,10 +297,10 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(left: 7, right: 7, top: 7),
+                    padding: const EdgeInsets.only(left: 7, right: 7, top: 7),
                     child: Row(
                       children: [
-                        Text(
+                        const Text(
                           "PLANO ATIVO: ",
                           style: TextStyle(
                             color: Colors.black54,
@@ -311,7 +311,7 @@ class _ProfileState extends State<Profile> {
                         ),
                         Text(
                           "${_planoAtivo} ",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black54,
                             fontWeight: FontWeight.bold,
                             fontStyle: FontStyle.italic,
@@ -322,8 +322,8 @@ class _ProfileState extends State<Profile> {
                       ],
                     ),
                   ),
-                  Padding(padding: EdgeInsets.only(top: 45)),
-                  Text(
+                  const Padding(padding: EdgeInsets.only(top: 45)),
+                  const Text(
                     "Deseja alterar sua senha? ",
                     style: TextStyle(
                       color: Colors.black54,
@@ -331,13 +331,13 @@ class _ProfileState extends State<Profile> {
                       fontSize: 16,
                     ),
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(top: 3),
                   ),
                   OutlinedButton(
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                      child: Text(
+                      padding: const EdgeInsets.fromLTRB(40, 12, 40, 12),
+                      child: const Text(
                         "CLIQUE AQUI ",
                         style: TextStyle(
                           color: Colors.white,
@@ -348,7 +348,7 @@ class _ProfileState extends State<Profile> {
                     ),
                     style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.blueGrey[700],
-                      shape: StadiumBorder(),
+                      shape: const StadiumBorder(),
                     ),
                     onPressed: () {
                       _editarSenha();

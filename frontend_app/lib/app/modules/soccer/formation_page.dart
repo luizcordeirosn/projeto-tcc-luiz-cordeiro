@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
@@ -89,7 +87,7 @@ class _FormationPageState extends State<FormationPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Confrontos da Rodada"),
+          title: const Text("Escalação da Rodada"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -372,6 +370,15 @@ class _FormationPageState extends State<FormationPage> {
               children: [
                 SizedBox.square(
                   dimension: 75,
+                  child: Image.asset('${result['jogador']['time']['escudo']}'),
+                ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox.square(
+                  dimension: 75,
                   child: Image.asset('${result['jogador']['imagem']}'),
                 ),
               ],
@@ -381,14 +388,6 @@ class _FormationPageState extends State<FormationPage> {
               children: [
                 Text(
                   '${result['jogador']['nome']}',
-                  style: const TextStyle(
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Padding(padding: EdgeInsets.only(top: 7)),
-                Text(
-                  'Time: ${result['jogador']['time']['titulo']}',
                   style: const TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,

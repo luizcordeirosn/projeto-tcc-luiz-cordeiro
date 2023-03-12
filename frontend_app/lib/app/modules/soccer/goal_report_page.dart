@@ -85,7 +85,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Confrontos da Rodada"),
+          title: Text("Relatório de Gols"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
