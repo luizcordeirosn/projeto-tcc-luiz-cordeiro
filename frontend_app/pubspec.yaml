@@ -204,6 +204,7 @@ flutter:
    - images/tiquinho-soares.png
    - images/alef-manga.png
    - images/pedro-raul.png
+   - images/david-ricardo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

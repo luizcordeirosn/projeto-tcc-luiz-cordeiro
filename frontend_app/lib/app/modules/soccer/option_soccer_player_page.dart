@@ -376,7 +376,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                             itemBuilder: (_, index) {
                               var result = opcaoJogadorController
                                   .opcoesJogadorPosicao[index];
-                              return batedoresBolaParadaTime(result);
+                              return melhorOpcaoJogador(result);
                             },
                           ),
                         );
@@ -428,7 +428,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
         ]));
   }
 
-  Widget batedoresBolaParadaTime(dynamic result) {
+  Widget melhorOpcaoJogador(dynamic result) {
     return Stack(
       children: [
         Row(
