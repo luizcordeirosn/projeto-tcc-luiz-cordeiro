@@ -113,7 +113,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Melhors Opções"),
+          title: Text("Melhores Opções"),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,

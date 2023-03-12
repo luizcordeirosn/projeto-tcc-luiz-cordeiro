@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/dashboard/user_premium_dashboard_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
@@ -111,7 +109,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
-                      fontSize: 17,
+                      fontSize: 19,
                     ),
                   ),
                   const Padding(padding: EdgeInsets.only(top: 25)),
@@ -142,7 +140,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -172,7 +170,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -202,7 +200,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -232,7 +230,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -261,7 +259,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -291,7 +289,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -321,7 +319,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -351,7 +349,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 17,
+                                fontSize: 18,
                               ),
                               textAlign: TextAlign.justify,
                             ),
@@ -368,6 +366,7 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                               fontStyle: FontStyle.italic),
                           textAlign: TextAlign.justify,
                         ),
+                        const Text(" ")
                       ],
                     ),
                   ),
