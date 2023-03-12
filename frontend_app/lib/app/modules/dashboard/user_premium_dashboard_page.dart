@@ -218,9 +218,64 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                                 )))),
               ],
             ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                Text(
+                  "INFORMAÇÕES PARA CONTATO ",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                  //textAlign: TextAlign.start,
+                ),
+                Text(""),
+                Text(
+                  "Telefone: +5587996544511",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                  //textAlign: TextAlign.start,
+                ),
+                Text(
+                  "Email: luizcsneto@outlook.com",
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                  //textAlign: TextAlign.start,
+                ),
+                Text("")
+              ],
+            ),
           )
         ],
       ),
+      bottomNavigationBar: BottomAppBar(
+          child: Container(
+        decoration: const BoxDecoration(color: Colors.blueAccent),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Text(
+              "@copyright",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+            )
+          ],
+        ),
+      )),
     );
   }
 }
