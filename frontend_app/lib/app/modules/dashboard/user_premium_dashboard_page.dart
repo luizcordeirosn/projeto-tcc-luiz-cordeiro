@@ -3,6 +3,7 @@ import 'package:frontend_liga_master/app/modules/dashboard/profile_page.dart';
 import 'package:frontend_liga_master/app/modules/home/login_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/classification_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/dead_ball_page.dart';
+import 'package:frontend_liga_master/app/modules/soccer/formation_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/goal_report_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/match_page.dart';
 import 'package:frontend_liga_master/app/modules/soccer/option_soccer_player_page.dart';
@@ -194,6 +195,15 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => OptionSoccerPlayerPage(
+                                  usuarioLogado: widget.usuarioLogado,
+                                )))),
+                AlternativeHomeButtonWidget(
+                    buttonName: "Escalacao da Rodada",
+                    image: 'images/icons-formation.png',
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FormationPage(
                                   usuarioLogado: widget.usuarioLogado,
                                 )))),
               ],
