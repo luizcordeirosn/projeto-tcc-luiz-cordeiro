@@ -271,7 +271,8 @@ class _MatchPageState extends State<MatchPage> {
                     } else if (confrontoController.confrontos.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar Dados para a sua Fitragem");
+                              "Não foi possível encontrar Confrontos a partir dos parâmetros passados "
+                                "no filtro");
                     } else {
                       return Expanded(
                         child: ListView.separated(

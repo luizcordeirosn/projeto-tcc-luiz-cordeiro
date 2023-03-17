@@ -167,7 +167,8 @@ class _ClassificationPageState extends State<ClassificationPage> {
                   } else if (classificacaoController.classificacao.isEmpty) {
                     return const CustomExpandedWidget(
                         texto:
-                            "Não foi possível encontrar Dados para a sua Fitragem");
+                            "Não foi possível encontrar uma Classificação a partir do parâmetro passado "
+                              "no filtro");
                   } else {
                     return Expanded(
                       child: ListView.separated(

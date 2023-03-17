@@ -273,7 +273,8 @@ class _PenaltyPageState extends State<PenaltyPage> {
                         .penaltisCometidosAFavor.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar Dados para a sua Fitragem");
+                              "Não foi possível encontrar Estatísticas de Pênaltis a partir dos parâmetros "
+                                "passados no filtro");
                     } else {
                       return Expanded(
                         child: ListView.separated(

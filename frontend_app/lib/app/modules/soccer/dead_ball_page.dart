@@ -354,7 +354,8 @@ class _DeadBallPageState extends State<DeadBallPage> {
                     } else if (jogadorFutebolController.jogadores.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar Dados para a sua Fitragem");
+                              "Não foi possível encontrar Batedores de Bola Parada a partir dos parâmetros "
+                                "passados no filtro");
                     } else {
                       if (idTipoBolaParada == 1 &&
                           bolaParadaController.batedoresFalta.isNotEmpty) {

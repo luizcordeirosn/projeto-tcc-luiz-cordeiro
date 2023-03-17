@@ -271,7 +271,8 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                     } else if (jogadorFutebolController.jogadores.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar Dados para a sua Fitragem");
+                              "Não foi possível encontrar Jogadores a partir dos parâmetros passados "
+                                "no filtro");
                     } else {
                       return Expanded(
                         child: ListView.separated(

@@ -271,7 +271,8 @@ class _GoalReportPageState extends State<GoalReportPage> {
                     } else if (relatorioGolController.relatoriosGol.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar Dados para a sua Fitragem");
+                              "Não foi possível encontrar Relatório de Gols a partir dos parâmetros passados "
+                                "no filtro");
                     } else {
                       return Expanded(
                         child: ListView.separated(
