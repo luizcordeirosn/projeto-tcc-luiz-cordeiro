@@ -94,7 +94,6 @@ class _FormationPageState extends State<FormationPage> {
           ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
-          automaticallyImplyLeading: false,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

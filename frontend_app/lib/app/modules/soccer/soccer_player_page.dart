@@ -92,7 +92,6 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
           ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
-          automaticallyImplyLeading: false,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

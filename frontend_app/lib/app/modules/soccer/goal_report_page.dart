@@ -92,7 +92,6 @@ class _GoalReportPageState extends State<GoalReportPage> {
           ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
-          automaticallyImplyLeading: false,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

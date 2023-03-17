@@ -93,7 +93,6 @@ class _PenaltyPageState extends State<PenaltyPage> {
           ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
-          automaticallyImplyLeading: false,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

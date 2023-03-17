@@ -57,7 +57,6 @@ class _ClassificationPageState extends State<ClassificationPage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
-        automaticallyImplyLeading: false,
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

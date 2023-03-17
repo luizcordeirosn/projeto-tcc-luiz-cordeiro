@@ -92,7 +92,6 @@ class _MatchPageState extends State<MatchPage> {
           ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
-          automaticallyImplyLeading: false,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

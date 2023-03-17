@@ -43,7 +43,6 @@ class _ProfileState extends State<Profile> {
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
-        automaticallyImplyLeading: false,
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

@@ -120,7 +120,6 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
           ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
-          automaticallyImplyLeading: false,
           actions: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

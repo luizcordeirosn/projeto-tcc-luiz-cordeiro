@@ -25,7 +25,6 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
-        automaticallyImplyLeading: false,
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
