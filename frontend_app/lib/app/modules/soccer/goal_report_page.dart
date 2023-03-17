@@ -85,7 +85,11 @@ class _GoalReportPageState extends State<GoalReportPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Relatório de Gols"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -95,7 +99,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
               children: [
                 PopupMenuButton(
                   color: Colors.blue,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   onSelected: (value) {
                     popupItemValue = value.toString();
@@ -163,7 +167,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
         ),
         body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           SafeArea(
             child: Column(
@@ -190,13 +194,14 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         },
                       )
                     : Container(
-                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        padding:
+                            const EdgeInsets.only(top: 7, left: 3, right: 3),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nomeCompeticao,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -206,7 +211,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                             OutlinedButton(
                               child: Container(
                                 //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                child: Text(
+                                child: const Text(
                                   "LIMPAR FILTRO",
                                   style: TextStyle(
                                     color: Colors.white,
@@ -217,7 +222,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                               ),
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.red[700],
-                                shape: StadiumBorder(),
+                                shape: const StadiumBorder(),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -246,7 +251,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         onChanged: (value) {
                           relatorioGolController.getRelatoriosGol(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 750), () {
+                          Future.delayed(const Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
@@ -273,8 +278,11 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         child: ListView.separated(
                           padding: const EdgeInsets.fromLTRB(16, 16, 24, 80),
                           shrinkWrap: true,
-                          separatorBuilder: (context, index) =>
-                              const Divider(thickness: 1, height: 20, color: Colors.black54,),
+                          separatorBuilder: (context, index) => const Divider(
+                            thickness: 1,
+                            height: 20,
+                            color: Colors.black54,
+                          ),
                           itemCount:
                               relatorioGolController.relatoriosGol.length,
                           itemBuilder: (_, index) {
@@ -297,7 +305,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                     OutlinedButton(
                       child: Container(
                         //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: Text(
+                        child: const Text(
                           "VOLTAR PARA TELA INICIAL",
                           style: TextStyle(
                             color: Colors.white,
@@ -308,7 +316,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                       ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
-                        shape: StadiumBorder(),
+                        shape: const StadiumBorder(),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -344,12 +352,12 @@ class _GoalReportPageState extends State<GoalReportPage> {
                   ),
                   Text(
                     '${result['confronto']['timeMandante']['titulo']}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     '(MANDANTE)',
                     style: TextStyle(
                       color: Colors.black87,
@@ -358,7 +366,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                   ),
                 ],
               ),
-              Text(
+              const Text(
                 ' X ',
                 style: TextStyle(
                   color: Colors.black87,
@@ -375,12 +383,12 @@ class _GoalReportPageState extends State<GoalReportPage> {
                   ),
                   Text(
                     '${result['confronto']['timeVisitante']['titulo']}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
+                  const Text(
                     '(VISITANTE)',
                     style: TextStyle(
                       color: Colors.black87,
@@ -402,7 +410,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -416,7 +424,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -425,35 +433,35 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         ),
                         Text(
                           'Bola Parada: ${result['golsMarcadosBPM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Pênalti: ${result['golsMarcadosPM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Meio: ${result['golsMarcadosMM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Direito: ${result['golsMarcadosDM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Esquerdo: ${result['golsMarcadosEM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
@@ -463,7 +471,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -477,7 +485,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -486,40 +494,40 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         ),
                         Text(
                           'Bola Parada: ${result['golsSofridosBPM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Pênalti: ${result['golsSofridosPM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Meio: ${result['golsSofridosMM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Direito: ${result['golsSofridosMM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Esquerdo: ${result['golsSofridosEM']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -537,7 +545,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -551,7 +559,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -560,40 +568,40 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         ),
                         Text(
                           'Bola Parada: ${result['golsSofridosBPV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Pênalti: ${result['golsSofridosPV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Meio: ${result['golsSofridosMV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Direito: ${result['golsSofridosDV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Esquerdo: ${result['golsSofridosEV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -612,7 +620,7 @@ class _GoalReportPageState extends State<GoalReportPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,
@@ -621,40 +629,40 @@ class _GoalReportPageState extends State<GoalReportPage> {
                         ),
                         Text(
                           'Bola Parada: ${result['golsMarcadosBPV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Pênalti: ${result['golsMarcadosPV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Meio: ${result['golsMarcadosMV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Direito: ${result['golsMarcadosDV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           'Lado Esquerdo: ${result['golsMarcadosEV']}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Text(
+                        const Text(
                           ' ',
                           style: TextStyle(
                             color: Colors.black87,

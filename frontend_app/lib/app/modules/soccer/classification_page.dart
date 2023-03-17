@@ -50,7 +50,11 @@ class _ClassificationPageState extends State<ClassificationPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Classificação do Campeonato"),
+        title: Image.asset(
+          "images/logo-liga-master.png",
+          height: 175,
+          width: 175,
+        ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
@@ -60,7 +64,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
             children: [
               PopupMenuButton(
                 color: Colors.blue,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 onSelected: (value) {
                   popupItemValue = value.toString();
@@ -128,7 +132,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
       ),
       body: Stack(children: [
         Container(
-          decoration: BoxDecoration(color: Colors.black26),
+          decoration: const BoxDecoration(color: Colors.black26),
         ),
         SafeArea(
           child: Column(
@@ -144,7 +148,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
                     .toList(),
                 onChanged: (value) {
                   classificacaoController.getClassificacao(value!);
-                  Future.delayed(Duration(milliseconds: 750), () {
+                  Future.delayed(const Duration(milliseconds: 750), () {
                     _getCompeticao();
                   });
                 },
@@ -195,7 +199,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
                   OutlinedButton(
                     child: Container(
                       //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                      child: Text(
+                      child: const Text(
                         "VOLTAR PARA TELA INICIAL",
                         style: TextStyle(
                           color: Colors.white,
@@ -206,7 +210,7 @@ class _ClassificationPageState extends State<ClassificationPage> {
                     ),
                     style: OutlinedButton.styleFrom(
                       backgroundColor: Colors.blueGrey[700],
-                      shape: StadiumBorder(),
+                      shape: const StadiumBorder(),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -239,54 +243,54 @@ class _ClassificationPageState extends State<ClassificationPage> {
             ),
           ],
         ),
-        Padding(padding: EdgeInsets.only(left: 20)),
+        const Padding(padding: EdgeInsets.only(left: 20)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Posição: ${result['posicao']}º',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Time: ${result['time']['sigla']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Pontos: ${result['pontos']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
-        Padding(padding: EdgeInsets.only(right: 20)),
+        const Padding(padding: EdgeInsets.only(right: 20)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'V: ${result['numVitorias']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'SG: ${result['saldoGol']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Recentes: ${result['resultadosRecentes']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),

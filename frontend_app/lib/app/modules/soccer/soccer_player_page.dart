@@ -85,7 +85,11 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Info Jogadores"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -95,7 +99,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
               children: [
                 PopupMenuButton(
                   color: Colors.blue,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   onSelected: (value) {
                     popupItemValue = value.toString();
@@ -163,7 +167,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
         ),
         body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           SafeArea(
             child: Column(
@@ -190,13 +194,14 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                         },
                       )
                     : Container(
-                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        padding:
+                            const EdgeInsets.only(top: 7, left: 3, right: 3),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nomeCompeticao,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -206,7 +211,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                             OutlinedButton(
                               child: Container(
                                 //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                child: Text(
+                                child: const Text(
                                   "LIMPAR FILTRO",
                                   style: TextStyle(
                                     color: Colors.white,
@@ -217,7 +222,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                               ),
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.red[700],
-                                shape: StadiumBorder(),
+                                shape: const StadiumBorder(),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -246,7 +251,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                         onChanged: (value) {
                           jogadorFutebolController.getJogadores(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 750), () {
+                          Future.delayed(const Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
@@ -298,7 +303,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                     OutlinedButton(
                       child: Container(
                         //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: Text(
+                        child: const Text(
                           "VOLTAR PARA TELA INICIAL",
                           style: TextStyle(
                             color: Colors.white,
@@ -309,7 +314,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
                       ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
-                        shape: StadiumBorder(),
+                        shape: const StadiumBorder(),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -347,21 +352,21 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
           children: [
             Text(
               'Nome: ${result['nome']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Nascimento: ${result['dataNascimento']}, ${result['nacionalidade']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Posicao: ${result['posicao']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
@@ -369,7 +374,7 @@ class _SoccerPlayerPageState extends State<SoccerPlayerPage> {
             result['posicao'] != 'Goleiro'
                 ? Text(
                     'Gols: ${result['gols']} e Ass: ${result['assistencias']}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),

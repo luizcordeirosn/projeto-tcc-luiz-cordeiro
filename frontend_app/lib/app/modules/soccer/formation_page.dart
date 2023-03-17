@@ -87,7 +87,11 @@ class _FormationPageState extends State<FormationPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Escalação da Rodada"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -272,10 +276,9 @@ class _FormationPageState extends State<FormationPage> {
                     ? Text(
                         "FORMAÇÂO: ${escalacaoController.escalacao[0]['formacao']}",
                         style: const TextStyle(
-                          color: Colors.black87,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17
-                        ),
+                            color: Colors.black87,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17),
                       )
                     : Container(),
                 Builder(
@@ -405,7 +408,7 @@ class _FormationPageState extends State<FormationPage> {
                 result['jogador']['posicao'] != 'Goleiro'
                     ? Text(
                         'Gols: ${result['jogador']['gols']} e Ass: ${result['jogador']['assistencias']}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black87,
                           fontWeight: FontWeight.bold,
                         ),

@@ -18,7 +18,11 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sobre o App"),
+        title: Image.asset(
+          "images/logo-liga-master.png",
+          height: 175,
+          width: 175,
+        ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
@@ -191,7 +195,8 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                         Row(
                           children: [
                             const Image(
-                              image: AssetImage("images/icons-board-strategy.png"),
+                              image:
+                                  AssetImage("images/icons-board-strategy.png"),
                               height: 35,
                               width: 35,
                             ),
@@ -221,7 +226,8 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                         Row(
                           children: [
                             const Image(
-                              image: AssetImage("images/icons-football-player.png"),
+                              image: AssetImage(
+                                  "images/icons-football-player.png"),
                               height: 35,
                               width: 35,
                             ),
@@ -310,7 +316,8 @@ class _FunctionsAppPageState extends State<FunctionsAppPage> {
                         Row(
                           children: [
                             const Image(
-                              image: AssetImage("images/icons-soccer-equipment.png"),
+                              image: AssetImage(
+                                  "images/icons-soccer-equipment.png"),
                               height: 35,
                               width: 35,
                             ),

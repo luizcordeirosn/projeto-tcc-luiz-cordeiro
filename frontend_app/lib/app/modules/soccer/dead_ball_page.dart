@@ -116,7 +116,11 @@ class _DeadBallPageState extends State<DeadBallPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Bola Parada"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -126,7 +130,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
               children: [
                 PopupMenuButton(
                   color: Colors.blue,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   onSelected: (value) {
                     popupItemValue = value.toString();
@@ -194,7 +198,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
         ),
         body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           SafeArea(
             child: Column(
@@ -222,13 +226,14 @@ class _DeadBallPageState extends State<DeadBallPage> {
                         },
                       )
                     : Container(
-                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        padding:
+                            const EdgeInsets.only(top: 7, left: 3, right: 3),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nomeCompeticao,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -238,7 +243,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                             OutlinedButton(
                               child: Container(
                                 //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                child: Text(
+                                child: const Text(
                                   "LIMPAR FILTRO",
                                   style: TextStyle(
                                     color: Colors.white,
@@ -249,7 +254,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                               ),
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.red[700],
-                                shape: StadiumBorder(),
+                                shape: const StadiumBorder(),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -287,7 +292,8 @@ class _DeadBallPageState extends State<DeadBallPage> {
                               bolaParadaController.getBatedoresPenalti(
                                   value!, idCompeticao);
                             }
-                            Future.delayed(Duration(milliseconds: 750), () {
+                            Future.delayed(const Duration(milliseconds: 750),
+                                () {
                               _getCompeticao();
                             });
 
@@ -328,7 +334,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                                 idTime, idCompeticao);
                           }
                           idTipoBolaParada = value!;
-                          Future.delayed(Duration(milliseconds: 750), () {
+                          Future.delayed(const Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
@@ -422,7 +428,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                     OutlinedButton(
                       child: Container(
                         //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: Text(
+                        child: const Text(
                           "VOLTAR PARA TELA INICIAL",
                           style: TextStyle(
                             color: Colors.white,
@@ -433,7 +439,7 @@ class _DeadBallPageState extends State<DeadBallPage> {
                       ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
-                        shape: StadiumBorder(),
+                        shape: const StadiumBorder(),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -471,21 +477,21 @@ class _DeadBallPageState extends State<DeadBallPage> {
           children: [
             Text(
               'Nome: ${result['jogador']['nome']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Posicao: ${result['jogador']['posicao']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'Gols: ${result['jogador']['gols']} e Ass: ${result['jogador']['assistencias']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),

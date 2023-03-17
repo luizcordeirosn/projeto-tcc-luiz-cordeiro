@@ -113,7 +113,11 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Melhores Opções"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -123,7 +127,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
               children: [
                 PopupMenuButton(
                   color: Colors.blue,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   onSelected: (value) {
                     popupItemValue = value.toString();
@@ -191,7 +195,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
         ),
         body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           SafeArea(
             child: Column(
@@ -219,13 +223,14 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                         },
                       )
                     : Container(
-                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        padding:
+                            const EdgeInsets.only(top: 7, left: 3, right: 3),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nomeCompeticao,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -235,7 +240,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                             OutlinedButton(
                               child: Container(
                                 //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                child: Text(
+                                child: const Text(
                                   "LIMPAR FILTRO",
                                   style: TextStyle(
                                     color: Colors.white,
@@ -246,7 +251,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                               ),
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.red[700],
-                                shape: StadiumBorder(),
+                                shape: const StadiumBorder(),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -291,7 +296,8 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                               opcaoJogadorController.getOpcoesJogadorPosicao(
                                   value!, idCompeticao, "Atacante");
                             }
-                            Future.delayed(Duration(milliseconds: 750), () {
+                            Future.delayed(const Duration(milliseconds: 750),
+                                () {
                               _getCompeticao();
                             });
 
@@ -338,7 +344,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                                 idRodada, idCompeticao, "Atacante");
                           }
                           idTipoPosicao = value!;
-                          Future.delayed(Duration(milliseconds: 750), () {
+                          Future.delayed(const Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
@@ -398,7 +404,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                     OutlinedButton(
                       child: Container(
                         //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: Text(
+                        child: const Text(
                           "VOLTAR PARA TELA INICIAL",
                           style: TextStyle(
                             color: Colors.white,
@@ -409,7 +415,7 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                       ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
-                        shape: StadiumBorder(),
+                        shape: const StadiumBorder(),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -457,22 +463,22 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
               children: [
                 Text(
                   '${result['jogador']['nome']}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(top: 7)),
+                const Padding(padding: EdgeInsets.only(top: 7)),
                 Text(
                   '${result['posicao']}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       'Chance de pontuar: ',
                       style: TextStyle(
                         color: Colors.black87,

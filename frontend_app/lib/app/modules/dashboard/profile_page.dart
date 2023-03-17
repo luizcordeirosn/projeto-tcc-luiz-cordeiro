@@ -36,7 +36,11 @@ class _ProfileState extends State<Profile> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Perfil"),
+        title: Image.asset(
+          "images/logo-liga-master.png",
+          height: 175,
+          width: 175,
+        ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
@@ -129,17 +133,16 @@ class _ProfileState extends State<Profile> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.person_pin_rounded,
-                            color: Colors.blueGrey[700],
-                            size: 84,
-                          ),
-                        ],
-                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.person_pin_rounded,
+                        color: Colors.blueGrey[700],
+                        size: 84,
+                      ),
+                    ],
+                  ),
                   Container(
                     padding: const EdgeInsets.only(left: 7, right: 7),
                     child: Row(

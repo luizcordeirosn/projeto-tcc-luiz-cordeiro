@@ -85,7 +85,11 @@ class _MatchPageState extends State<MatchPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Confrontos da Rodada"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -95,7 +99,7 @@ class _MatchPageState extends State<MatchPage> {
               children: [
                 PopupMenuButton(
                   color: Colors.blue,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   onSelected: (value) {
                     popupItemValue = value.toString();
@@ -163,7 +167,7 @@ class _MatchPageState extends State<MatchPage> {
         ),
         body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           SafeArea(
             child: Column(
@@ -190,13 +194,14 @@ class _MatchPageState extends State<MatchPage> {
                         },
                       )
                     : Container(
-                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        padding:
+                            const EdgeInsets.only(top: 7, left: 3, right: 3),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nomeCompeticao,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -206,7 +211,7 @@ class _MatchPageState extends State<MatchPage> {
                             OutlinedButton(
                               child: Container(
                                 //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                child: Text(
+                                child: const Text(
                                   "LIMPAR FILTRO",
                                   style: TextStyle(
                                     color: Colors.white,
@@ -217,7 +222,7 @@ class _MatchPageState extends State<MatchPage> {
                               ),
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.red[700],
-                                shape: StadiumBorder(),
+                                shape: const StadiumBorder(),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -246,7 +251,7 @@ class _MatchPageState extends State<MatchPage> {
                         onChanged: (value) {
                           confrontoController.getConfrontos(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 750), () {
+                          Future.delayed(const Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
@@ -297,7 +302,7 @@ class _MatchPageState extends State<MatchPage> {
                     OutlinedButton(
                       child: Container(
                         //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: Text(
+                        child: const Text(
                           "VOLTAR PARA TELA INICIAL",
                           style: TextStyle(
                             color: Colors.white,
@@ -308,7 +313,7 @@ class _MatchPageState extends State<MatchPage> {
                       ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
-                        shape: StadiumBorder(),
+                        shape: const StadiumBorder(),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -333,12 +338,12 @@ class _MatchPageState extends State<MatchPage> {
       children: [
         Text(
           'Data e Horário: ${result['dataHora']}',
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black87,
             fontWeight: FontWeight.bold,
           ),
         ),
-        Padding(padding: EdgeInsets.only(bottom: 5)),
+        const Padding(padding: EdgeInsets.only(bottom: 5)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -346,23 +351,23 @@ class _MatchPageState extends State<MatchPage> {
               dimension: 75,
               child: Image.asset('${result['timeMandante']['escudo']}'),
             ),
-            Padding(padding: EdgeInsets.only(left: 20)),
+            const Padding(padding: EdgeInsets.only(left: 20)),
             result['resultado'] != null
                 ? Text(
                     '${result['resultado']}',
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
                         fontSize: 19),
                   )
-                : Text(
+                : const Text(
                     'x',
                     style: TextStyle(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
                         fontSize: 19),
                   ),
-            Padding(padding: EdgeInsets.only(right: 20)),
+            const Padding(padding: EdgeInsets.only(right: 20)),
             SizedBox.square(
               dimension: 75,
               child: Image.asset('${result['timeVisitante']['escudo']}'),

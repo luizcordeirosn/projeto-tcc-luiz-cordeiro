@@ -17,7 +17,11 @@ class _UserDashboardState extends State<UserDashboard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Liga Master"),
+        title: Image.asset(
+          "images/logo-liga-master.png",
+          height: 175,
+          width: 175,
+        ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,

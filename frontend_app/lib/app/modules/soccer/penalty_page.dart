@@ -86,7 +86,11 @@ class _PenaltyPageState extends State<PenaltyPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Estatísticas de Pênalti"),
+          title: Image.asset(
+            "images/logo-liga-master.png",
+            height: 175,
+            width: 175,
+          ),
           centerTitle: true,
           backgroundColor: Colors.blueAccent,
           automaticallyImplyLeading: false,
@@ -96,7 +100,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
               children: [
                 PopupMenuButton(
                   color: Colors.blue,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15.0))),
                   onSelected: (value) {
                     popupItemValue = value.toString();
@@ -164,7 +168,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
         ),
         body: Stack(children: [
           Container(
-            decoration: BoxDecoration(color: Colors.black26),
+            decoration: const BoxDecoration(color: Colors.black26),
           ),
           SafeArea(
             child: Column(
@@ -191,13 +195,14 @@ class _PenaltyPageState extends State<PenaltyPage> {
                         },
                       )
                     : Container(
-                        padding: EdgeInsets.only(top: 7, left: 3, right: 3),
+                        padding:
+                            const EdgeInsets.only(top: 7, left: 3, right: 3),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               nomeCompeticao,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 15,
@@ -207,7 +212,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                             OutlinedButton(
                               child: Container(
                                 //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                                child: Text(
+                                child: const Text(
                                   "LIMPAR FILTRO",
                                   style: TextStyle(
                                     color: Colors.white,
@@ -218,7 +223,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                               ),
                               style: OutlinedButton.styleFrom(
                                 backgroundColor: Colors.red[700],
-                                shape: StadiumBorder(),
+                                shape: const StadiumBorder(),
                               ),
                               onPressed: () {
                                 Navigator.push(
@@ -247,7 +252,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                         onChanged: (value) {
                           penaltiController.getPenaltisCometidosAFavor(
                               value!, idCompeticao);
-                          Future.delayed(Duration(milliseconds: 750), () {
+                          Future.delayed(const Duration(milliseconds: 750), () {
                             _getCompeticao();
                           });
                         },
@@ -301,7 +306,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                     OutlinedButton(
                       child: Container(
                         //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: Text(
+                        child: const Text(
                           "VOLTAR PARA TELA INICIAL",
                           style: TextStyle(
                             color: Colors.white,
@@ -312,7 +317,7 @@ class _PenaltyPageState extends State<PenaltyPage> {
                       ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
-                        shape: StadiumBorder(),
+                        shape: const StadiumBorder(),
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -344,13 +349,13 @@ class _PenaltyPageState extends State<PenaltyPage> {
             ),
           ],
         ),
-        Padding(padding: EdgeInsets.only(left: 20)),
+        const Padding(padding: EdgeInsets.only(left: 20)),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Time: ${result['time']['sigla']}',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontWeight: FontWeight.bold,
               ),
@@ -358,14 +363,14 @@ class _PenaltyPageState extends State<PenaltyPage> {
             result['cometido']
                 ? Text(
                     'Penaltis cometidos: ${result['numPenaltis']}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),
                   )
                 : Text(
                     'Penaltis a favor: ${result['numPenaltis']}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
                     ),

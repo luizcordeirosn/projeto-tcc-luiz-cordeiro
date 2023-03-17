@@ -26,7 +26,11 @@ class _RegistroStatefulState extends State<RegistroStateful> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Liga Master"),
+        title: Image.asset(
+          "images/logo-liga-master.png",
+          height: 175,
+          width: 175,
+        ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
@@ -34,7 +38,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("images/stadium2.jpg"),
                   fit: BoxFit.cover,
@@ -47,7 +51,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(children: [
-                    Text(
+                    const Text(
                       "REGISTRE-SE",
                       style: TextStyle(
                         color: Colors.black,
@@ -55,7 +59,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         fontSize: 30,
                       ),
                     ),
-                    Text(
+                    const Text(
                       "Crie sua conta. É de graça.",
                       style: TextStyle(
                         color: Colors.black54,
@@ -65,7 +69,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                       textAlign: TextAlign.center,
                     ),
                   ]),
-                  Padding(padding: EdgeInsets.only(top: 15)),
+                  const Padding(padding: EdgeInsets.only(top: 15)),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -74,7 +78,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         height: 40,
                         child: TextFormField(
                           controller: nomeController,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
                           decoration: InputDecoration(
@@ -85,22 +89,22 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                               borderSide: BorderSide.none,
                             ),
                             hintText: "Nome *",
-                            hintStyle: TextStyle(color: Colors.black54),
-                            prefixIcon: Icon(
+                            hintStyle: const TextStyle(color: Colors.black54),
+                            prefixIcon: const Icon(
                               Icons.person,
                               color: Colors.black54,
                             ),
-                            contentPadding: EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(10),
                           ),
                         ),
                       ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
+                      const Padding(padding: EdgeInsets.only(top: 10)),
                       SizedBox(
                         width: 230,
                         height: 40,
                         child: TextFormField(
                           controller: cpfController,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
                           decoration: InputDecoration(
@@ -111,22 +115,22 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                               borderSide: BorderSide.none,
                             ),
                             hintText: "CPF *",
-                            hintStyle: TextStyle(color: Colors.black54),
-                            prefixIcon: Icon(
+                            hintStyle: const TextStyle(color: Colors.black54),
+                            prefixIcon: const Icon(
                               Icons.info,
                               color: Colors.black54,
                             ),
-                            contentPadding: EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(10),
                           ),
                         ),
                       ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
+                      const Padding(padding: EdgeInsets.only(top: 10)),
                       SizedBox(
                         width: 230,
                         height: 40,
                         child: TextFormField(
                           controller: telefoneController,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
                           decoration: InputDecoration(
@@ -137,16 +141,16 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                               borderSide: BorderSide.none,
                             ),
                             hintText: "Telefone",
-                            hintStyle: TextStyle(color: Colors.black54),
-                            prefixIcon: Icon(
+                            hintStyle: const TextStyle(color: Colors.black54),
+                            prefixIcon: const Icon(
                               Icons.phone,
                               color: Colors.black54,
                             ),
-                            contentPadding: EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(10),
                           ),
                         ),
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 10),
                       ),
                       SizedBox(
@@ -154,7 +158,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         height: 40,
                         child: TextFormField(
                           controller: emailController,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
                           decoration: InputDecoration(
@@ -165,16 +169,16 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                               borderSide: BorderSide.none,
                             ),
                             hintText: "Email *",
-                            hintStyle: TextStyle(color: Colors.black54),
-                            prefixIcon: Icon(
+                            hintStyle: const TextStyle(color: Colors.black54),
+                            prefixIcon: const Icon(
                               Icons.email,
                               color: Colors.black54,
                             ),
-                            contentPadding: EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(10),
                           ),
                         ),
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 10),
                       ),
                       SizedBox(
@@ -182,7 +186,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         height: 40,
                         child: TextFormField(
                           controller: senhaController,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black54),
                           decoration: InputDecoration(
@@ -193,22 +197,22 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                               borderSide: BorderSide.none,
                             ),
                             hintText: "Senha *",
-                            hintStyle: TextStyle(color: Colors.black54),
-                            prefixIcon: Icon(
+                            hintStyle: const TextStyle(color: Colors.black54),
+                            prefixIcon: const Icon(
                               Icons.lock,
                               color: Colors.black54,
                             ),
-                            contentPadding: EdgeInsets.all(10),
+                            contentPadding: const EdgeInsets.all(10),
                           ),
                         ),
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 20),
                       ),
                       OutlinedButton(
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                          child: Text(
+                          padding: const EdgeInsets.fromLTRB(40, 12, 40, 12),
+                          child: const Text(
                             "REGISTRAR",
                             style: TextStyle(
                               color: Colors.white,
@@ -219,7 +223,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         ),
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.lime[700],
-                          shape: StadiumBorder(),
+                          shape: const StadiumBorder(),
                         ),
                         onPressed: () {
                           verificarDadosCadastro();
@@ -227,10 +231,10 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                       ),
                     ],
                   ),
-                  Padding(padding: EdgeInsets.only(top: 80)),
+                  const Padding(padding: EdgeInsets.only(top: 80)),
                   Column(
                     children: [
-                      Text(
+                      const Text(
                         "Já tem uma conta? ",
                         style: TextStyle(
                           color: Colors.black,
@@ -238,13 +242,13 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                           fontSize: 16,
                         ),
                       ),
-                      Padding(
+                      const Padding(
                         padding: EdgeInsets.only(top: 3),
                       ),
                       OutlinedButton(
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(40, 12, 40, 12),
-                          child: Text(
+                          padding: const EdgeInsets.fromLTRB(40, 12, 40, 12),
+                          child: const Text(
                             "CLIQUE PARA ENTRAR",
                             style: TextStyle(
                               color: Colors.white,
@@ -255,7 +259,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
                         ),
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.lime[700],
-                          shape: StadiumBorder(),
+                          shape: const StadiumBorder(),
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -274,18 +278,18 @@ class _RegistroStatefulState extends State<RegistroStateful> {
       ),
       bottomNavigationBar: BottomAppBar(
           child: Container(
-        decoration: BoxDecoration(color: Colors.blueAccent),
+        decoration: const BoxDecoration(color: Colors.blueAccent),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "@copyright",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 15),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(12),
             )
           ],
@@ -310,7 +314,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
 
       registroController.registro(usuarioCadastro);
 
-      Future.delayed(Duration(milliseconds: 1000), () {
+      Future.delayed(const Duration(milliseconds: 1000), () {
         Alert(
                 context: context,
                 title: "PARABÉNS",
