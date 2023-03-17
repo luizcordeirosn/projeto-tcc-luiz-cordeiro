@@ -21,8 +21,9 @@ import com.app.backend_app.Futebol.Model.Classificacao;
 @Repository
 public class ClassificacaoRepositoryImpl implements ClassificacaoRepository{
     
-    private static String INSERT = " insert into tb_classificacao (id, competicao, posicao, time, pontos, numjogos, "
-            + " numvitorias, numempates, numderrotas, golspro, golscontra, saldogol, resultadosrecentes) "
+    private static String INSERT = " insert into tb_classificacao (id, competicao, posicao, time, pontos, "
+            + " numjogos, numvitorias, numempates, numderrotas, golspro, golscontra, saldogol, "
+            + " resultadosrecentes) "
             + " values (nextval('tb_classificacao_id_seq'),?,?,?,?,?,?,?,?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_classificacao where id = ?";
     private static String SELECT_ALL_COMPETICAO = " select * from tb_classificacao where competicao = ?"

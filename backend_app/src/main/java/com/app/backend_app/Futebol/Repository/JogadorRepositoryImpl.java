@@ -24,7 +24,7 @@ public class JogadorRepositoryImpl implements JogadorRepository{
             + " altura, posicao, gols, assistencias, imagem, time) "
             + " values (nextval('tb_jogador_id_seq'),?,?,?,?,?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_jogador where id = ?";
-    private static String SELECT_ALL_RODADA_COMPETICAO = " select tj.* from tb_jogador tj"
+    private static String SELECT_ALL_TIME_COMPETICAO = " select tj.* from tb_jogador tj"
             + " inner join tb_time tt on tt.id = tj.time"
             + " inner join tb_classificacao tc on tc.time = tt.id"
             + " where tj.time = ? and tc.competicao = ?"
@@ -70,7 +70,7 @@ public class JogadorRepositoryImpl implements JogadorRepository{
 
     public List<Jogador> obterTodosJogadoresPorTimeCompeticao(Integer time, Integer competicao) {
         
-        return jdbcTemplate.query(SELECT_ALL_RODADA_COMPETICAO, new RowMapper<Jogador>() {
+        return jdbcTemplate.query(SELECT_ALL_TIME_COMPETICAO, new RowMapper<Jogador>() {
             @Override
             public Jogador mapRow(ResultSet rs, int rownumber) throws SQLException {
 

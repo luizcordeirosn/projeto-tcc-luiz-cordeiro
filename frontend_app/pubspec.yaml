@@ -68,6 +68,7 @@ flutter:
   assets:
    - images/stadium.jpg
    - images/stadium2.jpg
+   - images/logo-liga-master.png
    # Ícones
    - images/icons-score-board.png
    - images/icons-stadium.png
