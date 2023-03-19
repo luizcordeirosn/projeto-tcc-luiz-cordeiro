@@ -427,17 +427,6 @@ class _DeadBallPageState extends State<DeadBallPage> {
                 Column(
                   children: [
                     OutlinedButton(
-                      child: Container(
-                        //padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-                        child: const Text(
-                          "VOLTAR PARA TELA INICIAL",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            //fontSize: 17,
-                          ),
-                        ),
-                      ),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blueGrey[700],
                         shape: const StadiumBorder(),
@@ -450,6 +439,14 @@ class _DeadBallPageState extends State<DeadBallPage> {
                                       usuarioLogado: widget.usuarioLogado,
                                     )));
                       },
+                      child: const Text(
+                        "VOLTAR PARA TELA INICIAL",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          //fontSize: 17,
+                        ),
+                      ),
                     ),
                   ],
                 )
