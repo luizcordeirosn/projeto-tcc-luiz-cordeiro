@@ -268,7 +268,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text(
-              "@copyright",
+              "@ligamaster",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

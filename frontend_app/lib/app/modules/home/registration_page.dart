@@ -283,7 +283,7 @@ class _RegistroStatefulState extends State<RegistroStateful> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "@copyright",
+              "@ligamaster",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

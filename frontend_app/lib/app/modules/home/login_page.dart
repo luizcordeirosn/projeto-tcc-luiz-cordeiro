@@ -238,7 +238,7 @@ class _LoginStatefulState extends State<LoginStateful> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "@copyright",
+              "@ligamaster",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

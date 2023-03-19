@@ -362,6 +362,25 @@ class _ProfileState extends State<Profile> {
           )
         ],
       ),
+      bottomNavigationBar: BottomAppBar(
+          child: Container(
+        decoration: const BoxDecoration(color: Colors.blueAccent),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "@ligamaster",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(12),
+            )
+          ],
+        ),
+      )),
     );
   }
 

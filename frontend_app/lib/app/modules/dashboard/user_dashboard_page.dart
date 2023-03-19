@@ -222,7 +222,7 @@ class _UserDashboardState extends State<UserDashboard> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "@copyright",
+              "@ligamaster",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

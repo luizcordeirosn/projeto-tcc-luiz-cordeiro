@@ -413,7 +413,8 @@ class _DeadBallPageState extends State<DeadBallPage> {
                       } else {
                         return const CustomExpandedWidget(
                             texto:
-                                "Não foi possível encontrar Dados para a sua Fitragem");
+                                "Não foi possível encontrar Batedores de Bola Parada a partir dos parâmetros "
+                                  "passados no filtro");
                       }
                     }
                   },

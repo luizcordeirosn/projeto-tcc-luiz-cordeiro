@@ -364,8 +364,8 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                     } else if (opcaoJogadorController.opcoesJogador.isEmpty) {
                       return const CustomExpandedWidget(
                           texto:
-                              "Não foi possível encontrar Boa Opções de Jogadores a partir dos parâmetros "
-                                "passados no filtro");
+                              "Não foi possível encontrar as Melhores Opções de Jogadores a partir dos "
+                                "parâmetros passados no filtro");
                     } else {
                       if (opcaoJogadorController
                           .opcoesJogadorPosicao.isNotEmpty) {
@@ -389,7 +389,8 @@ class _OptionSoccerPlayerPageState extends State<OptionSoccerPlayerPage> {
                       } else {
                         return const CustomExpandedWidget(
                             texto:
-                                "Não foi possível encontrar Dados para a sua Fitragem");
+                                "Não foi possível encontrar as Melhores Opções de Jogadores a partir dos "
+                                  "parâmetros passados no filtro");
                       }
                     }
                   },
