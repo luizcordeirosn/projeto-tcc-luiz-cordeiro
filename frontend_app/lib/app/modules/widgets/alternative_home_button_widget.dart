@@ -57,7 +57,7 @@ class AlternativeHomeButtonWidget extends StatelessWidget {
                         icon,
                         size: () {
                           int vezes = MediaQuery.of(context).size.width ~/ 100;
-                          return 13.0 * vezes;
+                          return 12.0 * vezes;
                         }.call(),
                         color: Colors.white.withOpacity(0.9),
                       ),
@@ -71,7 +71,7 @@ class AlternativeHomeButtonWidget extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: () {
                           int vezes = MediaQuery.of(context).size.width ~/ 100;
-                          return 5.0 * vezes;
+                          return 4.0 * vezes;
                         }.call(),
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
