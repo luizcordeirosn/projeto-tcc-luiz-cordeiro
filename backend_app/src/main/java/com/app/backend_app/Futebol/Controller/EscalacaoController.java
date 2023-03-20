@@ -71,6 +71,7 @@ public class EscalacaoController {
         escalacao.setJogador(jogador);
 
         escalacao.setTipoPosicao(escalacaoInput.getTipoPosicao());
+        escalacao.setCapitao(escalacaoInput.getCapitao());
 
         try {
             if (escalacaoInput.getId() == 0) {

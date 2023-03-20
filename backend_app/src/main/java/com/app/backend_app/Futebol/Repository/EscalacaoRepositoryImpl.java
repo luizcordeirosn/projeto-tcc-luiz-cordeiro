@@ -21,8 +21,9 @@ import com.app.backend_app.Futebol.Model.Rodada;
 @Repository
 public class EscalacaoRepositoryImpl implements EscalacaoRepository{
     
-    private static String INSERT = " insert into tb_escalacao (id, formacao, rodada, jogador, tipoposicao) " 
-            + " values (nextval('tb_escalacao_id_seq'),?,?,?,?) ";
+    private static String INSERT = " insert into tb_escalacao (id, formacao, rodada, jogador, tipoposicao,"
+            + " capitao) " 
+            + " values (nextval('tb_escalacao_id_seq'),?,?,?,?,?) ";
     private static String SELECT_ONE = " select * from tb_escalacao where id = ?";
     private static String SELECT_ALL_RODADA_COMPETICAO = " select te.* from tb_escalacao te"
             + " inner join tb_rodada tr on tr.id = te.rodada"
@@ -63,6 +64,7 @@ public class EscalacaoRepositoryImpl implements EscalacaoRepository{
                 escalacao.setJogador(jogador);
 
                 escalacao.setTipoPosicao(rs.getInt("tipoposicao"));
+                escalacao.setCapitao(rs.getBoolean("capitao"));
 
                 return escalacao;
             }
@@ -90,6 +92,7 @@ public class EscalacaoRepositoryImpl implements EscalacaoRepository{
                 escalacao.setJogador(jogador);
 
                 escalacao.setTipoPosicao(rs.getInt("tipoposicao"));
+                escalacao.setCapitao(rs.getBoolean("capitao"));
 
                 return escalacao;
             }
@@ -109,6 +112,7 @@ public class EscalacaoRepositoryImpl implements EscalacaoRepository{
                 ps.setInt(2, escalacao.getRodada().getId());
                 ps.setInt(3, escalacao.getJogador().getId());
                 ps.setInt(4, escalacao.getTipoPosicao());
+                ps.setBoolean(5, escalacao.getCapitao());
                 return ps;
             }
         }, holder);

@@ -289,7 +289,7 @@ class _FormationPageState extends State<FormationPage> {
                       return const CustomExpandedWidget(
                           texto:
                               "Não foi possível encontrar uma Escalação a partir dos parâmetros passados "
-                                "no filtro");
+                              "no filtro");
                     } else {
                       return Expanded(
                         child: ListView.separated(
@@ -415,6 +415,28 @@ class _FormationPageState extends State<FormationPage> {
             ),
           ],
         ),
+        result['capitao'] ? Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                SizedBox.square(
+                  dimension: 40,
+                  child: Image.asset('images/icons-circled-c.png'),
+                ),
+                const Padding(padding: EdgeInsets.only(top: 7)),
+                const Text(
+                  'Capitão',
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                  ),
+                )
+              ],
+            )
+          ],
+        ): Container()
       ],
     );
   }

@@ -7,6 +7,7 @@ public class EscalacaoInput {
     private Integer rodada;
     private Integer jogador;
     private Integer tipoPosicao;
+    private Boolean capitao;
     
     public Integer getId() {
         return id;
@@ -37,5 +38,11 @@ public class EscalacaoInput {
     }
     public void setTipoPosicao(Integer tipoPosicao) {
         this.tipoPosicao = tipoPosicao;
+    }
+    public Boolean getCapitao() {
+        return capitao;
+    }
+    public void setCapitao(Boolean capitao) {
+        this.capitao = capitao;
     }
 }
