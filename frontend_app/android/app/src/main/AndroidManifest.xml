@@ -2,7 +2,7 @@
     package="com.example.frontend_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="frontend_app"
+        android:label="Liga Master"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

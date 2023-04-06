@@ -158,7 +158,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                                   usuarioLogado: widget.usuarioLogado,
                                 )))),
                 AlternativeHomeButtonWidget(
-                    buttonName: "Relatorio de Gols",
+                    buttonName: "Relatório de Gols",
                     image: 'images/icons-board-strategy.png',
                     onPressed: () => Navigator.push(
                         context,
@@ -203,7 +203,7 @@ class _UserPremiumDashboardState extends State<UserPremiumDashboard> {
                                   usuarioLogado: widget.usuarioLogado,
                                 )))),
                 AlternativeHomeButtonWidget(
-                    buttonName: "Escalacao da Rodada",
+                    buttonName: "Escalação da Rodada",
                     image: 'images/icons-formation.png',
                     onPressed: () => Navigator.push(
                         context,
